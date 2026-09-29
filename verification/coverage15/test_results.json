@@ -1,0 +1,552 @@
+{
+  "status": "PASS_FOR_EXECUTED_CHECKS",
+  "seed": 20260930,
+  "suites": [
+    {
+      "name": "small_domain",
+      "profiles": 3200,
+      "m_values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "found": 3200,
+      "restricted_infeasible": 0,
+      "invalid_outputs": 0,
+      "budget_histogram": {
+        "0": 3200
+      },
+      "orientations": 5228,
+      "infeasible_profiles": []
+    },
+    {
+      "name": "general_shift_search",
+      "profiles": 6200,
+      "m_values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "found": 6200,
+      "restricted_infeasible": 0,
+      "invalid_outputs": 0,
+      "budget_histogram": {
+        "0": 6200
+      },
+      "orientations": 184928,
+      "infeasible_profiles": []
+    },
+    {
+      "name": "recognized_common_modules",
+      "profiles": 6200,
+      "m_values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "invalid_outputs": 0,
+      "budget_histogram": {
+        "0": 6200
+      }
+    },
+    {
+      "name": "forced_shift_module_isomorphisms",
+      "profiles": 3000,
+      "size_histogram": {
+        "15": 1500,
+        "30": 1500
+      },
+      "fair_witnesses_checked": 3000,
+      "attaining_searches_checked": 3000,
+      "lower_budget_rejections_checked": 3000,
+      "invalid_outputs": 0
+    }
+  ],
+  "deterministic": [
+    {
+      "name": "serial12",
+      "m": 12,
+      "owner": [
+        2,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0
+      ],
+      "budget": 0
+    },
+    {
+      "name": "full_sigma1_balance10",
+      "m": 10,
+      "owner": [
+        0,
+        1,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        2
+      ],
+      "budget": 0
+    },
+    {
+      "name": "one_swap10",
+      "m": 10,
+      "owner": [
+        0,
+        2,
+        1,
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        1
+      ],
+      "budget": 0
+    },
+    {
+      "name": "frozen_class10",
+      "m": 10,
+      "owner": [
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        1,
+        2,
+        0,
+        0
+      ],
+      "budget": 0
+    },
+    {
+      "name": "LP_gap12",
+      "m": 12,
+      "owner": [
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1
+      ],
+      "budget": 0
+    },
+    {
+      "name": "six_good_repair_gap",
+      "m": 6,
+      "owner": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "budget": 0
+    },
+    {
+      "name": "naive_gluing6",
+      "m": 6,
+      "owner": [
+        1,
+        0,
+        2,
+        0,
+        1,
+        2
+      ],
+      "budget": 0
+    },
+    {
+      "name": "Kempe_K33",
+      "m": 9,
+      "owner": [
+        0,
+        2,
+        1,
+        2,
+        1,
+        0,
+        1,
+        2,
+        0
+      ],
+      "budget": 0
+    },
+    {
+      "name": "connected_distance_family",
+      "r": 2,
+      "m": 12,
+      "owner": [
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "budget": 0
+    },
+    {
+      "name": "connected_distance_family",
+      "r": 3,
+      "m": 18,
+      "owner": [
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "budget": 0
+    },
+    {
+      "name": "connected_distance_family",
+      "r": 4,
+      "m": 24,
+      "owner": [
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "budget": 0
+    },
+    {
+      "name": "connected_distance_family",
+      "r": 5,
+      "m": 30,
+      "owner": [
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "budget": 0
+    },
+    {
+      "name": "minimal_own_obstruction",
+      "m": 13,
+      "counts": {
+        "market": 3888,
+        "own": 320,
+        "fair": 206,
+        "fair_own": 0
+      },
+      "examples": [
+        [
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          1,
+          0,
+          2,
+          0,
+          1,
+          2,
+          2
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          1,
+          0,
+          2,
+          1,
+          0,
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "name": "minimal_own_obstruction",
+      "m": 14,
+      "counts": {
+        "market": 7776,
+        "own": 640,
+        "fair": 412,
+        "fair_own": 0
+      },
+      "examples": [
+        [
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          1,
+          0,
+          2,
+          0,
+          1,
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          1,
+          0,
+          2,
+          0,
+          1,
+          2,
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "minimal_own_obstruction",
+      "m": 15,
+      "counts": {
+        "market": 7776,
+        "own": 640,
+        "fair": 412,
+        "fair_own": 0,
+        "fair_budget_1": 412
+      },
+      "examples": [
+        [
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          1,
+          0,
+          2,
+          0,
+          1,
+          2,
+          2,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          1,
+          2,
+          1,
+          0,
+          2,
+          0,
+          1,
+          2,
+          2,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "large_explicit_modules",
+      "copies": 1,
+      "m": 15,
+      "budget": 1,
+      "brute_forced": false
+    },
+    {
+      "name": "large_explicit_modules",
+      "copies": 2,
+      "m": 30,
+      "budget": 2,
+      "brute_forced": false
+    },
+    {
+      "name": "large_explicit_modules",
+      "copies": 3,
+      "m": 45,
+      "budget": 3,
+      "brute_forced": false
+    },
+    {
+      "name": "large_explicit_modules",
+      "copies": 10,
+      "m": 150,
+      "budget": 10,
+      "brute_forced": false
+    },
+    {
+      "name": "large_explicit_modules",
+      "copies": 100,
+      "m": 1500,
+      "budget": 100,
+      "brute_forced": false
+    }
+  ],
+  "seconds": 17.886039385999993
+}

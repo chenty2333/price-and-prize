@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "records": [
+    {
+      "name": "full_sigma1_balance_negative_control",
+      "blocks": [
+        [
+          0,
+          2,
+          9
+        ],
+        [
+          1,
+          7,
+          8
+        ],
+        [
+          3,
+          10,
+          11
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "all_candidates_rejected_by_direct_prefix_scan": 48,
+      "family": "full",
+      "candidates": 48,
+      "covered": false,
+      "uncovered_prefix": [
+        0,
+        4,
+        2,
+        1,
+        3,
+        6,
+        9
+      ],
+      "recursive_calls": 8,
+      "memo_states": 0,
+      "memo_hits": 0,
+      "safe_prunes": 20,
+      "direct_mask_checks": 128,
+      "seconds": 0.02709924000009778
+    },
+    {
+      "name": "own_balance_negative_control",
+      "blocks": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          8,
+          10
+        ],
+        [
+          3,
+          13,
+          14
+        ],
+        [
+          5,
+          9,
+          11
+        ],
+        [
+          6,
+          7,
+          12
+        ]
+      ],
+      "all_candidates_rejected_by_direct_prefix_scan": 328,
+      "family": "own",
+      "candidates": 328,
+      "covered": false,
+      "uncovered_prefix": [
+        2,
+        4,
+        0,
+        1,
+        5,
+        10,
+        3,
+        8,
+        11,
+        12,
+        9
+      ],
+      "recursive_calls": 702326,
+      "memo_states": 435304,
+      "memo_hits": 267010,
+      "safe_prunes": 2631398,
+      "direct_mask_checks": 128,
+      "seconds": 1.5157759850000048
+    }
+  ],
+  "seconds": 0.08165782799960652
+}

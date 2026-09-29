@@ -1,0 +1,23 @@
+Exhaustive ranking/path audit: {'exhaustive_ranking_profiles': 46233, 'exhaustive_path_allocations': 230256}
+Monotone Boolean audit: {'boolean_monotone_functions': 168, 'boolean_profile_value_instances': 4032}
+goods integer subset-table checks passed: 3000
+chores integer subset-table checks passed: 3000
+mixed integer subset-table checks passed: 3000
+All exact tests passed.
+{
+  "exhaustive_ranking_profiles": 46233,
+  "exhaustive_path_allocations": 230256,
+  "boolean_monotone_functions": 168,
+  "boolean_profile_value_instances": 4032,
+  "goods_random_table_instances": 3000,
+  "goods_path_states": 12586,
+  "goods_allocations_bruteforced": 642836,
+  "chores_random_table_instances": 3000,
+  "chores_path_states": 12541,
+  "chores_allocations_bruteforced": 654080,
+  "mixed_random_table_instances": 3000,
+  "mixed_path_states": 12651,
+  "mixed_allocations_bruteforced": 691592,
+  "large_oracle_instances": 3000,
+  "large_path_states": 56494
+}

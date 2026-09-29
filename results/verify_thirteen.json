@@ -1,0 +1,21 @@
+{
+ "m13": {
+  "m": 13,
+  "market_balanced": 3888,
+  "fair": 206,
+  "fair_and_own_balanced": 0,
+  "budget_hist": {
+   "1": 206
+  }
+ },
+ "witness_fair": true,
+ "m15_padded": {
+  "m": 15,
+  "market_balanced": 7776,
+  "fair": 412,
+  "fair_and_own_balanced": 0,
+  "budget_hist": {
+   "1": 412
+  }
+ }
+}

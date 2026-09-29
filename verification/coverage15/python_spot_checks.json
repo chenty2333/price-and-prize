@@ -1,0 +1,727 @@
+{
+  "status": "PASS_FOR_LISTED_PARTITIONS",
+  "m": 15,
+  "complete_partition_coverage_problems": 10,
+  "full_domain": false,
+  "method": "independent exact (T,L) state recursion without learned cores or endpoint symmetry",
+  "records": [
+    {
+      "m": 15,
+      "partition_index": 40877,
+      "blocks": [
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          8,
+          10
+        ],
+        [
+          3,
+          13,
+          14
+        ],
+        [
+          5,
+          9,
+          11
+        ],
+        [
+          6,
+          7,
+          12
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 328,
+          "covered": false,
+          "uncovered_prefix": [
+            2,
+            4,
+            0,
+            1,
+            5,
+            10,
+            3,
+            8,
+            11,
+            12,
+            9
+          ],
+          "recursive_calls": 702326,
+          "memo_states": 435304,
+          "memo_hits": 267010,
+          "safe_prunes": 2631398,
+          "direct_mask_checks": 128,
+          "seconds": 1.5157759850000048
+        },
+        {
+          "family": "shift1",
+          "candidates": 2456,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 3297353,
+          "memo_states": 2058850,
+          "memo_hits": 1238503,
+          "safe_prunes": 12389846,
+          "direct_mask_checks": 128,
+          "seconds": 9.796534643999962
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 1,
+        "first_partition": 40877,
+        "last_partition_exclusive": 40878,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 134195,
+        "learned_cores": 37095,
+        "retained_cores": 31477,
+        "subsumption_hits": 97088,
+        "safe_prunes": 206525,
+        "min_candidates": 2456,
+        "max_candidates": 2456,
+        "max_calls_per_partition": 134195,
+        "seconds": 0.313252,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 765432,
+      "blocks": [
+        [
+          0,
+          5,
+          9
+        ],
+        [
+          1,
+          7,
+          13
+        ],
+        [
+          2,
+          8,
+          11
+        ],
+        [
+          3,
+          4,
+          12
+        ],
+        [
+          6,
+          10,
+          14
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 178,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2678337,
+          "memo_states": 1661023,
+          "memo_hits": 1017314,
+          "safe_prunes": 10073246,
+          "direct_mask_checks": 128,
+          "seconds": 5.101474788000019
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 765432,
+        "last_partition_exclusive": 765433,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 147687,
+        "learned_cores": 41378,
+        "retained_cores": 36065,
+        "subsumption_hits": 106309,
+        "safe_prunes": 230779,
+        "min_candidates": 178,
+        "max_candidates": 178,
+        "max_calls_per_partition": 147687,
+        "seconds": 0.102903,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 1401399,
+      "blocks": [
+        [
+          0,
+          13,
+          14
+        ],
+        [
+          1,
+          11,
+          12
+        ],
+        [
+          2,
+          9,
+          10
+        ],
+        [
+          3,
+          7,
+          8
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 680,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2854488,
+          "memo_states": 1771764,
+          "memo_hits": 1082724,
+          "safe_prunes": 10666606,
+          "direct_mask_checks": 128,
+          "seconds": 6.50765649899995
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 1401399,
+        "last_partition_exclusive": 1401400,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 89582,
+        "learned_cores": 23486,
+        "retained_cores": 19567,
+        "subsumption_hits": 66096,
+        "safe_prunes": 129644,
+        "min_candidates": 680,
+        "max_candidates": 680,
+        "max_calls_per_partition": 89582,
+        "seconds": 0.161864,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 123456,
+      "blocks": [
+        [
+          0,
+          1,
+          10
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          5,
+          12,
+          13
+        ],
+        [
+          6,
+          8,
+          14
+        ],
+        [
+          7,
+          9,
+          11
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 544,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2428861,
+          "memo_states": 1494768,
+          "memo_hits": 934093,
+          "safe_prunes": 9001947,
+          "direct_mask_checks": 128,
+          "seconds": 5.16531335500008
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 123456,
+        "last_partition_exclusive": 123457,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 88208,
+        "learned_cores": 22850,
+        "retained_cores": 19747,
+        "subsumption_hits": 65358,
+        "safe_prunes": 126064,
+        "min_candidates": 544,
+        "max_candidates": 544,
+        "max_calls_per_partition": 88208,
+        "seconds": 0.0896118,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 271828,
+      "blocks": [
+        [
+          0,
+          2,
+          7
+        ],
+        [
+          1,
+          8,
+          10
+        ],
+        [
+          3,
+          11,
+          12
+        ],
+        [
+          4,
+          9,
+          14
+        ],
+        [
+          5,
+          6,
+          13
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 198,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2632263,
+          "memo_states": 1637668,
+          "memo_hits": 994595,
+          "safe_prunes": 9952225,
+          "direct_mask_checks": 128,
+          "seconds": 5.418978526000046
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 271828,
+        "last_partition_exclusive": 271829,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 133209,
+        "learned_cores": 36415,
+        "retained_cores": 31696,
+        "subsumption_hits": 96794,
+        "safe_prunes": 201042,
+        "min_candidates": 198,
+        "max_candidates": 198,
+        "max_calls_per_partition": 133209,
+        "seconds": 0.102316,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 314159,
+      "blocks": [
+        [
+          0,
+          2,
+          10
+        ],
+        [
+          1,
+          5,
+          8
+        ],
+        [
+          3,
+          13,
+          14
+        ],
+        [
+          4,
+          11,
+          12
+        ],
+        [
+          6,
+          7,
+          9
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 304,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2712406,
+          "memo_states": 1692082,
+          "memo_hits": 1020324,
+          "safe_prunes": 10294397,
+          "direct_mask_checks": 128,
+          "seconds": 5.8746874299999945
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 314159,
+        "last_partition_exclusive": 314160,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 128608,
+        "learned_cores": 34837,
+        "retained_cores": 29730,
+        "subsumption_hits": 93771,
+        "safe_prunes": 189796,
+        "min_candidates": 304,
+        "max_candidates": 304,
+        "max_calls_per_partition": 128608,
+        "seconds": 0.101446,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 1000000,
+      "blocks": [
+        [
+          0,
+          7,
+          9
+        ],
+        [
+          1,
+          11,
+          14
+        ],
+        [
+          2,
+          4,
+          13
+        ],
+        [
+          3,
+          5,
+          6
+        ],
+        [
+          8,
+          10,
+          12
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 210,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2632937,
+          "memo_states": 1630631,
+          "memo_hits": 1002306,
+          "safe_prunes": 9877926,
+          "direct_mask_checks": 128,
+          "seconds": 5.7025359890001255
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 1000000,
+        "last_partition_exclusive": 1000001,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 118839,
+        "learned_cores": 31354,
+        "retained_cores": 27298,
+        "subsumption_hits": 87485,
+        "safe_prunes": 171034,
+        "min_candidates": 210,
+        "max_candidates": 210,
+        "max_calls_per_partition": 118839,
+        "seconds": 0.140104,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 555555,
+      "blocks": [
+        [
+          0,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          9
+        ],
+        [
+          3,
+          6,
+          11
+        ],
+        [
+          7,
+          10,
+          13
+        ],
+        [
+          8,
+          12,
+          14
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 272,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2623371,
+          "memo_states": 1636724,
+          "memo_hits": 986647,
+          "safe_prunes": 9950875,
+          "direct_mask_checks": 128,
+          "seconds": 5.205307544999869
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 555555,
+        "last_partition_exclusive": 555556,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 139286,
+        "learned_cores": 37403,
+        "retained_cores": 32788,
+        "subsumption_hits": 101883,
+        "safe_prunes": 204806,
+        "min_candidates": 272,
+        "max_candidates": 272,
+        "max_calls_per_partition": 139286,
+        "seconds": 0.089638,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 987654,
+      "blocks": [
+        [
+          0,
+          7,
+          9
+        ],
+        [
+          1,
+          2,
+          12
+        ],
+        [
+          3,
+          5,
+          10
+        ],
+        [
+          4,
+          8,
+          11
+        ],
+        [
+          6,
+          13,
+          14
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 248,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2683084,
+          "memo_states": 1680498,
+          "memo_hits": 1002586,
+          "safe_prunes": 10238379,
+          "direct_mask_checks": 128,
+          "seconds": 5.034122235999803
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 987654,
+        "last_partition_exclusive": 987655,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 147994,
+        "learned_cores": 40500,
+        "retained_cores": 35564,
+        "subsumption_hits": 107494,
+        "safe_prunes": 223058,
+        "min_candidates": 248,
+        "max_candidates": 248,
+        "max_calls_per_partition": 147994,
+        "seconds": 0.0994267,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    },
+    {
+      "m": 15,
+      "partition_index": 112233,
+      "blocks": [
+        [
+          0,
+          1,
+          9
+        ],
+        [
+          2,
+          4,
+          11
+        ],
+        [
+          3,
+          10,
+          13
+        ],
+        [
+          5,
+          6,
+          14
+        ],
+        [
+          7,
+          8,
+          12
+        ]
+      ],
+      "attempts": [
+        {
+          "family": "own",
+          "candidates": 320,
+          "covered": true,
+          "uncovered_prefix": null,
+          "recursive_calls": 2684418,
+          "memo_states": 1662040,
+          "memo_hits": 1022378,
+          "safe_prunes": 10026541,
+          "direct_mask_checks": 128,
+          "seconds": 5.375667498999974
+        }
+      ],
+      "cpp": {
+        "status": "PASS",
+        "m": 15,
+        "family": "shift1",
+        "symmetry": false,
+        "adaptive_own": true,
+        "own_failures": 0,
+        "first_partition": 112233,
+        "last_partition_exclusive": 112234,
+        "partitions_checked": 1,
+        "partitions_represented": 1,
+        "recursive_calls": 110849,
+        "learned_cores": 30320,
+        "retained_cores": 25788,
+        "subsumption_hits": 80529,
+        "safe_prunes": 169729,
+        "min_candidates": 320,
+        "max_candidates": 320,
+        "max_calls_per_partition": 110849,
+        "seconds": 0.10382,
+        "orbit_histogram": {
+          "1": 1
+        }
+      }
+    }
+  ],
+  "sum_completed_run_wall_seconds": 65.843462886,
+  "own_family_failures": 1,
+  "recursive_calls": 27929844,
+  "memo_states": 17361352
+}

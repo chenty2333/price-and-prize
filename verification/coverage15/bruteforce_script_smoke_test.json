@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "records": [
+    {
+      "m": 13,
+      "market_allocations": 3888,
+      "own_balanced_allocations": 320,
+      "fair_allocations": 206,
+      "fair_own_balanced_allocations": 0,
+      "shift_histogram": {},
+      "fair_example": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        2
+      ],
+      "seconds": 0.000555567
+    },
+    {
+      "m": 14,
+      "market_allocations": 7776,
+      "own_balanced_allocations": 640,
+      "fair_allocations": 412,
+      "fair_own_balanced_allocations": 0,
+      "shift_histogram": {},
+      "fair_example": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        2,
+        0
+      ],
+      "seconds": 0.000568757
+    },
+    {
+      "m": 15,
+      "market_allocations": 7776,
+      "own_balanced_allocations": 640,
+      "fair_allocations": 412,
+      "fair_own_balanced_allocations": 0,
+      "shift_histogram": {
+        "1": 412
+      },
+      "fair_example": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        1,
+        0,
+        2,
+        0,
+        1,
+        2,
+        2,
+        0,
+        1
+      ],
+      "seconds": 0.000495716
+    }
+  ],
+  "seconds_excluding_compilation": 0.006310421000307542
+}

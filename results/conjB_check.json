@@ -1,0 +1,100 @@
+{
+ "exhaustive": [
+  {
+   "n": 3,
+   "m": 5,
+   "violations": 0,
+   "profiles": 14400
+  },
+  {
+   "n": 3,
+   "m": 6,
+   "violations": 0,
+   "profiles": 518400
+  },
+  {
+   "n": 3,
+   "m": 7,
+   "violations": 0,
+   "profiles": 25401600
+  },
+  {
+   "n": 3,
+   "m": 8,
+   "violations": 0,
+   "profiles": 1625702400
+  }
+ ],
+ "local_search": [
+  {
+   "n": 4,
+   "m": 8,
+   "restarts": 270,
+   "min_h": 78,
+   "violation": null
+  },
+  {
+   "n": 4,
+   "m": 8,
+   "restarts": 261,
+   "min_h": 78,
+   "violation": null
+  },
+  {
+   "n": 4,
+   "m": 12,
+   "restarts": 4,
+   "min_h": 423,
+   "violation": null
+  },
+  {
+   "n": 4,
+   "m": 12,
+   "restarts": 4,
+   "min_h": 436,
+   "violation": null
+  },
+  {
+   "n": 4,
+   "m": 16,
+   "restarts": 1,
+   "min_h": 2598,
+   "violation": null
+  },
+  {
+   "n": 4,
+   "m": 16,
+   "restarts": 1,
+   "min_h": 2069,
+   "violation": null
+  },
+  {
+   "n": 5,
+   "m": 10,
+   "restarts": 4,
+   "min_h": 540,
+   "violation": null
+  },
+  {
+   "n": 5,
+   "m": 10,
+   "restarts": 4,
+   "min_h": 602,
+   "violation": null
+  },
+  {
+   "n": 5,
+   "m": 12,
+   "restarts": 1,
+   "min_h": 3062,
+   "violation": null
+  },
+  {
+   "n": 5,
+   "m": 12,
+   "restarts": 1,
+   "min_h": 1716,
+   "violation": null
+  }
+ ]
+}

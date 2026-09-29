@@ -1,0 +1,3 @@
+concat3 {'steps': 9100, 'hard_distinct': 10, 'max_imbalance': 2, 'decided': 0, 'refuted': 0, 'counterexamples': 0, 'undecided': 10, 'max_cert': 0}
+deep {'steps': 9212, 'hard_distinct': 62, 'max_imbalance': 2, 'decided': 53, 'refuted': 53, 'counterexamples': 0, 'undecided': 9, 'max_cert': 11}
+done [2809s]

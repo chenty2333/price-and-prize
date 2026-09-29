@@ -1,0 +1,13 @@
+Allocations enumerated: 59049
+Subjective SD-EF1 allocations: 590
+Subjective SD-EF1 and near-block: 106
+Market-block witnesses: 0
+Maximum total subjective slack: 43
+Maximizers: 1
+Unique maximizer: [0, 1, 1, 2, 2, 2, 0, 0, 2, 1]
+Its defects: [3, 6, 9]
+Its near-block disjoint partners: 0
+Different covering pair: [0, 1, 1, 2, 2, 0, 0, 1, 2, 1] [0, 1, 2, 2, 1, 1, 0, 2, 0, 1]
+Defects of covering pair: [3] [6]
+Exact cross-row inequalities verified: 360
+Defect histogram: {(3,): 13, (3, 6): 15, (3, 6, 9): 9, (3, 9): 16, (6,): 14, (6, 9): 10, (9,): 29}

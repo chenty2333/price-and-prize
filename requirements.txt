@@ -1,0 +1,3 @@
+numpy>=1.26
+scipy>=1.11
+numba>=0.59   # only for two targeted-search scripts in verification/queries_and_defects

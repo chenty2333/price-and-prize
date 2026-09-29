@@ -1,0 +1,10 @@
+All allocations enumerated: 531441
+Subjectively SD-EF1: 1080
+Also near-block-balanced: 58
+Defect histogram: {(3, 6): 12, (3, 6, 9): 4, (3, 9): 6, (6, 9): 36}
+Minimum defects / minimum witnesses: 2 54
+Unordered disjoint-defect pairs: 0
+Cover A positive-row envelope: (0, -1, -1, -1, 0, 1, 0, 0, 1, 0, 0, -1)
+Cover B positive-row envelope: (0, 1, 1, 0, 0, -1, 0, 0, -1, -1, 0, -1)
+Sum: (0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, -2)
+Exact unrestricted two-allocation cover: True

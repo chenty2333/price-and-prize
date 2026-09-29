@@ -1,0 +1,3 @@
+n=3 m=7: |market-SD-EF1 allocations|=108, hard profiles (sorted tuples)=0  [28.5s]
+distinct S among hard profiles: 0  [28.5s]
+{"n": 3, "m": 7, "hard_profiles": 0, "distinct_S": 0, "S_size_min": null, "best_eps": 0.0, "seconds": 28.5} counterexamples: 0

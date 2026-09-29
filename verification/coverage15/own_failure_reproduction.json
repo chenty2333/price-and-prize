@@ -1,0 +1,65 @@
+{
+  "status": "FAIL",
+  "m": 15,
+  "family": "own",
+  "symmetry": false,
+  "adaptive_own": false,
+  "own_failures": 0,
+  "first_partition": 40877,
+  "last_partition_exclusive": 40878,
+  "partitions_checked": 1,
+  "partitions_represented": 1,
+  "recursive_calls": 49176,
+  "learned_cores": 15367,
+  "retained_cores": 13185,
+  "subsumption_hits": 33797,
+  "safe_prunes": 87450,
+  "min_candidates": 328,
+  "max_candidates": 328,
+  "max_calls_per_partition": 49176,
+  "seconds": 0.0549111,
+  "orbit_histogram": {
+    "1": 1
+  },
+  "failed_partition_index": 40877,
+  "failed_blocks": [
+    [
+      0,
+      1,
+      4
+    ],
+    [
+      2,
+      8,
+      10
+    ],
+    [
+      3,
+      13,
+      14
+    ],
+    [
+      5,
+      9,
+      11
+    ],
+    [
+      6,
+      7,
+      12
+    ]
+  ],
+  "uncovered_prefix": [
+    2,
+    4,
+    0,
+    1,
+    5,
+    10,
+    3,
+    8,
+    11,
+    12,
+    9
+  ]
+}

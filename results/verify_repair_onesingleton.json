@@ -1,0 +1,72 @@
+{
+ "theorem1": [
+  {
+   "r": 2,
+   "m": 12,
+   "market_allocations": 1296,
+   "fair": 211,
+   "own_balanced_fair": 27,
+   "S_completable": false,
+   "min_dist_own_balanced": 2,
+   "own_balanced_dist_hist": {
+    "2": 13,
+    "3": 14
+   },
+   "min_dist_any_fair": 1,
+   "repaired_allocation_fair": true,
+   "repair_dist": 1
+  },
+  {
+   "r": 3,
+   "m": 18,
+   "market_allocations": 46656,
+   "fair": 4571,
+   "own_balanced_fair": 207,
+   "S_completable": false,
+   "min_dist_own_balanced": 3,
+   "own_balanced_dist_hist": {
+    "3": 40,
+    "4": 155,
+    "5": 12
+   },
+   "min_dist_any_fair": 1,
+   "repaired_allocation_fair": true,
+   "repair_dist": 1
+  },
+  {
+   "r": 4,
+   "m": 24,
+   "market_allocations": 1679616,
+   "fair": 96276,
+   "own_balanced_fair": 1341,
+   "S_completable": false,
+   "min_dist_own_balanced": 4,
+   "own_balanced_dist_hist": {
+    "4": 137,
+    "5": 922,
+    "6": 282
+   },
+   "min_dist_any_fair": 1,
+   "repaired_allocation_fair": true,
+   "repair_dist": 1
+  }
+ ],
+ "theorem1_repair_r2_to_10": {
+  "2": true,
+  "3": true,
+  "4": true,
+  "5": true,
+  "6": true,
+  "7": true,
+  "8": true,
+  "9": true,
+  "10": true
+ },
+ "theorem3": {
+  "rule_tested": 4000,
+  "rule_fail": 0,
+  "gen_not_C": 0,
+  "converse_tested": 3791,
+  "converse_rule_fails": 3791
+ }
+}

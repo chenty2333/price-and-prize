@@ -1,0 +1,41 @@
+{
+ "note": "60-second in-family local search per family (seed 1), maximising cegar.market_imbalance; printed output of the smoke test, saved by hand",
+ "lex2_4": {
+  "steps": 1231,
+  "restarts": 9,
+  "max_imbalance": 0
+ },
+ "lex3_3": {
+  "steps": 426,
+  "restarts": 3,
+  "max_imbalance": 0
+ },
+ "lex4_2": {
+  "steps": 952,
+  "restarts": 7,
+  "max_imbalance": 0
+ },
+ "lex5_2": {
+  "steps": 381,
+  "restarts": 3,
+  "max_imbalance": 0
+ },
+ "lex2_5": {
+  "steps": 245,
+  "restarts": 2,
+  "max_imbalance": 0
+ },
+ "thm1": {
+  "steps": 1472,
+  "restarts": 10,
+  "max_imbalance": 0
+ },
+ "concat2": {
+  "steps": 122,
+  "restarts": 1,
+  "max_imbalance": 1,
+  "hard_distinct": 2,
+  "decided": 2,
+  "refuted": 2
+ }
+}

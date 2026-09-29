@@ -1,0 +1,358 @@
+{
+  "m": 13,
+  "seed": 392859,
+  "restarts_started": 5,
+  "steps_per_restart": 4000,
+  "proposals": 19959,
+  "distinct_proposals": 19097,
+  "forbidden_universe": 14256,
+  "near_block_universe": 30000,
+  "minimum_forbidden_count": 0,
+  "best_profile": [
+    [
+      3,
+      1,
+      5,
+      0,
+      9,
+      2,
+      4,
+      12,
+      6,
+      7,
+      8,
+      10,
+      11
+    ],
+    [
+      1,
+      9,
+      3,
+      10,
+      5,
+      12,
+      0,
+      6,
+      7,
+      11,
+      8,
+      2,
+      4
+    ],
+    [
+      5,
+      9,
+      3,
+      1,
+      6,
+      12,
+      10,
+      7,
+      8,
+      11,
+      4,
+      0,
+      2
+    ]
+  ],
+  "found": [
+    {
+      "m": 13,
+      "profile": [
+        [
+          3,
+          1,
+          5,
+          0,
+          9,
+          2,
+          4,
+          12,
+          6,
+          7,
+          8,
+          10,
+          11
+        ],
+        [
+          1,
+          9,
+          3,
+          10,
+          5,
+          12,
+          0,
+          6,
+          7,
+          11,
+          8,
+          2,
+          4
+        ],
+        [
+          5,
+          9,
+          3,
+          1,
+          6,
+          12,
+          10,
+          7,
+          8,
+          11,
+          4,
+          0,
+          2
+        ]
+      ],
+      "near_sd_count": 89,
+      "defect_histogram": {
+        "(3, 6)": 5,
+        "(3, 9)": 1,
+        "(6, 9)": 4,
+        "(3, 6, 9)": 18,
+        "(3, 12)": 10,
+        "(6, 12)": 5,
+        "(3, 6, 12)": 12,
+        "(9, 12)": 3,
+        "(3, 9, 12)": 7,
+        "(6, 9, 12)": 6,
+        "(3, 6, 9, 12)": 18
+      },
+      "minimum_defects": 2,
+      "has_pair": true,
+      "has_pair_both_minimum": true,
+      "market_block_count": 0,
+      "rules": {
+        "minimum_defects_all_ties": {
+          "selected_count": 28,
+          "nonextendable_count": 0,
+          "lex_owner_extendable": true
+        },
+        "lex_earliest_defect_tuple": {
+          "selected_count": 5,
+          "nonextendable_count": 0,
+          "lex_owner_extendable": true
+        },
+        "lex_avoid_early_defects": {
+          "selected_count": 3,
+          "nonextendable_count": 0,
+          "lex_owner_extendable": true
+        },
+        "maximum_total_subjective_slack_all_ties": {
+          "selected_count": 1,
+          "nonextendable_count": 1,
+          "lex_owner_extendable": false,
+          "failure_owner": [
+            0,
+            1,
+            1,
+            2,
+            0,
+            0,
+            2,
+            1,
+            2,
+            2,
+            1,
+            1,
+            0
+          ],
+          "failure_defects": [
+            3,
+            6,
+            12
+          ],
+          "failure_score": 48
+        },
+        "minimum_defects_then_maximum_slack": {
+          "selected_count": 1,
+          "nonextendable_count": 0,
+          "lex_owner_extendable": true
+        }
+      },
+      "max_slack": 48,
+      "pair": [
+        [
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          2,
+          1,
+          2,
+          2,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          0,
+          0,
+          1,
+          2,
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          2
+        ]
+      ]
+    }
+  ],
+  "best_analysis": {
+    "m": 13,
+    "profile": [
+      [
+        3,
+        1,
+        5,
+        0,
+        9,
+        2,
+        4,
+        12,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      [
+        1,
+        9,
+        3,
+        10,
+        5,
+        12,
+        0,
+        6,
+        7,
+        11,
+        8,
+        2,
+        4
+      ],
+      [
+        5,
+        9,
+        3,
+        1,
+        6,
+        12,
+        10,
+        7,
+        8,
+        11,
+        4,
+        0,
+        2
+      ]
+    ],
+    "near_sd_count": 89,
+    "defect_histogram": {
+      "(3, 6)": 5,
+      "(3, 9)": 1,
+      "(6, 9)": 4,
+      "(3, 6, 9)": 18,
+      "(3, 12)": 10,
+      "(6, 12)": 5,
+      "(3, 6, 12)": 12,
+      "(9, 12)": 3,
+      "(3, 9, 12)": 7,
+      "(6, 9, 12)": 6,
+      "(3, 6, 9, 12)": 18
+    },
+    "minimum_defects": 2,
+    "has_pair": true,
+    "has_pair_both_minimum": true,
+    "market_block_count": 0,
+    "rules": {
+      "minimum_defects_all_ties": {
+        "selected_count": 28,
+        "nonextendable_count": 0,
+        "lex_owner_extendable": true
+      },
+      "lex_earliest_defect_tuple": {
+        "selected_count": 5,
+        "nonextendable_count": 0,
+        "lex_owner_extendable": true
+      },
+      "lex_avoid_early_defects": {
+        "selected_count": 3,
+        "nonextendable_count": 0,
+        "lex_owner_extendable": true
+      },
+      "maximum_total_subjective_slack_all_ties": {
+        "selected_count": 1,
+        "nonextendable_count": 1,
+        "lex_owner_extendable": false,
+        "failure_owner": [
+          0,
+          1,
+          1,
+          2,
+          0,
+          0,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          0
+        ],
+        "failure_defects": [
+          3,
+          6,
+          12
+        ],
+        "failure_score": 48
+      },
+      "minimum_defects_then_maximum_slack": {
+        "selected_count": 1,
+        "nonextendable_count": 0,
+        "lex_owner_extendable": true
+      }
+    },
+    "max_slack": 48,
+    "pair": [
+      [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        2,
+        2,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        2,
+        0,
+        0,
+        1,
+        2,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        2
+      ]
+    ]
+  }
+}

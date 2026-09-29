@@ -1,0 +1,289 @@
+{
+  "status": "PASS",
+  "full_enumeration": false,
+  "partitions_checked": 40,
+  "crosschecked_cpp": true,
+  "seconds": 9.742921053999908,
+  "records": [
+    {
+      "candidates": 1296,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18989,
+      "partition_index": 0
+    },
+    {
+      "candidates": 312,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18898,
+      "partition_index": 150
+    },
+    {
+      "candidates": 160,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19033,
+      "partition_index": 908
+    },
+    {
+      "candidates": 152,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18223,
+      "partition_index": 1118
+    },
+    {
+      "candidates": 112,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18778,
+      "partition_index": 2052
+    },
+    {
+      "candidates": 120,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18390,
+      "partition_index": 2169
+    },
+    {
+      "candidates": 144,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18564,
+      "partition_index": 2409
+    },
+    {
+      "candidates": 80,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19457,
+      "partition_index": 3046
+    },
+    {
+      "candidates": 114,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18883,
+      "partition_index": 3873
+    },
+    {
+      "candidates": 144,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18059,
+      "partition_index": 4762
+    },
+    {
+      "candidates": 110,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18272,
+      "partition_index": 5101
+    },
+    {
+      "candidates": 74,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19898,
+      "partition_index": 5997
+    },
+    {
+      "candidates": 104,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19117,
+      "partition_index": 6270
+    },
+    {
+      "candidates": 98,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18859,
+      "partition_index": 6927
+    },
+    {
+      "candidates": 70,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19335,
+      "partition_index": 7111
+    },
+    {
+      "candidates": 76,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19439,
+      "partition_index": 7146
+    },
+    {
+      "candidates": 110,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19350,
+      "partition_index": 7296
+    },
+    {
+      "candidates": 142,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18496,
+      "partition_index": 7339
+    },
+    {
+      "candidates": 80,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19186,
+      "partition_index": 7528
+    },
+    {
+      "candidates": 112,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18729,
+      "partition_index": 7587
+    },
+    {
+      "candidates": 102,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18736,
+      "partition_index": 7903
+    },
+    {
+      "candidates": 72,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19606,
+      "partition_index": 7955
+    },
+    {
+      "candidates": 92,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19105,
+      "partition_index": 8201
+    },
+    {
+      "candidates": 116,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18608,
+      "partition_index": 8224
+    },
+    {
+      "candidates": 78,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19377,
+      "partition_index": 8318
+    },
+    {
+      "candidates": 84,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19278,
+      "partition_index": 8484
+    },
+    {
+      "candidates": 136,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18841,
+      "partition_index": 9553
+    },
+    {
+      "candidates": 128,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19426,
+      "partition_index": 9705
+    },
+    {
+      "candidates": 132,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19778,
+      "partition_index": 9826
+    },
+    {
+      "candidates": 82,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19383,
+      "partition_index": 10906
+    },
+    {
+      "candidates": 88,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19395,
+      "partition_index": 11020
+    },
+    {
+      "candidates": 240,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19357,
+      "partition_index": 11429
+    },
+    {
+      "candidates": 80,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19420,
+      "partition_index": 12055
+    },
+    {
+      "candidates": 112,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18719,
+      "partition_index": 12721
+    },
+    {
+      "candidates": 120,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19299,
+      "partition_index": 13192
+    },
+    {
+      "candidates": 74,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 19552,
+      "partition_index": 13394
+    },
+    {
+      "candidates": 104,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18748,
+      "partition_index": 14666
+    },
+    {
+      "candidates": 132,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18875,
+      "partition_index": 15116
+    },
+    {
+      "candidates": 108,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18385,
+      "partition_index": 15169
+    },
+    {
+      "candidates": 264,
+      "covered": true,
+      "uncovered_prefix": null,
+      "cached_states": 18954,
+      "partition_index": 15399
+    }
+  ]
+}

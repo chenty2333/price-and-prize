@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.aux
+*.log.tmp
+*.fls
+*.fdb_latexmk
+*.out
+*.synctex.gz
+paper/build/
+src/cover15_ours
+verification/**/verify_cover
+verification/**/verify_12
+verification/**/audit_sat

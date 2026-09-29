@@ -1,0 +1,13 @@
+{
+  "exhaustive_profiles": 46233,
+  "exhaustive_path_states": 230256,
+  "goods_instances": 2000,
+  "solver_queries": 49984,
+  "repair_certificates": 4648,
+  "random_path_states": 93891,
+  "chores_instances": 2000,
+  "mixed_instances": 2000,
+  "exact1_and_cardinal_instances": 2000,
+  "exact1_queries": 83644,
+  "max_solver_queries": 13
+}

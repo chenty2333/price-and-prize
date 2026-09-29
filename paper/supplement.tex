@@ -1,0 +1,370 @@
+\input{preamble}
+\renewcommand{\thetheorem}{S\arabic{theorem}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thetable}{S\arabic{table}}
+\title{Subjective and Market Fairness:\\Technical Appendix}
+\author{Anonymous Authors}
+\begin{document}
+\maketitle
+
+\section{Scope and Notation}
+This appendix supplements the proofs and computations in the main paper. It does not extend the finite existence theorem to arbitrary size. Agents in the three-agent setting are $0,1,2$, $\sigma_0=\pi=(0,\ldots,m-1)$, and a complete allocation is written $(D,S,X)$. The owner vector $o$ records the recipient $o_g$ of good $g$. The original SD-EF1 condition is
+\[
+ |A_j\cap P_i(t)|\le |A_i\cap P_i(t)|+1
+ \quad\text{for every }i,j,t.
+\]
+For $m=3q$, market-block balance assigns one good to each agent in every triple. Own-bundle balance asks for exactly one $S$-good in each $\sigma_1$ triple. Thus $S$ is a perfect matching in the bipartite multigraph of the two block systems.
+
+Padding adds universally bottom-ranked virtual goods. Deleting them preserves all original prefixes, full blocks, and short-block conditions. This does not assert that every unpadded solution extends to a padded one.
+
+\section{Coverage of Every Twelve-Good Profile}\label{app:coverage}
+Relabel goods by their position in $\sigma_1$. We must consider every partition $Q$ of $\{0,\ldots,11\}$ into four unordered triples, while $\sigma_1$ is the identity. The market order itself is not necessarily the identity after this normalization: $Q$ retains exactly the market information needed for block balance. Agent~0 accepts every rainbow allocation of $Q$, independent of the order of its blocks and the order inside each block.
+
+\subsection{Canonical Partitions and Candidate Generation}
+Choose the smallest remaining good $a$, enumerate its two partners, remove that triple, and recurse. Each partition has exactly one triple containing $a$, so it is generated once. There are $12!/((3!)^4 4!)=15{,}400$ partitions.
+
+For each $Q$, enumerate all six owner permutations per triple. Retain candidates that assign one good of every identity-order triple to agent~1 and satisfy all of that agent's prefix conditions. This produces $\mathcal F(Q)$. The code checks fairness separately from own-bundle balance: merely taking one good from each own-ranking triple does not automatically protect the owner against both opponents if those opponents are not themselves block-balanced.
+
+\subsection{Coverage Recursion}
+Let $T$ be the set of exposed goods in an agent-2 ranking prefix. Let $L$ contain exactly the candidates satisfying all exposed prefix conditions in their encountered order. Algorithm~\ref{alg:cover} decides whether every continuation is covered. The empty-family test precedes any acceptance rule. At a fully exposed prefix, any surviving allocation contains four agent-2 goods and hence triggers acceptance.
+
+\begin{algorithm}[t]
+\caption{\textsc{Cover}$(T,L)$ for a fixed partition $Q$}
+\label{alg:cover}
+\begin{algorithmic}[1]
+\IF{$L=\varnothing$}
+  \RETURN false
+\ENDIF
+\IF{some $A\in L$ has $|A_2\cap T|\ge3$}
+  \RETURN true
+\ENDIF
+\IF{$(T,L)$ is a memoized covered state}
+  \RETURN true
+\ENDIF
+\FOR{each $g\in M\setminus T$}
+  \STATE $T'\gets T\cup\{g\}$
+  \STATE $L'\gets\{A\in L: |A_j\cap T'|\le |A_2\cap T'|+1$
+  \STATE \hspace{2em}for $j=0,1\}$
+  \IF{\textsc{Cover}$(T',L')$ is false}
+    \RETURN false
+  \ENDIF
+\ENDFOR
+\STATE Memoize $(T,L)$ as covered
+\RETURN true
+\end{algorithmic}
+\end{algorithm}
+
+\begin{proposition}
+For every reachable state $(T,L)$, Algorithm~\ref{alg:cover} returns true if and only if every ordering of $M\setminus T$ completes the exposed prefix to a ranking accepted by at least one candidate in $L$.
+\end{proposition}
+\begin{proof}
+An empty $L$ admits no acceptable continuation. If a surviving candidate has three agent-2 goods, its count never decreases, whereas every opposing bundle has total size four; all future differences are therefore at most one. This proves the safe-acceptance case.
+
+For every remaining state, all continuations are partitioned by their next good $g$. At the new prefix, the surviving candidates are precisely $L'$. Induction on $|M\setminus T|$ proves that all continuations are covered exactly when all recursive children are covered. No later feasibility depends on the order before $T$ except through survival in $L$. Memoizing the complete pair $(T,L)$ thus preserves the answer.
+\end{proof}
+
+The C++ implementation represents candidates by three good masks and $L$ by an integer bitset. It precomputes validity and safe-acceptance masks for every prefix set. Its memoization key contains the prefix mask and the entire candidate bitset; equality does not rely on a hash fingerprint. Children with an immediate safe witness may be skipped. Sorting the other children by candidate count changes traversal order but not coverage.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}lr@{}}
+\toprule
+Quantity & Complete C++ run\\
+\midrule
+Canonical partitions & 15,400\\
+Uncovered partitions & 0\\
+Recursive calls & 70,831,414\\
+Memoized covered states & 43,515,662\\
+Memo hits & 27,315,752\\
+Safe-prune events & 260,293,476\\
+Max. calls per partition & 4,989\\
+Candidate-family range & 64 / 1,296\\
+\bottomrule
+\end{tabular}
+\caption{Full coverage computation reproduced locally. Safe-prune events include children accepted without a recursive call.}
+\end{table}
+
+\subsection{Independent Checks and a Negative Control}
+The Python implementation builds explicit owners and checks prefixes separately. Forty complete coverage problems agree with C++ on coverage and candidate counts; this is not a second exhaustive verification.
+
+For a negative control, require all three bundles to be rainbow in every identity-ranking triple, rather than just agent~1's bundle being own-balanced. Use
+\[
+ Q=\{\{0,2,9\},\{1,7,8\},\{3,10,11\},\{4,5,6\}\}.
+\]
+The stronger candidate family has 48 allocations. The coverage routine returns the uncovered prefix
+\[
+ (0,2,4,1,3,5,6,9).
+\]
+There are 1,049 cached Python states. This demonstrates rejection when the family is overconstrained; it is not a counterexample to the main finite theorem.
+
+\section{Constructing and Composing Small Solutions}
+For a padded profile, build the graph between market triples and $\sigma_1$ triples. Enumerate perfect matchings $S$ by choosing a good from an unprocessed market block and rejecting choices that repeat an own-ranking block. A minimum-remaining-options order is only a search heuristic. Once $S$ is selected, choose one of each residual pair for $X$ and check the two prefix systems in the main paper. Every matching and residual orientation is retained by this search.
+
+For $m\le12$, choosing at most one of three goods per market block and then one of two residual goods gives at most $3^4 2^4=1{,}296$ candidates before rejection. For general $m$, this is only an exact search of the padded restricted family; failure would not itself refute unrestricted market-aligned existence.
+
+To find common modules, use a dynamic program on market boundaries that tests widths $3,6,9,12$. An interval $[a,b)$ is contiguous in ranking $i$ exactly when
+\[
+ \max_{a\le g<b}\operatorname{rank}_i(g)
+ -\min_{a\le g<b}\operatorname{rank}_i(g)=b-a-1.
+\]
+The widths are bounded, so these tests take constant time per option. In a successful segmentation, each local solution assigns equal-sized bundles within a module. A subjective prefix contains complete modules, at most one partial module, and none of the others. All complete-module deficits cancel. This is why different module orders are allowed, and why arbitrary interleaving of their goods is not.
+
+For example, consider market blocks $\{0,1,2\}$ and $\{3,4,5\}$ with owners $(0,1,2,0,1,2)$. Let
+\[
+ \sigma_1=(0,3,1,4,2,5),\quad
+ \sigma_2=(2,5,1,4,0,3).
+\]
+Each one-block restriction is fair. Nevertheless, agent~1 receives nothing in its first two positions, while agent~0 receives both goods. Equal endpoint counts do not justify gluing chunks that interleave inside subjective prefixes.
+
+\section{Obstructions to Keeping the Initial Partition}
+The following examples have $\sigma_0=(0,\ldots,9)$ and initial classes
+\[
+ C_0=\{0,3,6,9\},\quad C_1=\{1,4,7\},\quad C_2=\{2,5,8\}.
+\]
+Each supplied partition is balanced in the market and the displayed $\sigma_1$. Counts refer to this supplied partition, not all possible initially balanced partitions.
+
+\paragraph{One within-block swap is insufficient.}
+Take
+\begin{align*}
+ \sigma_1&=(0,5,4,9,1,8,2,3,7,6),\\
+ \sigma_2&=(5,4,8,9,3,6,0,7,1,2).
+\end{align*}
+All 60 distinct allocations obtained by permuting the classes among agents and applying at most one within-market-block transposition fail. There are nevertheless 57 market-block-balanced fair allocations, 18 with own-bundle balance. One is
+\[
+ D=\{0,3,7\},\quad S=\{2,4,6,9\},\quad X=\{1,5,8\}.
+\]
+
+\paragraph{Freezing an initial class is insufficient.}
+Take
+\begin{align*}
+ \sigma_1&=(9,4,2,1,6,5,7,3,8,0),\\
+ \sigma_2&=(1,4,5,3,6,0,9,2,7,8).
+\end{align*}
+Fix any $C_i$ as the exact bundle $S$, and freely assign the other goods to agents~0 and~2 subject to market-block balance. All 40 candidates fail. There are 78 fair market-block allocations, eight own-balanced, including
+\[
+ D=\{0,5,8,9\},\quad S=\{2,3,6\},\quad X=\{1,4,7\}.
+\]
+Changing the matching can therefore be necessary even when own-bundle balance can be retained.
+
+\paragraph{Why ten goods are minimal for these two rules.}
+For $m\le9$, every class of the supplied balanced partition has size at most three. If every class has size at most one, every assignment is fair for agent~2. Otherwise choose the class whose second good appears first in $\sigma_2$. Before that position, each rival has at most one good; afterward, the chosen class has at least two and each rival at most three. This class is acceptable to agent~2. Agent~1 accepts either remaining class because the supplied partition is balanced along $\sigma_1$, and agent~0 is protected by market balance. Both rules include the unchanged assignment. Minimality is for these rules with a supplied doubly balanced partition, not for all conceivable repair methods.
+
+\paragraph{Full own-ranking balance can be too strong.}
+For
+\begin{align*}
+ \sigma_1&=(6,0,7,9,4,5,3,1,2,8),\\
+ \sigma_2&=(7,4,5,6,8,9,0,3,2,1),
+\end{align*}
+there are 87 market-block-balanced fair allocations, of which 14 retain own-bundle balance; none keeps all three bundles balanced in $\sigma_1$. Parallel-edge exchanges preserve the multiset of owners in each $\sigma_1$ triple. Thus a sequence of only these exchanges, starting with full balance there, cannot solve this instance. This is a limitation of that move set, not of the market-aligned conjecture.
+
+\section{Exchange Search and Hardness Controls}
+The main exchange lemma assumes that agent~1 is fair, agent~2 is fair towards $S$, and its deficit towards $D$ is at most two. A candidate $S/D$ exchange must preserve both block systems. There is only one $S/D$ pair per market triple. If its goods also share a $\sigma_1$ triple, they are parallel edges in the block graph.
+
+\subsection{Linear-Time Applicability Test}
+Compute all $\sigma_2$ prefix counts, the slack $h(t)=x(t)-s(t)$, and the first and last bad dummy prefixes $f,\ell$, where $d(t)-x(t)=2$. If there are none, the input is already fair under the other premises. For a candidate pair with $b\in D$ and $a\in S$, the affected interval of prefix lengths is
+\[
+ [\operatorname{rank}_2(b)+1,\operatorname{rank}_2(a)]
+\]
+using zero-based good positions. Reject it unless it contains $f$ and $\ell$, and unless $b$ precedes $a$ in the same $\sigma_1$ block. Every remaining interval contains $f$. Precompute minima of $h$ extending left and right from $f$; the minimum on any such interval is the smaller of its two pivoted minima. Its nonnegativity tests the slack hypothesis in constant time. With $O(m)$ candidates and preprocessing, the total is $O(m)$.
+
+Failure of this test means only that no exchange meeting these sufficient premises was found. It does not classify the instance or the fixed matching as infeasible. The routine may begin at an allocation violating agent~2's final fairness condition; the invariant is the bounded deficit and its controlled location, not full fairness at every intermediate allocation.
+
+\subsection{The Reduction Walk}
+With a positive anchor, each clause begins at $W=2$. If it has $t$ true literals, the important heights are
+\begin{center}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+True literals $t$ & 0 & 1 & 2 & 3\\
+\midrule
+After three literal goods & $-1$ & 1 & 3 & 5\\
+After $\beta_j$ & $-2$ & 0 & 2 & 4\\
+After complementary goods & 1 & 1 & 1 & 1\\
+After $\alpha_{j+2}$ & 2 & 2 & 2 & 2\\
+\bottomrule
+\end{tabular}
+\end{center}
+Within the complementary segment there are $t$ negative steps; its height is at least $t-2$ for $t\ge1$. For $t=0$, all three steps are positive, starting from $-2$. The first bad prefix, when any clause is false, is therefore its $\beta_j$. In the anchor construction, $\beta_j$ and $z_j$ share both blocks, so the suffix exchange repairs all later bad prefixes at once. It does not change any variable-cycle truth choice and does not find a satisfying assignment for an unsatisfiable formula.
+
+\paragraph{Integral negative controls.}
+The contradictory formula with clauses $(x,x,x)$ and $(\neg x,\neg x,\neg x)$ produces a 30-good profile with no fixed-matching completion. The formula containing all eight sign patterns on three variables produces a 102-good profile with the same property. Cycle enumeration rejects every fixed-matching choice, while both profiles admit the proved matching repair.
+
+\paragraph{A different fractional negative control.}
+With six goods, take $\sigma_1=(0,1,2,3,4,5)$, $S=\{2,5\}$, and $\sigma_2=(2,5,0,1,3,4)$. In its first two positions, $s=2$ and $x=0$ for every fixed-$S$ fractional allocation, violating $x\ge s-1$. This instance is fractionally infeasible, unlike the reset/suffix twelve-good example with its unique feasible half solution. A failed half solution alone would not generally certify LP infeasibility; here the all-$S$ prefix supplies a proof independent of all residual weights.
+
+\section{Two Agents: Mixed Items and Checks}\label{app:two}
+\paragraph{Mixed items with a common classification.}
+Let $M=G\sqcup C$ be a classification into goods and chores shared by both agents and the market. Agent $i$ has magnitudes $w_i\ge0$, with $u_i(x)=w_i(x)$ for $x\in G$ and $u_i(x)=-w_i(x)$ for $x\in C$. We assume, more strongly than a ranking of goods and a separate ranking of chores, that agent $i$ reports one strict ranking of \emph{all} items by magnitude. Mixed EF1 for $i$ towards $j$ holds if $u_i(A_i)\ge u_i(A_j)$ or, after removing one good from $A_j$ or one chore from $A_i$, the inequality holds. An allocation is \emph{mixed SD-EF1} if it is mixed EF1 for every additive magnitude vector consistent with each agent's ranking. The market utility $f$ is arbitrary except that adding a good never decreases it and adding a chore never increases it; mixed EF1 for $f$ is defined analogously.
+
+\begin{theorem}\label{app:mixed}
+Some allocation is mixed SD-EF1 and mixed EF1 for $f$. It is found with $O(\log m)$ value queries.
+\end{theorem}
+\begin{proof}
+For two agents, define benefit bundles $B_i=(A_i\cap G)\cup(A_j\cap C)$; they partition $M$, the map $A\mapsto B$ is a bijection, and $u_i(A_i)-u_i(A_j)=w_i(B_i)-w_i(B_j)$. Run the reversal path of the main paper on the magnitude rankings in benefit coordinates.
+
+\emph{Subjective side.} If $x$ is the $\sigma_i$-first item of $B_j$, the SD-EF1 prefix inequalities give $w_i(B_i)\ge w_i(B_j\setminus\{x\})$ for every consistent $w_i$. Here $x$ is either a good of $A_j$ or a chore of $A_i$, and removing it raises $u_i(A_i)-u_i(A_j)$ by exactly $w_i(x)$, so it is a mixed-EF1 repair.
+
+\emph{Market side.} Put $F(S)=f(S\triangle C)$. Adding a good to $S$ adds a good to $S\triangle C$, and adding a chore to $S$ removes a chore from $S\triangle C$, so $F$ is inclusion-monotone, and $F(B_i)=f(A_i)$. For $x\in B_j$, the mixed-EF1 repairs available to agent $i$ are, in benefit coordinates:
+\[
+ F(B_i)\ge F(B_j\setminus\{x\})\ \ (x\in G),\qquad F(B_i\cup\{x\})\ge F(B_j)\ \ (x\in C),
+\]
+together with $F(B_i)\ge F(B_j)$. Indeed $(B_j\setminus\{x\})\triangle C=A_j\setminus\{x\}$ for a good $x$ of $A_j$, and $(B_i\cup\{x\})\triangle C=A_i\setminus\{x\}$ for a chore $x$ of $A_i$. Let $U$ ($L$) contain the allocations in which agent~2 (agent~1) fails market mixed EF1. Failure forces $F(B_2)<F(B_1)$ in $U$ and $F(B_1)<F(B_2)$ in $L$, so $U\cap L=\varnothing$.
+
+\emph{No jump.} Consider a benefit swap $(X+g,Y+h)\to(X+h,Y+g)$. If the first state is in $U$ and the second in $L$, use the failed repair with $g$, which lies in the envied bundle both times: for $g\in G$, $F(X)>F(Y+h)\ge F(Y)>F(X+h)\ge F(X)$; for $g\in C$, $F(X+g)>F(Y+h+g)\ge F(Y+g)>F(X+h+g)\ge F(X+g)$. If the first state is in $L$ and the second in $U$, use $h$: for $h\in G$, $F(Y)>F(X+g)\ge F(X)>F(Y+g)\ge F(Y)$; for $h\in C$, $F(Y+h)>F(X+g+h)\ge F(X+h)>F(Y+g+h)\ge F(Y+h)$. Each is a contradiction. For a move $(X+g,Y)\to(X,Y+g)$ from $U$ to $L$, the repair with $g$ gives $F(Y)<F(X)$ and $F(X)<F(Y)$ if $g\in G$, and $F(Y+g)<F(X+g)$ and $F(X+g)<F(Y+g)$ if $g\in C$; from $L$ to $U$, the unrepaired envy gives $F(X+g)<F(Y)$ and $F(Y+g)<F(X)$, which contradict monotonicity. The endpoints of the path are reversals, so exactly as in the main proof some state lies in neither $U$ nor $L$. Bisection on the sign of $F(B_1)-F(B_2)$ finds adjacent states with opposite signs; if the transferred item $g$ is a good, one query of $F(X)$ decides as in the main proof, and if it is a chore, one query of $F(Y+h+g)$ decides between the repair $F(Y+h+g)\ge F(X+g)$ at the earlier state and $F(X+h+g)\ge F(X+g)>F(Y+h+g)\ge F(Y+g)$ at the later one.
+\end{proof}
+A benefit swap of oppositely signed items transfers both original items in one direction; no claim is made about arbitrary swaps in original coordinates. Without a common classification the statement can fail: with subjective utilities $(2,-1)$ for both agents and $v(S)=|S|$, the only subjectively EF1 allocations put both items together, and neither is market EF1.
+
+\paragraph{Checks.}
+The tests of the two-agent construction cover every second ranking for $m\le8$ with the first fixed (46,233 profiles), all 168 monotone Boolean functions on four goods with all normalized ranking pairs, 9,000 random instances with goods, chores or mixed items and full allocation enumeration, 3,000 monotone-oracle instances with $11\le m\le60$, and 3,000 instances forcing opposite failing endpoints. A second, independently written implementation, described in the main paper, uses 16,000 random monotone valuations.
+
+\section{Market-Aligned Existence for All Sizes}\label{app:allsizes}
+\paragraph{Converse for the one-singleton rule.}
+Let $m=3q$ and suppose a prefix $P$ of $\sigma_2$ meets at least two triples in exactly one good. Choose one good of $P$ in every triple meeting $P$ and put these goods first in $\sigma_1$. Agent~1 takes the chosen good of every such triple. A triple with two goods in $P$ contains agent~2's two favourites of the triple; one is taken by agent~1 and the other by agent~2, so both count in $P$. A triple with three goods in $P$ contributes one to each. A singleton triple contributes one to agent~1 and none to agent~2. Hence $|A_1\cap P|-|A_2\cap P|\ge2$ and agent~2 is not SD-EF1. This certifies failure of the rule, not nonexistence.
+
+\paragraph{Covered perturbations.}
+If $\sigma_2$ arises from $\pi$ by disjoint adjacent transpositions, every prefix ends inside at most one triple that it meets in exactly one good. More generally, permute the triples and the goods within them and then exchange the two goods at selected triple boundaries: whenever the next triple starts early, the preceding triple already contributes two goods.
+
+\paragraph{One arbitrary ranking with block-contiguous others.}
+Call a ranking \emph{block-contiguous} if the goods of each market block are consecutive in it, in any block order and any internal order.
+
+\begin{theorem}
+Let $n\ge2$ agents and $m=qn+r$ with $0\le r<n$. If every agent except possibly one agent $f$ has a block-contiguous ranking, a market-block-balanced subjective-SD-EF1 allocation exists and is computed in $O(nm)$ time.
+\end{theorem}
+\begin{proof}
+Let $T$ be the short block. Give its goods bijectively to a set $R$ of $r$ agents other than $f$, and let $H$ be the remaining agents other than $f$. In every full block, agent $f$ picks its favourite good, then the agents of $H$, then those of $R$, each taking its favourite remaining good. Agent $f$'s good in each full block precedes every other good of that block in $\sigma_f$, so $f$ dominates every opponent's full-block goods, and each opponent has at most one good of $T$. For an agent with a block-contiguous ranking, completed full blocks contribute equally to all agents, a completed short block contributes at most one good to anyone and one to the agent if it lies in $R$, and the current block contributes at most one good to each agent. An agent of $H$ picks before every agent of $R$ in each full block, which covers comparisons with $R$. In every case the lead of an opponent is at most one.
+\end{proof}
+For three agents with $\sigma_0=\pi$ and $3\mid m$, a block-contiguous ranking is one-singleton, so this case is already contained in the main paper's one-singleton theorem after exchanging agents~1 and~2 if needed; the theorem above adds short final blocks and $n>3$.
+
+\section{The Repair-Distance Family}\label{app:distance}
+Let $q=2r$, index market triples by $\mathbb Z_q$, and write $a_i=3i$, $b_i=3i+1$, $z_i=3i+2$, so that market triple $i$ is $(a_i,b_i,z_i)$. Set
+\begin{align*}
+\sigma_1&=\textstyle\mathop{\mathrm{concat}}_{j=0}^{q-1}(a_{j-1},b_{j-2},z_j),\\
+\sigma_2&=(a_0,a_1,b_0,b_1,b_2,b_3,\ a_2,\ldots,a_{q-1},\ b_4,\ldots,b_{q-1},\ z_0,\ldots,z_{q-1}),
+\end{align*}
+and $S=\{z_0,\ldots,z_{q-1}\}$, the bottom $q$ goods of $\sigma_2$ and a reset matching. Market triple $i$ meets $\sigma_1$ triples $i$ ($z_i$), $i+1$ ($a_i$) and $i+2$ ($b_i$); these are distinct for $q\ge4$, and the $a$- and $z$-edges already connect all indices.
+
+\paragraph{No completion.}
+The residual market pairs are $(a_i,b_i)$ and the residual $\sigma_1$ pairs are $(a_i,b_{i-1})$, forming one alternating cycle with sides $\{a_i\}$ and $\{b_i\}$. By the reset lemma these are agent~2's only options. Giving it all $b_i$ fails at the first two goods of $\sigma_2$; giving it all $a_i$ fails at the first six, where agent~2 has two goods and agent~0 four.
+
+\paragraph{Lower bound.}
+Any other perfect matching induces a permutation $i\mapsto i+\delta_i$ of $\mathbb Z_q$ with $\delta_i\in\{0,1,2\}$. The increments of a nontrivial cycle are positive and sum to a multiple of $q$, so the cycle has at least $q/2=r$ elements, each replacing one member of $S$.
+
+\paragraph{Attaining allocations.}
+With own-bundle balance, $X=\{a_i\}$, $S_*=\{b_i:i\text{ even}\}\cup\{z_i:i\text{ odd}\}$ and $D=M\setminus(S_*\cup X)$ is fair with $|S\setminus S_*|=r$. Without it, $\widehat S=(S\setminus\{z_{q-1}\})\cup\{a_{q-1}\}$, $\widehat X=(\{a_i\}\setminus\{a_2,a_{q-1}\})\cup\{b_2,b_{q-1}\}$ and $\widehat D=M\setminus(\widehat S\cup\widehat X)$ is fair with one replacement. For $r=2$ the instance is
+$\sigma_1=(9,7,2,0,10,5,3,1,8,6,4,11)$, $\sigma_2=(0,3,1,4,7,10,6,9,2,5,8,11)$, $S=\{2,5,8,11\}$, with repair $\widehat S=\{2,5,8,9\}$, $\widehat X=\{0,3,7,10\}$, $\widehat D=\{1,4,6,11\}$.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$r$ & Balanced & Fair & Own-bal. & Min.\ repl.\\
+\midrule
+2 & 1,296 & 211 & 27 & 2 / 1\\
+3 & 46,656 & 4,571 & 207 & 3 / 1\\
+4 & 1,679,616 & 96,276 & 1,341 & 4 / 1\\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive checks of the repair-distance family: market-block-balanced allocations, fair ones, fair ones with own-bundle balance, and minimum replacements with / without own-bundle balance. The $r=4$ row was computed independently of the supplied package.}
+\end{table}
+
+\paragraph{Modules.}
+If modules consist of full market blocks and are contiguous in every real ranking, a market-balanced allocation is globally SD-EF1 if and only if it is SD-EF1 within every module: completed modules contribute equally, and every local prefix embeds into a global one. Replacement distance therefore adds over copies of the $r=2$ instance.
+
+\section{Disjoint-Defect Pairs}\label{app:defect}
+For three agents and market order $0,\ldots,m-1$, let $a_i(t)=|A_i\cap\{0,\ldots,t-1\}|$. Call $A$ \emph{near-block-balanced} if its three counts differ by at most one whenever $3\nmid t$. At $t=3k$ the counts are then either all $k$ or a permutation of $(k-1,k,k+1)$, because both neighbouring prefixes $t\pm1$ have counts within one and a single good changes one count by one; call $t$ \emph{defective} in the second case and write $D(A)$ for the defective boundaries.
+
+\begin{proposition}
+Two near-block-balanced allocations $A,B$ satisfy: for every additive market valuation consistent with the market order, at least one is market EF1, if and only if $D(A)\cap D(B)=\varnothing$.
+\end{proposition}
+\begin{proof}
+With $\Delta_t=v_{t-1}-v_t\ge0$ (and $v_m=0$), the violation of the comparison $i\to j$ equals $\sum_t c_{ij}(t)\Delta_t$ with $c_{ij}(t)=a_j(t)-a_i(t)-\ind[a_j(t)>0]$. At a non-boundary prefix every such coefficient is at most $0$; at a nondefective boundary it is $-1$; at a defective boundary at most $+1$. If the defect sets are disjoint, every coefficient of a row of $A$ plus every coefficient of a row of $B$ is at most zero, so the two violations cannot both be positive. Conversely, the valuation that is $1$ on the first $t$ goods and $0$ elsewhere, for a common defective $t$, breaks both.
+\end{proof}
+
+On 90 hard three-agent profiles with $10\le m\le36$, an integer program found such a pair in every case; each pair was re-checked for subjective SD-EF1 and by a linear-programming cover search. Choosing the pair is the difficulty. On the ten-good profile
+$\sigma_0=(7,4,2,5,0,8,9,6,3,1)$, $\sigma_1=(4,2,0,3,7,5,9,1,8,6)$, $\sigma_2=(4,0,3,2,7,5,9,1,8,6)$ with market order $0,\ldots,9$, the 483 subjectively fair allocations include 34 near-block-balanced ones and none that is market-block-balanced. Their defect sets are $\{6\}$ (9 allocations), $\{3,6\}$ (3), $\{3,9\}$ (2), $\{6,9\}$ (12) and $\{3,6,9\}$ (8); the only disjoint type is $\{6\}$ with $\{3,9\}$. Choosing the lexicographically earliest defect set, maximizing total subjective slack, or requiring both members to minimize the number of defects all fail, although a disjoint pair exists. Prescribing the parity class of defective boundaries also fails on a separate ten-good profile. General existence of disjoint-defect pairs is false: for
+\begin{align*}
+\sigma_0&=(0,7,2,5,1,11,8,3,6,9,4,10),\\
+\sigma_1&=(0,11,2,7,1,5,10,9,3,8,6,4),\\
+\sigma_2&=(5,0,2,11,7,1,4,3,9,8,6,10),
+\end{align*}
+with market order $0,\ldots,11$, enumeration of all 531,441 allocations gives 1,080 subjectively fair and 58 near-block-balanced allocations, with defect sets $\{3,6\}$ (12), $\{3,9\}$ (6), $\{6,9\}$ (36), $\{3,6,9\}$ (4), no two of which are disjoint. The profile still has a two-allocation cover, $A=(1,0,2,1,2,2,0,0,2,1,0,1)$ and $B=(1,1,0,2,0,2,1,2,0,2,1,0)$ as owner vectors, whose positive-row envelopes sum to a nonpositive vector; $B$ is not near-block-balanced. This refutes the disjoint-defect route, not OQ1.
+
+\section{Fifteen Goods and the Limit of Own-Bundle Balance}\label{app:fifteen}
+Pad to $M=3q$ goods, let $T_0,\ldots,T_{q-1}$ be the consecutive triples of $\sigma_1$, and for $S=A_1$ put $c_j=|S\cap T_j|$, $h_k=\sum_{j<k}(c_j-1)$ and $b(S)=\sum_j\max(c_j-1,0)$. Own-bundle balance is $b(S)=0$.
+
+\begin{lemma}
+Every market-block-balanced subjectively SD-EF1 allocation has $h_k\ge0$ for all $k$ and $h_q=0$.
+\end{lemma}
+\begin{proof}
+At the first $3k$ goods of $\sigma_1$ let agent~1 hold $s$ goods; each opponent holds at most $s+1$, so $3k\le3s+2$ and $s\ge k$. All bundles have size $q$.
+\end{proof}
+Hence $c$ decomposes into $b(S)$ unit shifts, each moving one good of agent~1 from a later triple to an earlier one.
+
+\paragraph{The thirteen-good profile.}
+Take $\sigma_0=(0,\ldots,12)$, $\sigma_1=(0,1,3,12,2,6,9,10,4,7,5,8,11)$ and $\sigma_2=(3,2,0,1,6,5,12,4,8,11,7,9,10)$. Relabel goods by their position in $\sigma_1$. The market blocks become $Q_A=\{0,1,4\}$, $Q_B=\{2,8,10\}$, $Q_C=\{5,9,11\}$, $Q_D=\{6,7,12\}$ and $Q_E=\{3\}$, and $\sigma_2$ becomes $(2,4,0,1,5,10,3,8,11,12,9,6,7)$. Write $D=A_0$, $S=A_1$, $X=A_2$.
+
+\begin{proposition}
+No market-block-balanced subjectively SD-EF1 allocation of this profile has own-bundle balance.
+\end{proposition}
+\begin{proof}
+Own-bundle balance gives $|S|=4+\ind[12\in S]$ and market balance gives $|S|=4+\ind[3\in S]$, so $3\in S\iff12\in S$. The two block systems then leave three forms: (I) $S=\{a,3,8,v,12\}$ with $a\in\{0,1\}$, $v\in\{9,11\}$; (II) $S=\{2,4,u,v\}$ with $u\in\{6,7\}$, $v\in\{9,11\}$; (III) $S=\{a,5,u,10\}$ with $a\in\{0,1\}$, $u\in\{6,7\}$. Indeed, if $3,12\in S$ then $Q_D$ excludes $6,7$ and forces $8\in S$; otherwise $S$ takes $6$ or $7$, excluding $8$, and its $Q_B$-good is $2$ or $10$.
+
+In case I, the first eleven goods of $\sigma_2$ contain all five goods of $S$ but at most three of $X$, because agent~2's $Q_D$-good is $6$ or $7$. In case II, the first two goods of $\sigma_2$ both belong to $S$. In case III, the first six goods of $\sigma_2$ contain three $S$-goods and agent~2's $Q_A$-good, so $2\in X$. The first five goods of $\sigma_1$ contain one $S$-good and two $X$-goods, so good $3$ is not in $X$, hence $3\in D$ and $|X|=4$. The first eleven goods of $\sigma_2$ contain three $S$-goods, so all four $X$-goods lie there and $12\in X$. The first nine goods of $\sigma_1$ contain four $D$-goods and three $S$-goods, so $9\notin D$, i.e.\ $9\in X$. The first eight goods of $\sigma_2$ have counts $(|D\cap P|,|S\cap P|,|X\cap P|)=(3,3,2)$, so the next good $11$ must also belong to $X$; then $X$ contains both $9$ and $11$ from $Q_C$, contradicting market balance.
+\end{proof}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$m$ & Balanced & Fair & Fair, own-bal.\\
+\midrule
+13 & 3,888 & 206 & 0\\
+15 (padded) & 7,776 & 412 & 0\\
+\bottomrule
+\end{tabular}
+\caption{Enumeration of the thirteen-good profile and its padding by two universally bottom-ranked goods. Every fair padded allocation has $b(S)=1$. These counts were reproduced by an independent implementation.}
+\end{table}
+
+\paragraph{No constant number of shifts.}
+Concatenate $h$ copies of the padded profile, contiguous in the market and in both real rankings. By the module factorization of Appendix~\ref{app:distance}, every fair allocation restricts to fair allocations of the copies, and triples of $\sigma_1$ do not cross copies, so $b(S)\ge h$; concatenating one witness per copy attains $h$. The maximum height $\max_k h_k$ of these witnesses is $1$, so a bound on the height, rather than on the number of shifts, is not excluded.
+
+\paragraph{Fifteen-good coverage.}
+The recursion of Appendix~\ref{app:coverage} is extended in two exact ways. First, a \emph{covering core} $K\subseteq L$ at $T$ is a subfamily that already covers every continuation; the union of the children's cores is a core of the parent, and a stored core $K$ may be reused at any later state $(T,L')$ with $K\subseteq L'$. Second, with $\sigma_1$ normalized to the identity, the candidate families are invariant under permuting the first two labels and the final triple, and, when the first $\sigma_1$ triple is additionally required to give one good to each agent, under permuting the first and the final triple; restricted runs that fail fall back to the smaller group. Over all 1,401,400 normalized partitions (82,670 orbits of the larger group), every partition is covered by own-bundle-balanced or one-shift candidates. The run made $1.59\cdot10^{10}$ recursive calls, and a rerun on a second machine reproduces every deterministic counter and all 82,670 per-orbit records; an independent accounting reconstructs every orbit and its weight, and an implementation keeping complete $(T,L)$ states without cores or symmetry completes ten whole fifteen-good partition problems.
+
+\section{Construction and Completion Tests}\label{app:tests}
+\paragraph{Finite existence.}
+Canonical partition generation fixes the smallest remaining good and chooses its two partners, generating each partition once. Additional tests cover 6,500 instances with $m\le12$, 30,000 restricted searches through $m=30$, and 6,200 common-module instances. All outputs pass direct checks; successes above twelve goods do not extend the theorem. The coverage code and its complete log accompany the submission as supplementary material.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}p{.47\columnwidth}r r@{}}
+\toprule
+Suite & Inputs & Internal cases\\
+\midrule
+Reset-cycle equivalence & 3,000 & 613,800\\
+SAT reduction & 3,000 & 92,304\\
+Small SAT, raw pairs & 300 & 109,200\\
+Conditional exchange & 5,000 & ---\\
+\bottomrule
+\end{tabular}
+\caption{Completion and repair validation. Internal cases respectively count raw pair orientations, truth/anchor assignments, and raw pair orientations. All checks pass. Inputs are generated cases, not claimed distinct profiles.}
+\label{tab:tests}
+\end{table}
+
+\paragraph{Completion and repair.}
+A separate checker evaluates the original market-block and subjective-prefix conditions, not the cycle reduction or SAT semantics. Table~\ref{tab:tests} covers 11,300 generated inputs. The reset suite finds 2,468 feasible and 532 infeasible prescribed matchings, all classified correctly by the cycle solver. For the SAT suite, all 46,152 positive-anchor assignments are repaired, including 25,263 nontrivial exchanges. The rankings-only construction is checked on the same 3,000 profiles, not counted again. The general exchange suite returns 2,071 fair allocations, including 41 nontrivial repairs; its applicability decision agrees with direct inspection of the lemma's hypotheses. It is not a universal repair success rate.
+
+Exact rational arithmetic checks the half solution under the stated rounded bounds. Deterministic controls include unsatisfiable formulas, the twelve-good gap, and a distinct fractionally infeasible fixed matching. A 1,000-clause, 12,006-good reduction profile is constructed and directly checked; it is not exhaustively enumerated. The supplement details the finite-coverage procedure and obstruction instances.
+
+
+\section{Reproduction and Interpretation}
+The accompanying code is organized by result; each directory of \texttt{verification/} states the result it supports. For the finite theorem, the complete verifications are run with
+\begin{verbatim}
+python3 verification/coverage12/run_verification.py --workers 4
+python3 verification/coverage15/run_verification.py --m 15 --workers 4
+python3 verification/coverage12/run_tests.py
+\end{verbatim}
+The first two commands compile the C++17 coverage verifiers and check that disjoint partition-index ranges cover all 15,400, respectively 1,401,400, partitions; their results are the computer-assisted part of the existence proof. The third runs construction and obstruction tests, whose random successes do not extend the theorem's range. The completion and repair tests use exact \texttt{Fraction} arithmetic and a separate checker of the original prefix and block conditions, not of the SAT semantics. Further scripts reproduce the exhaustive reduction audit, the repair-distance family, the one-singleton rule, the two-agent monotone, chore and mixed tests, the selection obstructions, and the three-agent evidence (exact decision procedure, certificate re-checks, disjoint-defect pairs and the twelve-good counterexample). Where two implementations exist they were written independently and agree. Generated test inputs are not claimed distinct.
+
+The analytic results rely on their proofs; the finite existence theorem additionally relies on exhaustive computation. Neither is formally verified. General three-agent existence and arbitrary-size market-aligned existence remain open.
+
+\end{document}

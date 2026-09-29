@@ -1,0 +1,10 @@
+{
+ "n": 2,
+ "m": 8,
+ "hard_profiles": 98304,
+ "distinct_S": 220,
+ "S_size_min": 16,
+ "best_eps": 0.0,
+ "counterexamples": [],
+ "seconds": 7.2
+}

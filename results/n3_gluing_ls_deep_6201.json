@@ -1,0 +1,1 @@
+{"family": "deep", "seed": 6201, "steps": 1816, "restarts": 13, "hard_distinct": 16, "max_imbalance": 1, "decided": 16, "refuted": 16, "counterexamples": [], "undecided": [], "cert_sizes": [10, 8, 11, 7, 8, 7, 6, 7, 7, 6, 6, 9, 6, 7, 7, 10], "decide_sec": [59.8, 189.7, 102.1, 66.6, 116.4, 135.0, 207.2, 81.9, 68.0, 117.6, 93.0, 79.8, 77.8, 158.2, 100.4, 714.5]}

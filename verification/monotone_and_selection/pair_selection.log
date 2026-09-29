@@ -1,0 +1,20 @@
+Near-block candidate universe: 10 3000
+Completed size 10
+Near-block candidate universe: 11 6000
+Completed size 11
+Near-block candidate universe: 12 6000
+Completed size 12
+Near-block candidate universe: 13 30000
+Completed size 13
+Near-block candidate universe: 14 60000
+Completed size 14
+minimum_defects_all_ties {'profiles_with_bad_tie': 0, 'profiles_deterministic_lex_owner_fails': 0}
+lex_earliest_defect_tuple {'profiles_with_bad_tie': 1, 'profiles_deterministic_lex_owner_fails': 1}
+lex_avoid_early_defects {'profiles_with_bad_tie': 0, 'profiles_deterministic_lex_owner_fails': 0}
+maximum_total_subjective_slack_all_ties {'profiles_with_bad_tie': 29, 'profiles_deterministic_lex_owner_fails': 20}
+minimum_defects_then_maximum_slack {'profiles_with_bad_tie': 0, 'profiles_deterministic_lex_owner_fails': 0}
+Profiles by size: {10: 50, 11: 8, 12: 8, 13: 40, 14: 40}
+Minimum defect counts: {1: 146}
+Disjoint pairs: 146
+No pair with both witnesses minimum-defect: 1
+Exact subjective witness checks: 52250

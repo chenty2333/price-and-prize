@@ -1,0 +1,14 @@
+{
+ "sd_ef1": 1080,
+ "near_block": 58,
+ "market_balanced_in_S": 0,
+ "defect_hist": {
+  "(3, 6)": 12,
+  "(3, 6, 9)": 4,
+  "(3, 9)": 6,
+  "(6, 9)": 36
+ },
+ "disjoint_pairs": 0,
+ "cover_pair_sd_ef1": true,
+ "cover_pair_LP": true
+}

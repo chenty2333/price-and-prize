@@ -1,0 +1,14 @@
+Allocations enumerated: 59049
+Subjective SD-EF1 allocations: 483
+Subjective SD-EF1 and near-block: 34
+Defect histogram: {(3, 6): 3, (3, 6, 9): 8, (3, 9): 2, (6,): 9, (6, 9): 12}
+Market-block witnesses: 0
+Lex-earliest defect tuple: (3, 6)
+Lex-earliest witnesses / extendable: 3 0
+Maximum subjective slack / maximizers: 36 1
+Unique maximizer: [2, 1, 0, 2, 1, 1, 0, 0, 0, 2]
+Maximizer defect set / disjoint partners: [6, 9] 0
+Minimum-defect witnesses / pairs among them: 9 0
+Covering pair: [0, 1, 2, 2, 1, 1, 0, 0, 2, 0] [1, 0, 1, 2, 0, 2, 0, 2, 0, 1]
+Covering defect sets: [6] [3, 9]
+Exact cross-row inequalities verified: 360

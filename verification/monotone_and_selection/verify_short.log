@@ -1,0 +1,7 @@
+Enumerated / SD-EF1 / near-block: 59049 483 34
+Defect histogram: {(3, 6): 3, (3, 6, 9): 8, (3, 9): 2, (6,): 9, (6, 9): 12}
+Lex-first defects; number of partners: (3, 6) 0
+Unique maximum slack; defects; partners: 36 [6, 9] 0
+Minimum-defect witnesses; pairs among them: 9 0
+Covering pair: (0, 1, 2, 2, 1, 1, 0, 0, 2, 0) (1, 0, 1, 2, 0, 2, 0, 2, 0, 1)
+Exact cross-row inequalities checked: 360

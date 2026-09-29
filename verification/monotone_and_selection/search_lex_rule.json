@@ -1,0 +1,146 @@
+{
+  "proposals": 86668,
+  "distinct_proposals": 82540,
+  "best_forbidden_count": 0,
+  "answer": {
+    "m": 10,
+    "profile": [
+      [
+        7,
+        4,
+        2,
+        5,
+        0,
+        8,
+        9,
+        6,
+        3,
+        1
+      ],
+      [
+        4,
+        2,
+        0,
+        3,
+        7,
+        5,
+        9,
+        1,
+        8,
+        6
+      ],
+      [
+        4,
+        0,
+        3,
+        2,
+        7,
+        5,
+        9,
+        1,
+        8,
+        6
+      ]
+    ],
+    "near_sd_count": 34,
+    "defect_histogram": {
+      "(6,)": 9,
+      "(3, 6)": 3,
+      "(3, 9)": 2,
+      "(6, 9)": 12,
+      "(3, 6, 9)": 8
+    },
+    "minimum_defects": 1,
+    "has_pair": true,
+    "has_pair_both_minimum": false,
+    "market_block_count": 0,
+    "rules": {
+      "minimum_defects_all_ties": {
+        "selected_count": 9,
+        "nonextendable_count": 0,
+        "lex_owner_extendable": true
+      },
+      "lex_earliest_defect_tuple": {
+        "selected_count": 3,
+        "nonextendable_count": 3,
+        "lex_owner_extendable": false,
+        "failure_owner": [
+          0,
+          1,
+          0,
+          2,
+          1,
+          1,
+          2,
+          2,
+          0,
+          2
+        ],
+        "failure_defects": [
+          3,
+          6
+        ],
+        "failure_score": 22
+      },
+      "lex_avoid_early_defects": {
+        "selected_count": 9,
+        "nonextendable_count": 0,
+        "lex_owner_extendable": true
+      },
+      "maximum_total_subjective_slack_all_ties": {
+        "selected_count": 1,
+        "nonextendable_count": 1,
+        "lex_owner_extendable": false,
+        "failure_owner": [
+          2,
+          1,
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "failure_defects": [
+          6,
+          9
+        ],
+        "failure_score": 36
+      },
+      "minimum_defects_then_maximum_slack": {
+        "selected_count": 1,
+        "nonextendable_count": 0,
+        "lex_owner_extendable": true
+      }
+    },
+    "max_slack": 36,
+    "pair": [
+      [
+        0,
+        1,
+        2,
+        2,
+        1,
+        1,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1
+      ]
+    ]
+  }
+}

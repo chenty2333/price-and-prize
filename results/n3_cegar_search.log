@@ -1,0 +1,8 @@
+14 {'hard_found': 210, 'decided': 945, 'counterexamples': 0, 'undecided': 5, 'max_rounds': 7, 'max_cert': 10, 't_decide_median': [4.20440149307251, 4.241665959358215]}
+15 {'hard_found': 181, 'decided': 798, 'counterexamples': 0, 'undecided': 5, 'max_rounds': 6, 'max_cert': 9, 't_decide_median': [5.265669107437134, 5.167482376098633]}
+16 {'hard_found': 94, 'decided': 446, 'counterexamples': 0, 'undecided': 1, 'max_rounds': 7, 'max_cert': 10, 't_decide_median': [8.82845687866211, 8.474757194519043]}
+17 {'hard_found': 54, 'decided': 240, 'counterexamples': 0, 'undecided': 2, 'max_rounds': 6, 'max_cert': 9, 't_decide_median': [15.216426372528076, 12.947036743164062]}
+18 {'hard_found': 48, 'decided': 222, 'counterexamples': 0, 'undecided': 1, 'max_rounds': 7, 'max_cert': 10, 't_decide_median': [15.100008249282837, 14.346529006958008]}
+20 {'hard_found': 13, 'decided': 33, 'counterexamples': 0, 'undecided': 0, 'max_rounds': 8, 'max_cert': 11, 't_decide_median': [50.35067856311798, 39.60950064659119]}
+21 {'hard_found': 7, 'decided': 22, 'counterexamples': 0, 'undecided': 0, 'max_rounds': 9, 'max_cert': 12, 't_decide_median': [86.60260057449341, 84.04300940036774]}
+done [2509s]

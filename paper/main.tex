@@ -1,0 +1,295 @@
+\input{preamble}
+\title{Subjective SD-EF1 and Market EF1:\\Two-Agent Existence and Barriers for Three Agents}
+\author{Anonymous Authors}
+\begin{document}
+\maketitle
+\begin{abstract}
+Barman et al.\ asked whether indivisible goods can always be allocated so that every agent is stochastic-dominance envy-free up to one good (SD-EF1) with respect to its own ranking, while the allocation is EF1 with respect to a common market valuation. We settle the two-agent case in a strong form. From the two rankings alone we construct at most $\lceil m/2\rceil+1$ subjectively SD-EF1 allocations such that, for every inclusion-monotone market valuation, one of them is market EF1; $O(\log m)$ value queries find it, and the construction extends to chores and sign-aligned mixed items. For three agents whose market order coincides with one agent's ranking, we prove existence for up to fifteen goods by exhaustive coverage, and for every number of goods when a second ranking lies in a structured class containing all rankings obtained from the market order by disjoint adjacent transpositions. We then identify barriers for the natural matching-based approach: completing a prescribed matching is NP-complete, repairing one can require a linear number of replacements, requiring that bundle to be balanced in its owner's ranking can fail from thirteen goods on, and pairs of allocations with disjoint market defects need not exist. General three-agent existence remains open; exact computations on thousands of hard profiles find no counterexample.
+\end{abstract}
+
+\section{Introduction}
+An allocation may appear fair under public prices and unfair to its recipients, or the reverse. A common market valuation and heterogeneous subjective preferences therefore impose different tests of fairness. In the market-value model of \cite{barman2025market}, each indivisible good has a public nonnegative value as well as a value to each agent. Their Open Question~1 asks whether subjective stochastic-dominance envy-freeness up to one good (SD-EF1) can always coexist with market EF1. The subjective condition protects every prefix of each agent's ranking; the market condition allows cardinal compensation between goods.
+
+Subjective and market guarantees are asymmetric. SD-EF1 on both sides can fail with two agents, whereas subjective EF1 together with market SD-EF1 is always attainable \cite{barman2025market}. The remaining direction asks for stronger subjective protection and weaker market protection. For identical rankings, \cite{barman2025market} decompose a multigraph of ranking blocks into perfect matchings and assign them. A natural extension fixes one agent's matching and then completes the other bundles, in the spirit of completion problems \cite{prakash2025completion}. But the existence of a suitable matching and the ability to complete an arbitrary one are different questions.
+
+We give a complete answer for two agents, positive results for three agents in a market-aligned setting, and barriers that explain why natural extensions stall. With two agents, we exploit the freedom to change both bundles: a path stays subjectively fair while moving from one assignment of a partition to its reversal, and no step can jump across the market-EF1 region. For three agents with one market-aligned ranking, we examine allocations that give each agent one good from every market triple. If one agent's bundle is also balanced in its own ranking, that bundle is a matching between market triples and the agent's ranking triples. Our barriers concern how such matchings can be chosen, completed and repaired.
+
+\paragraph{Results.}
+\begin{enumerate}
+\item \emph{Two agents.} For any number of goods and every inclusion-monotone market valuation, subjective SD-EF1 and market EF1 can be achieved simultaneously. A family of at most $\lceil m/2\rceil+1$ allocations, computed from the rankings alone, contains a suitable allocation for every such valuation; $O(\log m)$ value queries find it. The same path handles chores, and mixed items when agents and the market agree on which items are goods; without that agreement, existence can fail.
+\item \emph{Three agents, one ranking equal to the market order.} Existence holds for $m\le15$ by complete coverage of all 1,401,400 normalized partitions, and for every $m$, in linear time, when the third ranking meets at most one market triple in exactly one good at every prefix; this class contains all rankings obtained from the market order by disjoint adjacent transpositions.
+\item \emph{Barriers.} Completing a prescribed matching is NP-complete even under reset and suffix restrictions. On the reduction family replacing one member always suffices, but in general a linear number of replacements can be necessary. A thirteen-good profile has fair market-balanced allocations but none in which the prescribed agent's bundle is a matching, and no constant number of corrections suffices in general. Pairs of allocations whose market imbalances occur at disjoint triple boundaries, which suffice for additive markets, need not exist.
+\end{enumerate}
+For general three-agent instances we also report exact computational evidence: no counterexample among 4,087 hard profiles with 13 to 21 goods and 102 constructed hard profiles with up to 36 goods. Table~\ref{tab:scope} distinguishes the scopes of these results.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.47\columnwidth}>{\raggedright\arraybackslash}p{.47\columnwidth}@{}}
+\toprule
+Setting & Guarantee or boundary\\
+\midrule
+Two agents, any $m$, monotone market & SD-EF1 and market EF1; one ranking-based family serves every valuation\\
+Three agents, $\sigma_0=\pi$, \mbox{$m\le15$} & Market-block balance exists; own-bundle balance for $m\le12$, not beyond\\
+Three agents, $\sigma_0=\pi$, $\sigma_2$ one-singleton & Existence for all $m$ in $O(m)$ time\\
+Prescribed reset/suffix matching & Completion NP-complete\\
+SAT-reduction profiles, matching free & Linear-time construction; at most one replacement\\
+Own-bundle repair of a prescribed matching, connected family & $\Omega(m)$ replacements may be needed\\
+Two fair allocations with disjoint market defects & Suffice for additive markets; need not exist ($m=12$)\\
+General three-agent OQ1 & Unresolved; no counterexample found\\
+\bottomrule
+\end{tabular}
+\caption{The results concern different restrictions. ``Matching free'' is guaranteed only on the reduction family; the last row is computational evidence, not a theorem.}
+\label{tab:scope}
+\end{table}
+
+\paragraph{Related work.}
+The simultaneous market model and its SD-EF1 boundaries are due to \cite{barman2025market}. Their block characterization connects market SD-EF1 to category constraints, a setting in which \cite{biswas2018cardinality} obtain EF1 guarantees. Such cardinal guarantees do not supply all the subjective prefix inequalities required here. EF1 goes back to \cite{lipton2004ef1,budish2011}, stochastic-dominance fairness for ordinal preferences to \cite{aziz2015ordinal}, and constrained fair division is surveyed by \cite{suksompong2021constraints}. Our two-agent starting partition is the alternating-pair construction of \cite{kyropoulou2020group}, Lemma~4.1; the additional step is a swap order that preserves the two directed subjective inequalities while crossing a market-value interval. One-dimensional intermediate-value arguments of this kind recur in two-agent fair division \cite{kyropoulou2020group,dupre2026balanced}, and \cite{dupre2026balanced} also studies balanced allocations under general valuations and laminar constraints, rather than the prescribed-matching decision problem below; see also \cite{goldberg2022halving,dupre2026necklace} for partitions that are fair for several valuations at once. For three agents our question is a one-sided prefix-balancing problem for three rankings plus a market condition. Two-sided balancing of three permutations can require logarithmic discrepancy \cite{newman2012beck}, and group EF1 bounds use discrepancy theory \cite{manurangsi2022groups}; these lower bounds concern two-sided constraints and do not apply directly to the one-sided, slack-one constraints here.
+
+\cite{bu2023allocator} prove that two agents with monotone valuations admit an allocation that is EF1 both for the agents and for an allocator whose two evaluation functions may differ; their general proof is non-constructive (Remark~3.6), and their Remark~4.8 gives polynomial-time computation when one side is additive. With a single common monotone market, ordinary doubly EF1 is also obtained constructively from an Exact1 partition \cite{goldberg2022halving} for agent~1 and the market, followed by agent~2's choice. Our two-agent theorem is incomparable with these. It requires one common market valuation, but strengthens the subjective side to SD-EF1: a single allocation must be EF1 for every additive utility consistent with each ranking, which does not follow from EF1 existence for each cardinalization separately. It also provides one ranking-only family serving every monotone market and a logarithmic query bound. Open Question~3 of \cite{barman2025market}, on ordinary EF1 for two heterogeneous monotone profiles, is not resolved here.
+
+The broad distinction between free allocation and completion is already established. \cite{prakash2025completion} study frozen partial allocations and prove EF1-completion hardness even for binary additive and lexicographic preferences. Our completion problem instead fixes a whole bundle for one of three agents, imposes market-block balance, and requires SD-EF1 under strict rankings. The hardness statement additionally retains reset/suffix structure. The one-exchange construction is specific to its reduction family, not a claim that frozen-allocation hardness in general disappears after one exchange.
+
+\section{Model and Prefix Constraints}\label{sec:model}
+Let $M$ be a set of $m$ goods and $A=(A_i)_{i\in N}$ a complete allocation. Each agent has a strict ranking $\sigma_i$, and $P_i(t)$ denotes its first $t$ goods. Rankings can be strict refinements of ties: satisfying all refined prefixes also satisfies the original utility-threshold prefixes. A common nonnegative additive market valuation $v$ induces an order $\pi$ with ties broken arbitrarily.
+
+An allocation is \emph{subjectively SD-EF1} when, for every $i\ne j$, either $A_j$ is empty or deleting one good from $A_j$ makes $A_i$ weakly dominate it at every $\sigma_i$ prefix. Equivalently,
+\begin{equation}
+ |A_j\cap P_i(t)|\le |A_i\cap P_i(t)|+1\quad\text{for all }i,j,t.\label{eq:prefix}
+\end{equation}
+Indeed, necessity follows because deletion reduces a prefix count by at most one. For sufficiency, delete $A_j$'s highest-ranked good under $\sigma_i$; before that good, $A_j$ has no item, and afterward inequality~\eqref{eq:prefix} suffices. Market EF1 means
+\begin{equation}
+ v(A_i)\ge v(A_j)-\max_{g\in A_j}v(g)\quad(i,j\in N),\label{eq:market}
+\end{equation}
+where the maximum of an empty bundle is zero. More generally, a market valuation $v:2^M\to\mathbb R_{\ge0}$ is \emph{inclusion-monotone} if $S\subseteq T$ implies $v(S)\le v(T)$, and market EF1 then requires, for all $i\ne j$ with $A_j\neq\varnothing$, some $g\in A_j$ with $v(A_i)\ge v(A_j\setminus\{g\})$. For additive $v$ removing the most valuable good is optimal, giving~\eqref{eq:market}.
+
+\paragraph{Market blocks.}
+A \emph{market-block-balanced} allocation gives each agent exactly one good from each full block of $n$ consecutive goods of $\pi$, and at most one from the final short block. All market-prefix counts then differ by at most one, giving market SD-EF1 and hence~\eqref{eq:market} for every $v$ consistent with $\pi$. For a strict common ranking, this block condition also follows from SD-EF1 \cite{barman2025market}. It is stronger than EF1 for a single cardinal market valuation.
+
+\paragraph{Three-agent restriction.}
+For Sections~\ref{sec:finite}--\ref{sec:repair}, agents are $0,1,2$, goods are numbered in market order, and $\sigma_0=\pi=(0,\ldots,m-1)$. We call general existence of a market-block-balanced subjective-SD-EF1 allocation in this setting the \emph{market-aligned conjecture}. Our stronger \emph{own-bundle} condition asks that $A_1$ also contain exactly one good per full $\sigma_1$ triple and at most one from its short final triple. It does not constrain the other bundles to be balanced in $\sigma_1$.
+
+For $m=3q$, represent a good by an edge between its market triple and its $\sigma_1$ triple. Then $S=A_1$ satisfies both block requirements exactly when it is a perfect matching. Write $X=A_2$ and $D=A_0$. For a prefix $P$ of length $t$, let $s=|S\cap P|$ and $x=|X\cap P|$. Once $S$ is fixed, the remaining constraints are exactly
+\begin{align}
+ t-2s-1\le x\le s+1 &&(P\text{ a }\sigma_1\text{ prefix}),\label{eq:one}\\
+ x\ge\max\{s-1,\lfloor(t-s)/2\rfloor\} &&(P\text{ a }\sigma_2\text{ prefix}).\label{eq:two}
+\end{align}
+Each residual market pair contributes one good to $X$ and one to $D$. Equations~\eqref{eq:one}--\eqref{eq:two} are direct rearrangements of~\eqref{eq:prefix}, not stronger sufficient conditions.
+
+\section{Two-Agent Existence}\label{sec:twoagent}
+We first address the original cardinal-market problem without market alignment. In this section agents are numbered $1,2$.
+
+\begin{theorem}\label{thm:two}
+For two agents with strict rankings $\sigma_1,\sigma_2$, there is a sequence of at most $\lceil m/2\rceil+1$ subjectively SD-EF1 allocations, computed from the rankings alone and represented by $O(m)$ swaps, such that for every inclusion-monotone market valuation $v$ some allocation in the sequence is market EF1. Given a value oracle for $v$, one is found, together with an explicit EF1 repair, with at most $3+2\lceil\log_2\lceil m/2\rceil\rceil$ value queries and $O(m\log m)$ further time.
+\end{theorem}
+
+The quantifiers matter: one ranking-dependent family serves every monotone market valuation. For $A=(A_1,A_2)$, let $U$ be the set of allocations in which agent~2 fails market EF1 towards agent~1, and $L$ the set in which agent~1 fails towards agent~2. By monotonicity, $A\in U$ implies $v(A_2)<v(A_1\setminus\{g\})\le v(A_1)$ for any $g\in A_1$, and symmetrically $A\in L$ implies $v(A_1)<v(A_2)$; so $U\cap L=\varnothing$ and an allocation is market EF1 exactly when it lies in neither. (For additive $v$, with $\Delta=v(A_1)-v(A_2)$ and $h_i$ the largest value in $A_i$, $U$ and $L$ are the regions $\Delta>h_1$ and $\Delta<-h_2$.)
+
+\begin{lemma}[No jump]\label{lem:jump}
+For every inclusion-monotone $v$, a single swap or transfer cannot move an allocation from $U$ to $L$, or from $L$ to $U$.
+\end{lemma}
+\begin{proof}
+Consider a swap $A=(X\cup\{g\},Y\cup\{h\})\to A'=(X\cup\{h\},Y\cup\{g\})$. Suppose $A\in U$ and $A'\in L$. At $A$, removing $g$ from agent~1's bundle does not satisfy agent~2: $v(X)>v(Y\cup\{h\})$. At $A'$, removing the same good $g$ from agent~2's bundle does not satisfy agent~1: $v(Y)>v(X\cup\{h\})$. Monotonicity yields $v(X)>v(Y\cup\{h\})\ge v(Y)>v(X\cup\{h\})\ge v(X)$, a contradiction. If $A\in L$ and $A'\in U$, removing $h$ gives $v(Y)>v(X\cup\{g\})\ge v(X)>v(Y\cup\{g\})\ge v(Y)$. For a transfer $(X\cup\{g\},Y)\to(X,Y\cup\{g\})$ from $U$ to $L$, removing $g$ gives $v(X)>v(Y)$ at the first allocation and $v(Y)>v(X)$ at the second. From $L$ to $U$, the unrepaired envy gives $v(X\cup\{g\})<v(Y)$ and $v(Y\cup\{g\})<v(X)$, so $v(Y)\le v(Y\cup\{g\})<v(X)\le v(X\cup\{g\})<v(Y)$. Transfers towards agent~1 are symmetric.
+\end{proof}
+
+Pair consecutive goods in $\sigma_1$ with red edges and in $\sigma_2$ with blue edges. If $m$ is odd, first append a zero-market-value good at the bottom of both rankings. The union of the two matchings is a disjoint union of even alternating cycles, including doubled edges. A proper two-colouring splits every red and blue pair. Both assignments of its colour classes are subjectively SD-EF1 \cite{kyropoulou2020group}.
+
+The required path must preserve the \emph{directed} conditions throughout a cycle flip. Write $w_i(t)=|A_1\cap P_i(t)|-|A_2\cap P_i(t)|$. These conditions are $w_1(t)\ge-1$ and $w_2(t)\le1$.
+
+\begin{lemma}[Ordered cycle flip]\label{lem:flip}
+A properly coloured alternating cycle of $2\ell$ goods can be flipped in $\ell$ red-edge swaps while maintaining both directed prefix conditions.
+\end{lemma}
+\begin{proof}
+A doubled edge requires one swap. Otherwise choose the cycle's earliest blue pair in $\sigma_2$. Label the cycle $c_1,\ldots,c_{2\ell}$ so that this pair is $B_0=\{c_{2\ell},c_1\}$ with $c_1$ the endpoint held by agent~1 (so $c_{2\ell}$ is agent~2's), and the red pairs are $\{c_{2j-1},c_{2j}\}$. Swap these red pairs in increasing $j$. All other cycles stay properly coloured throughout, so their red and blue pairs remain split.
+
+After $j<\ell$ swaps, every red pair is still split, so $w_1\ge-1$. Among blue pairs, $B_0$ now belongs entirely to agent~2, $B_j=\{c_{2j},c_{2j+1}\}$ belongs entirely to agent~1, and all others are split. Since $B_0$ precedes $B_j$, the blue-pair-boundary walk is $0$, then $-2$, then $0$. Within a split pair it changes by one; within the two exceptional pairs it passes through $-1$. Thus $w_2\le1$ at every prefix. The last swap restores a proper colouring.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:two}]
+Fix a proper colouring $(C,C')$, let $A^0=(C,C')$, and flip the cycles one after another by Lemma~\ref{lem:flip}. This yields allocations $A^0,A^1,\ldots,A^T$ with $T\le\lceil m/2\rceil$, one swap per red pair, every one subjectively SD-EF1, and $A^T=(C',C)$ the reversal of $A^0$. Only the rankings are used. Now fix a monotone $v$. If $v(C)\ge v(C')$, then $A^0\notin L$ and $A^T\notin U$, because membership in $L$ or $U$ forces the corresponding strict value inequality; otherwise $A^0\notin U$ and $A^T\notin L$. In the first case, if neither endpoint is market EF1 then $A^0\in U$ and $A^T\in L$, and at the first index leaving $U$, Lemma~\ref{lem:jump} forbids entry into $L$; the second case is symmetric. For odd $m$, the appended dummy is bottom-ranked for both agents and has value zero, so prefixes of real goods and market EF1 are unaffected by deleting it; a swap involving it becomes a transfer. For the algorithm, query both bundle values at $A^0$; equal values give envy-freeness, and $A^T$ has the reversed values. Bisect on the sign of $v(A_1)-v(A_2)$, keeping an index interval whose endpoints have opposite signs (the signs need not be monotone along the path), until two adjacent states remain. Relabel so that the first bundle is higher at the earlier state $(X\cup\{g\},Y\cup\{h\})$, where $g$ is the good leaving that bundle and $h$ is absent for a transfer. One more query of $v(X)$ decides: if $v(X)\le v(Y\cup\{h\})$, the earlier state is market EF1 by deleting $g$; otherwise $v(X\cup\{h\})\ge v(X)>v(Y\cup\{h\})\ge v(Y)$, so the later state is market EF1 by deleting $g$ from the other bundle. The other envy direction is envy-free in both cases. Storing each good's initial owner and flip time lets any $A^t$ be expanded in $O(m)$ time; no subjective values are queried.
+\end{proof}
+
+The proof needs one explicit path, not connectivity of all subjectively fair allocations. The same argument handles chores.
+
+\begin{corollary}\label{cor:chores}
+Let two agents rank chores by decreasing subjective cost, and let $c$ be an identical inclusion-monotone market cost. Some allocation satisfies, for $i\ne j$, $|A_i\cap P|\le|A_j\cap P|+1$ for every prefix $P$ of agent~$i$'s ranking (subjective SD-EF1 for chores) and $c(A_i\setminus\{g\})\le c(A_j)$ for some $g\in A_i$ whenever $A_i\ne\varnothing$ (market EF1 for chores). It is found with $O(\log m)$ value queries.
+\end{corollary}
+\begin{proof}
+Rank chores by decreasing cost, apply Theorem~\ref{thm:two} with $c$ as a goods valuation to obtain $(B_1,B_2)$, and return $(B_2,B_1)$. The goods inequality $|B_j\cap P|\le|B_i\cap P|+1$ becomes the chore inequality $|A_i\cap P|\le|A_j\cap P|+1$, and $c(B_i)\ge c(B_j\setminus\{g\})$ becomes $c(A_i\setminus\{g\})\le c(A_j)$.
+\end{proof}
+
+For mixed items, toggling the owner of every chore turns each agent's net utility difference into a difference of benefit bundles, and the no-jump argument survives for market utilities that increase with goods and decrease with chores. This yields the analogous statement when agents and market share one classification of items into goods and chores (technical appendix). The shared classification cannot be dropped in general: with two items of subjective utilities $(2,-1)$ for both agents and market valuation $v(S)=|S|$, subjective EF1 forces both items together while market EF1 forces them apart.
+
+\section{Market-Aligned Three-Agent Existence}\label{sec:finite}
+
+\begin{theorem}[Computer-assisted]\label{thm:twelve}
+For three agents with $\sigma_0=\pi$ and $m\le15$, there is a market-block-balanced subjective-SD-EF1 allocation. For $m\le12$ it can be chosen with own-bundle balance for agent~1; for $m\le15$, after padding, with agent~1 holding two goods of at most one $\sigma_1$ triple.
+\end{theorem}
+
+\paragraph{Normalization.}
+For twelve goods, relabel by $\sigma_1$ so that it is the identity. The market triples become an arbitrary partition $Q$ into four triples. Their order and internal orders may be forgotten: any allocation giving one good per agent per triple protects agent~0 for every market order using these triples. There are exactly
+\[
+ \frac{12!}{(3!)^4\,4!}=15{,}400
+\]
+unordered partitions. For each $Q$, enumerate its $6^4=1{,}296$ market-balanced allocations and keep the family $\mathcal F(Q)$ satisfying agent~1's subjective constraints and own-bundle balance. It remains to cover every ranking of agent~2, with the chosen allocation allowed to depend on that ranking.
+
+\paragraph{Exact coverage state.}
+After a prefix of agent~2's ranking, retain its set $T$ and the family $L\subseteq\mathcal F(Q)$ of candidates surviving all of agent~2's earlier prefix constraints. The pair $(T,L)$ is a sufficient state; a candidate already giving agent~2 three goods covers every continuation; and a state is covered exactly when every one-good extension is covered, with different branches allowed to use different allocations (appendix).
+
+\paragraph{Completed computation.}
+The exact integer-bitset implementation covers all 15,400 partitions, with 70,831,414 recursive calls and 43,515,662 memoized covered states. Candidate families range from 64 to 1,296 allocations. A separate Python implementation checks 40 complete partition problems and agrees on both coverage and family sizes. This second implementation is a partial cross-check, not a second exhaustive run. A negative control requiring all three bundles to remain balanced in $\sigma_1$ correctly exposes an uncovered prefix. These facts complete the case $m\le12$; smaller instances are padded with universally bottom-ranked goods, which preserves every original prefix and block. For $m\le15$, a second verifier with learned covering subfamilies and a proved symmetry reduction covers all $15!/((3!)^5 5!)=1{,}401{,}400$ normalized partitions (82,670 symmetry orbits, about $1.6\cdot10^{10}$ recursive calls), using own-bundle-balanced candidates when possible and one-shift candidates otherwise; a separate implementation that keeps full states completes ten whole partition problems.
+
+\paragraph{Own-bundle balance fails from thirteen goods.}
+For $m=13$, $\sigma_1=(0,1,3,12,2,6,9,10,4,7,5,8,11)$ and $\sigma_2=(3,2,0,1,6,5,12,4,8,11,7,9,10)$, there are 206 market-block-balanced subjectively SD-EF1 allocations, for example $A_0=\{0,3,7,9\}$, $A_1=\{1,4,6,10\}$, $A_2=\{2,5,8,11,12\}$, but none has own-bundle balance; a short case analysis and full enumeration are in the appendix. By Theorem~\ref{thm:twelve} this size is minimal. Concatenating $h$ padded copies as contiguous modules forces agent~1 to hold two goods in at least $h$ of its triples, so no constant number of such surplus/deficit shifts suffices for all $m$.
+
+\paragraph{Construction and composition.}
+To construct a solution, enumerate matchings $S$ and residual choices $X$, testing~\eqref{eq:one}--\eqref{eq:two}: at most 1,296 allocations for $m\le12$. For arbitrary $m$, this is exponential search without an existence guarantee.
+
+\begin{corollary}\label{cor:modules}
+Pad to a multiple of three. If the market can be segmented into modules of size $3,6,9,$ or $12$, each contiguous in both other rankings, a market-block-balanced subjective-SD-EF1 allocation with own-bundle balance can be found in $O(m)$ time. The rankings may order the modules differently.
+\end{corollary}
+\begin{proof}
+Solve each module using Theorem~\ref{thm:twelve}. In any subjective prefix, completed modules give equal counts to every agent, and at most one module is partial. The local inequality therefore proves the global one. Module lengths are multiples of three, so both block conditions also compose. Four candidate widths at each market boundary suffice to find a segmentation by dynamic programming; contiguity in a ranking is tested by its minimum and maximum positions. Each width is constant, as is the local search bound. Delete virtual goods at the end.
+\end{proof}
+
+\paragraph{All sizes under a one-singleton condition.}
+Pad with universally bottom-ranked goods to a multiple of three. Call $\sigma_2$ \emph{one-singleton} if every prefix $P$ of the padded $\sigma_2$ satisfies
+\begin{equation}
+ \#\{B\text{ a market triple}: |B\cap P|=1\}\le1.\label{eq:onesingleton}
+\end{equation}
+Equivalently, after deleting from $\sigma_2$ the worst good of each market triple, the remaining goods occur in consecutive pairs from single triples. When $3\nmid m$, the padded short triple meets every prefix after its real good in exactly one good, so the condition is then correspondingly stricter.
+
+\begin{theorem}\label{thm:onesingleton}
+Let $\sigma_0=\pi$ and let $\sigma_2$ be one-singleton. For every $\sigma_1$, the following rule returns a market-block-balanced subjective-SD-EF1 allocation in $O(m)$ time: in each market triple, agent~1 takes its $\sigma_1$-favourite good, agent~2 its $\sigma_2$-favourite remaining good, and agent~0 the last good.
+\end{theorem}
+\begin{proof}
+Within every triple agent~1's good precedes the other two in $\sigma_1$, so every $\sigma_1$ prefix gives agent~1 at least as many goods as each opponent. Agent~2 holds one of its two favourite goods of each triple. In a $\sigma_2$ prefix, a triple with zero or three goods contributes nothing to an opponent's lead; with two goods, these are agent~2's two favourites of the triple, one of which it holds; with one good, it contributes at most one. By~\eqref{eq:onesingleton}, at most one triple of the last kind exists. Market-block balance protects agent~0, and deleting padding preserves every original prefix.
+\end{proof}
+
+For $3\mid m$ the condition exactly characterizes when this rule succeeds for every $\sigma_1$ (it does not characterize existence): if a prefix has two singleton triples, choosing one prefix good from every triple meeting it and placing these goods first in $\sigma_1$ makes agent~1 take all of them; in that $\sigma_2$ prefix agent~1 then leads agent~2 by the number of singleton triples, at least two (technical appendix). The one-singleton class contains every ranking obtained from $\pi$ by disjoint adjacent transpositions, and more generally every ranking that permutes market triples and their goods and then exchanges the two goods at selected triple boundaries. A ranking that lists every market triple contiguously is one-singleton when $3\mid m$. Theorem~\ref{thm:onesingleton}, with the roles of agents~1 and~2 exchanged if necessary, therefore covers profiles in which either real ranking is of this form, for instance $\sigma_1$ the reverse of $\pi$; the technical appendix extends this case to short final blocks and to any number of agents.
+
+\section{Barrier I: Completing a Prescribed Matching}\label{sec:hardness}
+A perfect matching is easy to obtain but need not have a fair completion. Even a simple positional form leaves completion difficult.
+
+\begin{definition}[Prescribed completion]
+Given $m=3q$, rankings $\sigma_1,\sigma_2$ with $\sigma_0=\pi$, and a set $S$ containing exactly one good of each market triple and of each $\sigma_1$ triple, decide whether a market-block-balanced subjectively SD-EF1 allocation with $A_1=S$ exists.
+\end{definition}
+
+\begin{definition}
+A prescribed matching $S$ is a \emph{reset matching} if its good is last in every $\sigma_1$ triple. It satisfies the \emph{suffix restriction} if every good outside $S$ precedes every good of $S$ in $\sigma_2$.
+\end{definition}
+
+\subsection{An Exact Alternating-Cycle Description}
+On $R=M\setminus S$, combine the residual market pairs and residual $\sigma_1$ pairs. Their union $H$ is an even alternating-cycle multigraph. Let $(U_c,V_c)$ be the two sides of component $c$.
+
+\begin{lemma}\label{lem:reset}
+For a reset matching, market-balanced fixed-$S$ allocations satisfying agent~1's SD-EF1 constraints are exactly the choices of one entire side of each component of $H$ for $X$, with the other side assigned to $D$.
+\end{lemma}
+\begin{proof}
+Immediately before the $S$-good of $\sigma_1$ triple $k$, $t=3k-1$ and $s=k-1$. Equation~\eqref{eq:one} forces $x=k$. Successive equalities force one $X$-good per residual $\sigma_1$ pair. Market balance also splits each residual market pair. Thus both edge systems are properly two-coloured, which is exactly a choice of a side per component. Conversely, such choices make each $\sigma_1$ triple rainbow and satisfy all of agent~1's inequalities.
+\end{proof}
+
+For a $\sigma_2$ prefix $P$, set $r=|R\cap P|$, $s=|S\cap P|$, and $\delta_c(P)=|U_c\cap P|-|V_c\cap P|$. With sign $\epsilon_c=+1$ choosing $U_c$ for $X$, agent~2's remaining inequalities are
+\begin{equation}
+ \sum_c\epsilon_c\delta_c(P)\ge
+ \max\{2s-r-2,-(r\bmod2)\}.\label{eq:signs}
+\end{equation}
+This follows from $2x-r=\sum_c\epsilon_c\delta_c(P)$ and~\eqref{eq:two}. Enumeration takes $O(m2^c)$ time and $O(m)$ working space for $c$ components. This is an exact reduction, not an integrality theorem.
+
+\subsection{Hardness}
+\begin{theorem}\label{thm:hard}
+Prescribed-matching completion is NP-complete even under both reset and suffix restrictions. Every instance satisfying these restrictions admits a feasible solution to the LP with $w_g\in[0,1]$ for residual goods, $w_g=0$ on $S$, residual market-pair sums one, and the prefix bounds~\eqref{eq:one}--\eqref{eq:two} with $x=\sum_{g\in P}w_g$.
+\end{theorem}
+\begin{proof}
+Reduce from 3-SAT \cite{karp1972}, repeating literals to pad nonempty short clauses. Let there be $k$ clauses. For a variable with $d$ occurrences, create $a_j,b_j,z_j$ for $0\le j<d$, using
+\[
+ \underbrace{(a_j,b_j,z_j)}_{\sigma_1\text{ triple}},\qquad
+ \underbrace{(b_j,a_{j+1\bmod d},z_j)}_{\text{market triple}}.
+\]
+Place every $z_j$ in $S$. The residual graph is one cycle: by Lemma~\ref{lem:reset}, choosing its $a$-side for $X$ represents true, and choosing its $b$-side represents false. Add an anchor cycle of the same form with $k+2$ positions, whose residual sides are $\alpha_0,\ldots,\alpha_{k+1}$ and $\beta_0,\ldots,\beta_{k+1}$.
+
+For clause $j$, let $L_{j1},L_{j2},L_{j3}$ be its distinct occurrence goods: an $a$-good for a positive literal and a $b$-good for a negative literal. Write $\bar L$ for its opposite occurrence good. The residual part of $\sigma_2$ begins with $\alpha_0\alpha_1$, then has, for each clause $j=0,\ldots,k-1$, the gadget
+\begin{equation}
+ L_{j1}\ L_{j2}\ L_{j3}\ \beta_j\
+ \bar L_{j1}\ \bar L_{j2}\ \bar L_{j3}\ \alpha_{j+2},\label{eq:gadget}
+\end{equation}
+and ends with $\beta_k\beta_{k+1}$. Append $S$ last. List market triples in any fixed order and relabel by that order. The instance has $q=4k+2$ and $m=12k+6$, and each ranking is strict.
+
+Before the suffix, only agent~2's constraint towards $D$ is nonautomatic: its walk $W=x-d$ must stay at least $-1$. The first two goods force the anchor's $\alpha$-side into $X$, leaving $W=2$. Every clause gadget starts and ends at $W=2$. If it has $t$ true literals, the walk after its three literal goods is $2t-1$, and after $\beta_j$ it is $2t-2$. A false clause therefore violates fairness. For $t\ge1$, the first three steps never go below $-1$. In the complement segment, even taking its $t$ negative steps first leaves a minimum of $2t-2-t=t-2\ge-1$. The segment ends at $1$, and $\alpha_{j+2}$ restores $2$. The final two $\beta$ goods take the walk to zero. Throughout the suffix, $x=d=q$ and $s\le q$, so agent~2 remains fair.
+
+Thus an integral completion exists exactly when the formula is satisfiable. Membership in NP follows by checking all prefix counts. For fractional feasibility, give every residual good weight $1/2$. Every pair sum is one; agent~1's reset-prefix constraints hold. Before the suffix $x=r/2\ge\lfloor r/2\rfloor$; during it $x=q\ge s-1$. This verifies the specified LP, including its rounded lower bounds, for every reset/suffix instance. Because those rounded bounds are themselves derived from integrality, this only shows that the hardness is invisible to this particular relaxation; the example below exhibits a genuine integrality gap.
+\end{proof}
+
+\paragraph{A small integrality gap.}
+The phenomenon is already visible at twelve goods. Set
+\begin{align*}
+ \sigma_1&=(10,0,2,\ 1,3,5,\ 4,6,8,\ 7,9,11),\\
+ \sigma_2&=(10,1,0,3,6,9,4,7,\ 2,5,8,11),
+\end{align*}
+with $S=\{2,5,8,11\}$. The residual graph has one cycle, whose sides are $U=\{10,1,4,7\}$ and $V=\{0,3,6,9\}$. Its $\sigma_2$ word is $UUVVVVUU$. Choosing $V$ fails at the first two goods; choosing $U$ fails at the first six. Fractionally, pair equalities force weight $p$ on $U$ and $1-p$ on $V$. Those two prefixes force $p\ge1/2$ and $p\le1/2$, so the unique relaxed completion is the half solution. Yet a different matching works: $S'=\{2,5,8,9\}$, $X=U$, and $D'=\{0,3,6,11\}$. Fixed-$S$ infeasibility is not a counterexample to existence.
+
+\section{Barrier II: Repairing a Matching}\label{sec:repair}
+The reduction itself permits a useful constructive contrast. We first state the precise slack needed for a repair; it is not guaranteed on arbitrary inputs.
+
+\begin{lemma}[Parallel-edge exchange]\label{lem:exchange}
+Let $(D,S,X)$ be market-block-balanced with own-bundle balance. Suppose agent~1 is SD-EF1, agent~2 is SD-EF1 towards $S$, and $d-x\le2$ at every $\sigma_2$ prefix. Let $a\in S$, $b\in D$ share a market triple and a $\sigma_1$ triple, with $b$ earlier than $a$ in both real rankings. Let $I$ be the $\sigma_2$ prefixes containing $b$ but not $a$. If every prefix with $d-x=2$ lies in $I$, and $s\le x$ throughout $I$, swapping $a,b$ gives a subjectively SD-EF1 allocation preserving both block conditions.
+\end{lemma}
+\begin{proof}
+Both blocks retain their counts. In affected $\sigma_1$ prefixes, $s$ increases by one, $d$ decreases by one, and $x$ stays fixed, improving both agent~1 inequalities. In $I$, the new counts satisfy $s'=s+1\le x+1$ and $d'=d-1\le x+1$. Outside $I$, agent~2's inequalities already hold. Agent~0 is protected by market-block balance.
+\end{proof}
+
+If $S$ is a suffix and the residual walk never falls below $-2$, let $b$ be the good at the first $-2$. It is a $D$-good. If it shares both blocks with its market block's $S$-good $a$, and precedes $a$ in $\sigma_1$, Lemma~\ref{lem:exchange} applies: all bad prefixes occur from $b$ until the suffix, while $s=0$ before the suffix and $x=q\ge s$ inside it.
+
+\begin{theorem}\label{thm:repair}
+Every profile produced by the reduction in Theorem~\ref{thm:hard} admits a market-block-balanced subjective-SD-EF1 allocation with own-bundle balance, whether or not the encoded formula is satisfiable. A rankings-only algorithm finds one in $O(m)$ time, replacing at most one member of the prescribed $S$.
+\end{theorem}
+\begin{proof}
+Choose arbitrary variable-cycle orientations and orient the anchor positively. The clause walk never falls below $-2$. Its first $-2$, if any, is $\beta_j$ in the first false clause. This good shares both blocks with its anchor matching good $z_j$ and precedes it in $\sigma_1$. The suffix argument therefore repairs every bad prefix by one exchange.
+
+The formula need not be recovered. Read $S$ from the final $q$ positions of $\sigma_2$, construct the residual cycles, and give agent~2 the side containing its first good on that component; this component is the anchor. Orient other components arbitrarily and apply the exchange at the first $-2$. All steps are linear scans or graph traversals.
+\end{proof}
+
+A replacement means removing one good from $S$ and adding one: two goods change owners. The theorem does not turn fixed-matching completion into an easy problem. It solves a different task by declining to respect the prescribed matching. Nor do parallel-edge exchanges alone settle general existence: they preserve the colour-count vector of every $\sigma_1$ triple. Starting from full $\sigma_1$ balance, they cannot reach fair allocations that require another bundle to be unbalanced there. The supplement gives an explicit ten-good obstruction.
+
+\paragraph{Bounded repair fails in general.}
+Measure repair by $|S\setminus A_1|$, the number of prescribed members replaced.
+
+\begin{theorem}\label{thm:distance}
+For every $r\ge2$ there is a profile with $m=6r$ goods and $\sigma_0=\pi$, whose bipartite graph of market triples and $\sigma_1$ triples is simple and connected, together with a reset matching $S$ formed by agent~2's bottom $m/3$ goods, such that:
+(i) $S$ has no fair completion;
+(ii) every market-block-balanced subjective-SD-EF1 allocation with own-bundle balance has $|S\setminus A_1|\ge r$, and equality is attained;
+(iii) without own-bundle balance, some such allocation has $|S\setminus A_1|=1$.
+The allocations in (ii) and (iii) are computable in $O(m)$ time.
+\end{theorem}
+\begin{proof}[Proof idea]
+Index market triples by $\mathbb Z_q$ with $q=2r$. In the construction each market triple $i$ is joined to $\sigma_1$ triples $i$, $i+1$ and $i+2$. Any perfect matching other than $S$ therefore induces a permutation $i\mapsto i+\delta_i$ with $\delta_i\in\{0,1,2\}$. Elements of a nontrivial cycle have $\delta_i\in\{1,2\}$, so each replaces a member of $S$, and the positive increments sum to a multiple of $q$, giving cycle length at least $q/2=r$. The residual graph of $S$ is one alternating cycle whose two sides both fail agent~2's first prefixes. Explicit allocations attaining (ii) and (iii) are verified in the technical appendix.
+\end{proof}
+
+Concatenating $h$ copies of the $r=2$ instance, each contiguous in every ranking, gives minimum replacement exactly $h$ without own-bundle balance and $2h$ with it, because for such modules global fairness is equivalent to fairness within each module. Hence no constant repair radius exists from an arbitrary prescribed matching, with or without own-bundle balance. Theorems~\ref{thm:repair} and~\ref{thm:distance} are therefore complementary: repair can be cheap on the hardness family, but a general existence proof must choose the matching rather than repair a given one.
+
+\section{Computational Evidence and Limitations}\label{sec:validation}
+The computations serve two roles. The complete coverage enumeration is part of Theorem~\ref{thm:twelve}. The remaining checks challenge the analytic proofs and their implementations; finite agreement does not prove general hardness or existence.
+
+\paragraph{Construction and completion tests.}
+Beyond the complete coverage computation, construction tests for the finite and modular theorems, and tests of the cycle description, the reduction, and the exchange lemma, all pass a checker of the original prefix and block conditions; the technical appendix lists the suites and counts. The coverage code and its complete log accompany the submission.
+
+For the hardness reduction, an exhaustive audit enumerates every three-literal formula with at most three clauses up to variable renaming (10,840,297 formulas), checks every raw residual-pair orientation against the original prefix conditions, and compares each outcome with the truth table; there are no disagreements. For Theorem~\ref{thm:distance}, brute force over all market-balanced allocations reproduces the predicted minimum replacements for $r=2,3,4$ (up to 1,679,616 allocations), and the explicit repaired allocations are checked for $r\le10$. Theorem~\ref{thm:onesingleton}'s rule passes 4,000 random one-singleton profiles, and its converse construction defeats the rule on 3,791 random profiles violating~\eqref{eq:onesingleton}.
+
+\paragraph{Two agents.}
+An independent implementation of the reversal path of Theorem~\ref{thm:two} was run on 3,000 random ranking profiles with up to 24 goods against 16,000 random monotone valuations (random monotone tables, XOS, budget-additive, coverage, concave and supermodular). No path state violated subjective SD-EF1, every valuation found a market-EF1 state, and no step jumped between $U$ and $L$.
+
+\paragraph{Evidence on general three-agent OQ1.}
+A counterexample needs a \emph{hard} profile, with no allocation that is subjectively SD-EF1 and market-block-balanced. Fixing the market order and treating agents as interchangeable, exhaustive enumeration of all 21,350,046,480 ranking profiles for $m=7$, and all smaller ones, finds no hard profile. For larger $m$, hard profiles were generated by hill-climbing over rankings on the number of market-block-balanced fair allocations (874 independent restarts), followed by guided mutations. Each was decided without enumerating allocations: a mixed-integer master problem seeks a market valuation making a finite set of subjectively fair allocations violate market EF1, and an integer program over all subjectively fair allocations returns one that survives it, until a counterexample or a refuting set is found. In a positive control with market EFX in place of market EF1, the procedure found counterexamples, each confirmed by full enumeration. It found no counterexample among 4,087 hard profiles with $13\le m\le21$ and 102 hard profiles with up to 36 goods built by concatenating smaller ones; refuting sets had 3 to 12 allocations. These decisions rely on solver optimality up to tolerance $10^{-6}$; 90 refuting sets, including the hardest profile of every search worker and 33 of the concatenated profiles, were re-verified by a branch search that solves only linear programs. Moreover, on every one of 90 hard profiles saved from these searches, with up to 36 goods, we found two subjectively fair allocations whose market-prefix imbalances occur at disjoint triple boundaries, which by a direct argument implies that one of them is market EF1 for every additive market valuation (technical appendix). Such pairs need not exist in general: a twelve-good profile, checked by enumerating all 531,441 allocations, has none, although it still has a two-allocation cover of another form, and natural rules for selecting pairs fail already on ten-good profiles (technical appendix).
+
+\paragraph{Scope.}
+The arbitrary-size market-aligned conjecture and general three-agent OQ1 remain open. Fixed-matching hardness does not establish hardness of freely choosing $S$; one-exchange repair is guaranteed only on the reduction family.
+
+\section{Conclusion}
+A controlled swap path, built from the rankings alone, establishes two-agent subjective SD-EF1 and market EF1 for every monotone market valuation, with extensions to chores and sign-aligned mixed items. For market-aligned three-agent profiles, complete coverage proves existence through fifteen goods, with own-bundle balance exactly through twelve, and a linear-time rule proves existence for all sizes when the remaining ranking is one-singleton. Prescribed reset/suffix completion is NP-complete; its reduction family is repairable by replacing one member, but repair distance can grow linearly in general. The remaining challenge is to select suitable matchings on arbitrary interleaved rankings, not to complete or repair every prescribed matching.
+
+\paragraph{Use of AI assistance.}
+ChatGPT, Claude, and Codex assisted in conjecture formation, derivations, code, and writing; computational claims were reproduced and key constructions re-implemented independently, without proof-assistant formalization.
+
+\clearpage
+\bibliographystyle{named}
+\bibliography{references}
+\end{document}

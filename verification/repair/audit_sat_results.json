@@ -1,0 +1,10 @@
+{
+"status":"PASS",
+"universe":"Ordered three-literal clauses, variable names normalized by first occurrence; all signs, repeated literals and tautologies included; no unused variables.",
+"method":"Enumerate every raw residual-pair orientation for every unsigned variable pattern, check sigma1 directly, then enumerate every sign vector and directly check all surviving owners against every sigma2 prefix. Compare every candidate with direct truth-table evaluation.",
+"records":[
+{"clauses":0,"variable_patterns":1,"canonical_formulas":1,"raw_pair_orientations":4,"agent1_survivors":2,"signed_candidate_comparisons":2,"satisfiable_formulas":1,"unsatisfiable_formulas":0,"fair_completions_total":1,"seconds":9.415e-06},
+{"clauses":1,"variable_patterns":5,"canonical_formulas":40,"raw_pair_orientations":320,"agent1_survivors":44,"signed_candidate_comparisons":352,"satisfiable_formulas":40,"unsatisfiable_formulas":0,"fair_completions_total":154,"seconds":4.0465e-05},
+{"clauses":2,"variable_patterns":203,"canonical_formulas":12992,"raw_pair_orientations":207872,"agent1_survivors":4860,"signed_candidate_comparisons":311040,"satisfiable_formulas":12990,"unsatisfiable_formulas":2,"fair_completions_total":119070,"seconds":0.0180521},
+{"clauses":3,"variable_patterns":21147,"canonical_formulas":10827264,"raw_pair_orientations":346472448,"agent1_survivors":1220364,"signed_candidate_comparisons":624826368,"satisfiable_formulas":10826046,"unsatisfiable_formulas":1218,"fair_completions_total":209292426,"seconds":44.8403}
+]}

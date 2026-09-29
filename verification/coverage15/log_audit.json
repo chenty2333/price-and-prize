@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "m": 15,
+  "every_recorded_orbit_independently_checked": true,
+  "distinct_G_orbits": 82670,
+  "sum_orbit_sizes": 1401400,
+  "all_shard_and_aggregate_integer_counters_agree": true,
+  "integer_totals": {
+    "G_orbits_checked": 82670,
+    "partitions_represented": 1401400,
+    "coverage_problems": 101840,
+    "recursive_calls": 15937540828,
+    "learned_cores": 4325895196,
+    "retained_cores": 3766998529,
+    "subsumption_hits": 11611412783,
+    "safe_prunes": 22867990936,
+    "own_first_failures": 17832,
+    "shift_first_failures": 652,
+    "H_suborbits_checked": 1312,
+    "own_failures_in_suborbits": 26
+  },
+  "seconds": 1.8943661829998746,
+  "scope": "Domain accounting and integer-log audit; not an independent replay of all coverage states."
+}

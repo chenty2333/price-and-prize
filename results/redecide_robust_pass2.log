@@ -1,0 +1,8 @@
+{'k': 5, 'family': 'deep', 'm': 23, 'result': 'refuted', 'rounds': 3, 'cert_size': 6, 'lp_verified': True, 'sec': 193}
+{'k': 0, 'family': 'concat2', 'm': 24, 'result': 'refuted', 'rounds': 5, 'cert_size': 8, 'lp_verified': True, 'sec': 238}
+{'k': 2, 'family': 'concat2', 'm': 23, 'result': 'refuted', 'rounds': 4, 'cert_size': 7, 'lp_verified': True, 'sec': 289}
+{'k': 6, 'family': 'deep', 'm': 24, 'result': 'refuted', 'rounds': 2, 'cert_size': 5, 'lp_verified': True, 'sec': 346}
+{'k': 4, 'family': 'concat2', 'm': 23, 'result': 'refuted', 'rounds': 6, 'cert_size': 9, 'lp_verified': True, 'sec': 616}
+{'k': 1, 'family': 'concat2', 'm': 23, 'result': 'refuted', 'rounds': 4, 'cert_size': 7, 'lp_verified': True, 'sec': 644}
+{'k': 3, 'family': 'concat2', 'm': 23, 'result': 'refuted', 'rounds': 5, 'cert_size': 8, 'lp_verified': True, 'sec': 818}
+{'k': 7, 'family': 'concat3', 'm': 34, 'result': 'refuted', 'rounds': 14, 'cert_size': 17, 'lp_verified': True, 'sec': 4382}

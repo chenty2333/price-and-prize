@@ -1,0 +1,6 @@
+m=8: restarts=1228 hard=0 milp=0 min|S|=None median|S|=None best_eps=0 counterexamples=0
+m=9: restarts=1229 hard=0 milp=0 min|S|=None median|S|=None best_eps=0 counterexamples=0
+m=10: restarts=295 hard=289 milp=289 min|S|=385 median|S|=511 best_eps=0 counterexamples=0
+m=11: restarts=134 hard=131 milp=131 min|S|=800 median|S|=1046 best_eps=0 counterexamples=0
+m=12: restarts=77 hard=76 milp=76 min|S|=810 median|S|=1145 best_eps=0 counterexamples=0
+done [310s]

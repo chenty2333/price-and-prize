@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "first_partition": 6000,
+  "last_partition_exclusive": 7500,
+  "own_balance": true,
+  "partitions": 1500,
+  "nodes": 6985568,
+  "memo_states": 4305974,
+  "memo_hits": 2679594,
+  "safe_prunes": 25776670,
+  "min_candidates": 64,
+  "max_candidates": 312,
+  "max_nodes_per_partition": 4950,
+  "seconds": 12.4165
+}

@@ -1,0 +1,41 @@
+{
+  "counts": {
+    "nonlinear_forced_crossing_instances": 3000,
+    "original_signed_subjective_agent_checks": 222828,
+    "forced_crossing_path_states": 37138
+  },
+  "sign_mismatch": [
+    {
+      "owner": [
+        0,
+        0
+      ],
+      "subjective_signed_SD_EF1": true,
+      "all_goods_market_EF1": false
+    },
+    {
+      "owner": [
+        0,
+        1
+      ],
+      "subjective_signed_SD_EF1": false,
+      "all_goods_market_EF1": true
+    },
+    {
+      "owner": [
+        1,
+        0
+      ],
+      "subjective_signed_SD_EF1": false,
+      "all_goods_market_EF1": true
+    },
+    {
+      "owner": [
+        1,
+        1
+      ],
+      "subjective_signed_SD_EF1": true,
+      "all_goods_market_EF1": false
+    }
+  ]
+}

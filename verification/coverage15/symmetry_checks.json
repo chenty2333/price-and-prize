@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "seed": 20260930,
+  "random_partitions": 5000,
+  "m_values": [
+    6,
+    9,
+    12,
+    15,
+    18
+  ],
+  "explicit_suborbit_checks": 11902,
+  "candidate_membership_invariance_checks": 483840,
+  "negative_control": {
+    "owner": [
+      1,
+      0,
+      0,
+      1,
+      2,
+      2
+    ],
+    "swap_labels": [
+      0,
+      2
+    ],
+    "transformed_owner": [
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ],
+    "first_triple_full_is_necessary_for_this_symmetry": true
+  },
+  "seconds": 3.5212584209998568
+}

@@ -1,0 +1,32 @@
+{
+ "part1_monotone_two_agents": {
+  "states": 19715,
+  "states_not_sd": 0,
+  "instances": 16000,
+  "no_ef1_state": 0,
+  "jumps": 0,
+  "both_fail_same_state": 0
+ },
+ "part2_ten_good_obstruction": {
+  "sd_ef1": 483,
+  "near_block": 34,
+  "market_balanced_in_S": 0,
+  "defect_hist": {
+   "(3, 6)": 3,
+   "(3, 6, 9)": 8,
+   "(3, 9)": 2,
+   "(6,)": 9,
+   "(6, 9)": 12
+  },
+  "lex_first": [
+   3,
+   6
+  ],
+  "lex_first_partners": 0,
+  "disjoint_pair_types": {
+   "((3, 9), (6,))": 18
+  },
+  "given_pair_sd_ef1": true,
+  "given_pair_LP_cover": true
+ }
+}

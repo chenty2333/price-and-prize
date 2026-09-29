@@ -1,0 +1,1 @@
+{"family": "concat3", "seed": 6102, "steps": 4140, "restarts": 28, "hard_distinct": 0, "max_imbalance": 0, "decided": 0, "refuted": 0, "counterexamples": [], "undecided": [], "cert_sizes": [], "decide_sec": []}

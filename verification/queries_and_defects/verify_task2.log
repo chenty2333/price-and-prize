@@ -1,0 +1,14 @@
+Four-good swap jump: (0, 1, 0, 1) (False, True) -> (1, 0, 0, 1) (True, False)
+Three-good move jump: (0, 0, 1) (False, True) -> (0, 1, 1) (True, False)
+Six-good path: 0 (0, 1, 0, 1, 0, 1) (True, False)
+Six-good path: 1 (1, 0, 0, 1, 0, 1) (True, False)
+Six-good path: 2 (1, 0, 1, 0, 0, 1) (False, True)
+Six-good path: 3 (1, 0, 1, 0, 1, 0) (False, True)
+All six-good SD allocations: 8 allocator-EF1 among them: 4
+Strict-singleton-rank monotone example: EF1 path states: 0
+Four-function example: all allocations: 16 doubly EF1: 2 circular allocations: 14 circular doubly EF1: 0
+Sign mismatch: (0, 0) True False
+Sign mismatch: (0, 1) False True
+Sign mismatch: (1, 0) False True
+Sign mismatch: (1, 1) True False
+All exact Task 2 and sign-mismatch checks passed.

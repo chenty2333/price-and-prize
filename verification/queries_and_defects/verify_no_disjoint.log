@@ -1,0 +1,8 @@
+All allocations: 531441
+Subjectively SD-EF1: 1080
+Near-block and SD-EF1: 58
+Defect histogram: {(3, 6): 12, (3, 6, 9): 4, (3, 9): 6, (6, 9): 36}
+Minimum defects: 2
+Minimum-defect allocations: 54
+Unordered disjoint pairs: 0
+Common proper subjective prefix lengths: [6]

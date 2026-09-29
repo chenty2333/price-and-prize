@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "m": 12,
+  "own_balance": true,
+  "partitions": 15400,
+  "coverage": "Every partition of 12 goods into 4 unordered triples; all permutations of sigma_2 via exact prefix-tree coverage.",
+  "nodes": 70831414,
+  "memo_states": 43515662,
+  "memo_hits": 27315752,
+  "safe_prunes": 260293476,
+  "min_candidates": 64,
+  "max_candidates": 1296,
+  "max_nodes_per_partition": 4989,
+  "source_sha256": "3cc35c8e01cce431e39e69dd2e7dbc4067f9d8bc8174a19ec707052339c3a806"
+}
