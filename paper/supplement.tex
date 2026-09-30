@@ -204,9 +204,10 @@ For two agents, define benefit bundles $B_i=(A_i\cap G)\cup(A_j\cap C)$; they pa
 \emph{Subjective side.} If $x$ is the $\sigma_i$-first item of $B_j$, the SD-EF1 prefix inequalities give $w_i(B_i)\ge w_i(B_j\setminus\{x\})$ for every consistent $w_i$. Here $x$ is either a good of $A_j$ or a chore of $A_i$, and removing it raises $u_i(A_i)-u_i(A_j)$ by exactly $w_i(x)$, so it is a mixed-EF1 repair.
 
 \emph{Market side.} Put $F(S)=f(S\triangle C)$. Adding a good to $S$ adds a good to $S\triangle C$, and adding a chore to $S$ removes a chore from $S\triangle C$, so $F$ is inclusion-monotone, and $F(B_i)=f(A_i)$. For $x\in B_j$, the mixed-EF1 repairs available to agent $i$ are, in benefit coordinates:
-\[
- F(B_i)\ge F(B_j\setminus\{x\})\ \ (x\in G),\qquad F(B_i\cup\{x\})\ge F(B_j)\ \ (x\in C),
-\]
+\begin{gather*}
+ F(B_i)\ge F(B_j\setminus\{x\})\quad (x\in G),\\
+ F(B_i\cup\{x\})\ge F(B_j)\quad (x\in C),
+\end{gather*}
 together with $F(B_i)\ge F(B_j)$. Indeed $(B_j\setminus\{x\})\triangle C=A_j\setminus\{x\}$ for a good $x$ of $A_j$, and $(B_i\cup\{x\})\triangle C=A_i\setminus\{x\}$ for a chore $x$ of $A_i$. Let $U$ ($L$) contain the allocations in which agent~2 (agent~1) fails market mixed EF1. Failure forces $F(B_2)<F(B_1)$ in $U$ and $F(B_1)<F(B_2)$ in $L$, so $U\cap L=\varnothing$.
 
 \emph{No jump.} Consider a benefit swap $(X+g,Y+h)\to(X+h,Y+g)$. If the first state is in $U$ and the second in $L$, use the failed repair with $g$, which lies in the envied bundle both times: for $g\in G$, $F(X)>F(Y+h)\ge F(Y)>F(X+h)\ge F(X)$; for $g\in C$, $F(X+g)>F(Y+h+g)\ge F(Y+g)>F(X+h+g)\ge F(X+g)$. If the first state is in $L$ and the second in $U$, use $h$: for $h\in G$, $F(Y)>F(X+g)\ge F(X)>F(Y+g)\ge F(Y)$; for $h\in C$, $F(Y+h)>F(X+g+h)\ge F(X+h)>F(Y+g+h)\ge F(Y+h)$. Each is a contradiction. For a move $(X+g,Y)\to(X,Y+g)$ from $U$ to $L$, the repair with $g$ gives $F(Y)<F(X)$ and $F(X)<F(Y)$ if $g\in G$, and $F(Y+g)<F(X+g)$ and $F(X+g)<F(Y+g)$ if $g\in C$; from $L$ to $U$, the unrepaired envy gives $F(X+g)<F(Y)$ and $F(Y+g)<F(X)$, which contradict monotonicity. The endpoints of the path are reversals, so exactly as in the main proof some state lies in neither $U$ nor $L$. Bisection on the sign of $F(B_1)-F(B_2)$ finds adjacent states with opposite signs; if the transferred item $g$ is a good, one query of $F(X)$ decides as in the main proof, and if it is a chore, one query of $F(Y+h+g)$ decides between the repair $F(Y+h+g)\ge F(X+g)$ at the earlier state and $F(X+h+g)\ge F(X+g)>F(Y+h+g)\ge F(Y+g)$ at the later one.
@@ -238,7 +239,8 @@ For three agents with $\sigma_0=\pi$ and $3\mid m$, a block-contiguous ranking i
 Let $q=2r$, index market triples by $\mathbb Z_q$, and write $a_i=3i$, $b_i=3i+1$, $z_i=3i+2$, so that market triple $i$ is $(a_i,b_i,z_i)$. Set
 \begin{align*}
 \sigma_1&=\textstyle\mathop{\mathrm{concat}}_{j=0}^{q-1}(a_{j-1},b_{j-2},z_j),\\
-\sigma_2&=(a_0,a_1,b_0,b_1,b_2,b_3,\ a_2,\ldots,a_{q-1},\ b_4,\ldots,b_{q-1},\ z_0,\ldots,z_{q-1}),
+\sigma_2&=(a_0,a_1,b_0,b_1,b_2,b_3,\ a_2,\ldots,a_{q-1},\\
+&\qquad b_4,\ldots,b_{q-1},\ z_0,\ldots,z_{q-1}),
 \end{align*}
 and $S=\{z_0,\ldots,z_{q-1}\}$, the bottom $q$ goods of $\sigma_2$ and a reset matching. Market triple $i$ meets $\sigma_1$ triples $i$ ($z_i$), $i+1$ ($a_i$) and $i+2$ ($b_i$); these are distinct for $q\ge4$, and the $a$- and $z$-edges already connect all indices.
 
@@ -332,7 +334,7 @@ The recursion of Appendix~\ref{app:coverage} is extended in two exact ways. Firs
 
 \section{Construction and Completion Tests}\label{app:tests}
 \paragraph{Finite existence.}
-Canonical partition generation fixes the smallest remaining good and chooses its two partners, generating each partition once. Additional tests cover 6,500 instances with $m\le12$, 30,000 restricted searches through $m=30$, and 6,200 common-module instances. All outputs pass direct checks; successes above twelve goods do not extend the theorem. The coverage code and its complete log accompany the submission as supplementary material.
+Canonical partition generation fixes the smallest remaining good and chooses its two partners, generating each partition once. Additional tests cover 6,500 instances with $m\le12$, 30,000 restricted searches through $m=30$, and 6,200 common-module instances. All outputs pass direct checks; successes above twelve goods do not extend the theorem. The coverage code and its complete log are in the code repository.
 
 \begin{table}[t]
 \centering
@@ -357,13 +359,16 @@ Exact rational arithmetic checks the half solution under the stated rounded boun
 
 
 \section{Reproduction and Interpretation}
-The accompanying code is organized by result; each directory of \texttt{verification/} states the result it supports. For the finite theorem, the complete verifications are run with
+The code repository, \url{https://anonymous.4open.science/r/price-and-prize-0625}, is organized by result; each directory of \texttt{verification/} states the result it supports. For the finite theorem, the complete verifications are run with
 \begin{verbatim}
-python3 verification/coverage12/run_verification.py --workers 4
-python3 verification/coverage15/run_verification.py --m 15 --workers 4
-python3 verification/coverage12/run_tests.py
+cd verification/coverage12
+python3 run_verification.py --workers 4
+python3 run_tests.py
+cd ../coverage15
+python3 run_verification.py --m 15 \
+  --workers 4
 \end{verbatim}
-The first two commands compile the C++17 coverage verifiers and check that disjoint partition-index ranges cover all 15,400, respectively 1,401,400, partitions; their results are the computer-assisted part of the existence proof. The third runs construction and obstruction tests, whose random successes do not extend the theorem's range. The completion and repair tests use exact \texttt{Fraction} arithmetic and a separate checker of the original prefix and block conditions, not of the SAT semantics. Further scripts reproduce the exhaustive reduction audit, the repair-distance family, the one-singleton rule, the two-agent monotone, chore and mixed tests, the selection obstructions, and the three-agent evidence (exact decision procedure, certificate re-checks, disjoint-defect pairs and the twelve-good counterexample). Where two implementations exist they were written independently and agree. Generated test inputs are not claimed distinct.
+The two \texttt{run\_verification.py} commands compile the C++17 coverage verifiers and check that disjoint partition-index ranges cover all 15,400, respectively 1,401,400, partitions; their results are the computer-assisted part of the existence proof. \texttt{run\_tests.py} runs construction and obstruction tests, whose random successes do not extend the theorem's range. The completion and repair tests use exact \texttt{Fraction} arithmetic and a separate checker of the original prefix and block conditions, not of the SAT semantics. Further scripts reproduce the exhaustive reduction audit, the repair-distance family, the one-singleton rule, the two-agent monotone, chore and mixed tests, the selection obstructions, and the three-agent evidence (exact decision procedure, certificate re-checks, disjoint-defect pairs and the twelve-good counterexample). Where two implementations exist they were written independently and agree. Generated test inputs are not claimed distinct.
 
 The analytic results rely on their proofs; the finite existence theorem additionally relies on exhaustive computation. Neither is formally verified. General three-agent existence and arbitrary-size market-aligned existence remain open.
 
