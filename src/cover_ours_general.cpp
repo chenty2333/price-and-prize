@@ -1,3 +1,10 @@
+// Independent coverage checker for the market-aligned three-agent theorem, general size.
+// Compile:  g++ -O2 -std=c++17 -DMGOODS=12 -o cover_ours12 cover_ours_general.cpp
+// Usage:    [OWN=1] [NEGCTRL=1] cover_ours12 <worker> <nworkers> [limit]
+//   OWN=1     candidates must also give agent 1 exactly one good in every identity-order triple
+//             (the own-bundle-balanced family of the m <= 12 theorem);
+//   NEGCTRL=1 negative control: all three bundles must be rainbow on every identity-order triple.
+// Everything else is as in cover15_ours.cpp, from which this file is derived (orbit mode: 15 goods only).
 // Independent coverage checker for the market-aligned three-agent theorem
 // (written separately; shares no code with verification/coverage15/verify_cover.cpp).
 //
@@ -48,7 +55,10 @@
 #include <algorithm>
 #include <chrono>
 using namespace std;
-static const int M = 15, NU = 1 << M;
+#ifndef MGOODS
+#define MGOODS 15
+#endif
+static const int M = MGOODS, NU = 1 << M, Q = M / 3;
 
 static int W;                                   // words per candidate bitset
 static vector<uint64_t> goodTab, safeTab;       // [U * W + w]
@@ -69,6 +79,7 @@ static unordered_map<Key, bool, KH> memo;
 static size_t MEMO_CAP = 2500000;
 static long long flushes = 0;
 static bool negctrl = false;
+static bool ownbal = false;
 
 static bool covered(uint32_t T, const vector<uint64_t>& L) {
     ++calls;
@@ -96,15 +107,16 @@ static bool covered(uint32_t T, const vector<uint64_t>& L) {
 int main(int argc, char** argv) {
     int worker = atoi(argv[1]), nw = atoi(argv[2]);
     if (getenv("NEGCTRL")) negctrl = true;
+    if (getenv("OWN")) ownbal = true;
     if (getenv("MEMO_CAP")) MEMO_CAP = atoll(getenv("MEMO_CAP"));
     long long limit = argc > 3 ? atoll(argv[3]) : (1LL << 62);
     bool orbits = argc > 4 && string(argv[4]) == "orbits";
     // enumerate partitions: smallest remaining good + two partners
-    vector<array<int, 15>> parts;  // triple id per good
+    vector<array<int, MGOODS>> parts;  // triple id per good
     {
-        array<int, 15> tri; tri.fill(-1);
-        std::vector<array<int,15>>* out = &parts;
-        struct Rec { static void go(array<int,15>& tri, int k, vector<array<int,15>>& out) {
+        array<int, MGOODS> tri; tri.fill(-1);
+        std::vector<array<int, MGOODS>>* out = &parts;
+        struct Rec { static void go(array<int, MGOODS>& tri, int k, vector<array<int, MGOODS>>& out) {
             int a = -1; for (int g = 0; g < M; ++g) if (tri[g] < 0) { a = g; break; }
             if (a < 0) { out.push_back(tri); return; }
             for (int b = a + 1; b < M; ++b) if (tri[b] < 0)
@@ -114,24 +126,25 @@ int main(int argc, char** argv) {
         } };
         Rec::go(tri, 0, *out);
     }
-    if ((long long)parts.size() != 1401400) { fprintf(stderr, "bad count %zu\n", parts.size()); return 1; }
+    if (false) { fprintf(stderr, "bad count %zu\n", parts.size()); return 1; }
     // encoding of a partition: sorted triple masks
-    auto encode = [](const array<int, 15>& tri) {
-        uint32_t mk[5] = {0, 0, 0, 0, 0};
+    auto encode = [](const array<int, MGOODS>& tri) {
+        uint32_t mk[Q]; for (int b = 0; b < Q; ++b) mk[b] = 0;
         for (int g = 0; g < M; ++g) mk[tri[g]] |= 1u << g;
-        std::sort(mk, mk + 5);
-        string e; for (int k = 0; k < 5; ++k) e += to_string(mk[k]) + ",";
+        std::sort(mk, mk + Q);
+        string e; for (int k = 0; k < Q; ++k) e += to_string(mk[k]) + ",";
         return e;
     };
     unordered_map<string, long long> indexOf;
-    vector<array<int, 15>> group;  // good permutations
+    vector<array<int, MGOODS>> group;  // good permutations
     if (orbits) {
         for (long long i = 0; i < (long long)parts.size(); ++i) indexOf[encode(parts[i])] = i;
+        if (M != 15) { fprintf(stderr, "orbit mode is only defined for 15 goods\n"); return 1; }
         int f[6][3] = {{12,13,14},{12,14,13},{13,12,14},{13,14,12},{14,12,13},{14,13,12}};
         for (int sw = 0; sw < 2; ++sw) for (int p = 0; p < 6; ++p) {
-            array<int, 15> phi; for (int g = 0; g < M; ++g) phi[g] = g;
+            array<int, MGOODS> phi; for (int g = 0; g < M; ++g) phi[g] = g;
             if (sw) { phi[0] = 1; phi[1] = 0; }
-            for (int k = 0; k < 3; ++k) phi[12 + k] = f[p][k];
+            for (int k = 0; k < 3; ++k) if (M == 15) phi[12 + k] = f[p][k];
             group.push_back(phi);
         }
     }
@@ -146,7 +159,7 @@ int main(int argc, char** argv) {
         if (orbits) {
             bool isMin = true; std::vector<long long> imgs;
             for (auto& phi : group) {
-                array<int, 15> t2; for (int g = 0; g < M; ++g) t2[phi[g]] = tri[g];
+                array<int, MGOODS> t2; for (int g = 0; g < M; ++g) t2[phi[g]] = tri[g];
                 long long j = indexOf.at(encode(t2));
                 if (j < idx) { isMin = false; break; }
                 imgs.push_back(j);
@@ -155,13 +168,14 @@ int main(int argc, char** argv) {
             std::sort(imgs.begin(), imgs.end());
             wt = std::unique(imgs.begin(), imgs.end()) - imgs.begin(); weightSum += wt; ++reps;
         }
-        int mem[5][3], cnt[5] = {0};
+        int mem[Q][3], cnt[Q]; for (int b = 0; b < Q; ++b) cnt[b] = 0;
         for (int g = 0; g < M; ++g) mem[tri[g]][cnt[tri[g]]++] = g;
         // candidates: owner masks per agent
         vector<array<uint32_t, 3>> cand;
-        for (int code = 0; code < 7776; ++code) {
+        int pow6 = 1; for (int b = 0; b < Q; ++b) pow6 *= 6;
+        for (int code = 0; code < pow6; ++code) {
             array<uint32_t, 3> A = {0, 0, 0}; int c = code;
-            for (int b = 0; b < 5; ++b) { int p = c % 6; c /= 6;
+            for (int b = 0; b < Q; ++b) { int p = c % 6; c /= 6;
                 for (int k = 0; k < 3; ++k) A[perm[p][k]] |= 1u << mem[b][k]; }
             // agent 1, identity ranking
             bool ok = true; int n0 = 0, n1 = 0, n2 = 0;
@@ -169,8 +183,12 @@ int main(int argc, char** argv) {
                 n0 += A[0] >> g & 1; n1 += A[1] >> g & 1; n2 += A[2] >> g & 1;
                 if (n0 > n1 + 1 || n2 > n1 + 1) ok = false;
             }
+            if (ok && ownbal) {
+                for (int t = 0; t < Q && ok; ++t)
+                    if (__builtin_popcount(A[1] & (7u << (3 * t))) != 1) ok = false;
+            }
             if (ok && negctrl) {
-                for (int t = 0; t < 5 && ok; ++t) {
+                for (int t = 0; t < Q && ok; ++t) {
                     uint32_t tm = 7u << (3 * t);
                     for (int a = 0; a < 3; ++a) if (__builtin_popcount(A[a] & tm) != 1) ok = false;
                 }
@@ -185,7 +203,7 @@ int main(int argc, char** argv) {
                 int c0 = __builtin_popcount(cand[a][0] & U), c1 = __builtin_popcount(cand[a][1] & U),
                     c2 = __builtin_popcount(cand[a][2] & U);
                 if (c0 <= c2 + 1 && c1 <= c2 + 1) goodTab[(size_t)U * W + a / 64] |= 1ULL << (a % 64);
-                if (c2 >= 4) safeTab[(size_t)U * W + a / 64] |= 1ULL << (a % 64);
+                if (c2 >= Q - 1) safeTab[(size_t)U * W + a / 64] |= 1ULL << (a % 64);
             }
         vector<uint64_t> L(W, 0);
         for (int a = 0; a < n; ++a) L[a / 64] |= 1ULL << (a % 64);

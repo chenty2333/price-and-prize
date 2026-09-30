@@ -1,0 +1,18 @@
+{
+ "C_twelve_good_defects": {
+  "allocations": 531441,
+  "subjectively_SD-EF1": 1080,
+  "near_block_balanced": 58,
+  "defect_set_histogram": {
+   "(3, 6)": 12,
+   "(3, 6, 9)": 4,
+   "(3, 9)": 6,
+   "(6, 9)": 36
+  },
+  "disjoint_pairs_among_near_block": 0,
+  "A_in_S": true,
+  "B_in_S": true,
+  "B_near_block_balanced": false,
+  "stated_pair_covers_all_additive_valuations": true
+ }
+}

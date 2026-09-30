@@ -1,0 +1,1239 @@
+{
+ "E1_additive_two_cover": [
+  {
+   "m": 8,
+   "seed": 108,
+   "random_hard_profiles": 100,
+   "random_trials": 865746,
+   "profiles_without_2cover": [],
+   "climb_restarts": 581,
+   "climb_best": {
+    "disjoint_pairs": 24,
+    "two_cover": true,
+    "s1": [
+     7,
+     2,
+     3,
+     0,
+     6,
+     4,
+     5,
+     1
+    ],
+    "s2": [
+     0,
+     2,
+     7,
+     3,
+     1,
+     4,
+     6,
+     5
+    ],
+    "S": 16
+   }
+  },
+  {
+   "m": 9,
+   "seed": 109,
+   "random_hard_profiles": 100,
+   "random_trials": 199988,
+   "profiles_without_2cover": [],
+   "climb_restarts": 738,
+   "climb_best": {
+    "disjoint_pairs": 33,
+    "two_cover": true,
+    "s1": [
+     5,
+     6,
+     1,
+     4,
+     8,
+     3,
+     0,
+     7,
+     2
+    ],
+    "s2": [
+     5,
+     1,
+     3,
+     6,
+     0,
+     4,
+     8,
+     2,
+     7
+    ],
+    "S": 32
+   }
+  },
+  {
+   "m": 10,
+   "seed": 110,
+   "random_hard_profiles": 100,
+   "random_trials": 398740,
+   "profiles_without_2cover": [],
+   "climb_restarts": 256,
+   "climb_best": {
+    "disjoint_pairs": 25,
+    "two_cover": true,
+    "s1": [
+     4,
+     8,
+     1,
+     5,
+     2,
+     7,
+     0,
+     9,
+     6,
+     3
+    ],
+    "s2": [
+     4,
+     1,
+     2,
+     8,
+     0,
+     5,
+     3,
+     7,
+     6,
+     9
+    ],
+    "S": 32
+   }
+  },
+  {
+   "m": 11,
+   "seed": 111,
+   "random_hard_profiles": 100,
+   "random_trials": 196252,
+   "profiles_without_2cover": [],
+   "climb_restarts": 237,
+   "climb_best": {
+    "disjoint_pairs": 23,
+    "two_cover": true,
+    "s1": [
+     4,
+     6,
+     2,
+     9,
+     0,
+     7,
+     10,
+     3,
+     1,
+     8,
+     5
+    ],
+    "s2": [
+     4,
+     2,
+     0,
+     6,
+     9,
+     3,
+     7,
+     1,
+     5,
+     10,
+     8
+    ],
+    "S": 64
+   }
+  },
+  {
+   "m": 12,
+   "seed": 112,
+   "random_hard_profiles": 100,
+   "random_trials": 379282,
+   "profiles_without_2cover": [],
+   "climb_restarts": 56,
+   "climb_best": {
+    "disjoint_pairs": 39,
+    "two_cover": true,
+    "s1": [
+     5,
+     10,
+     8,
+     2,
+     4,
+     11,
+     0,
+     6,
+     9,
+     3,
+     1,
+     7
+    ],
+    "s2": [
+     8,
+     10,
+     5,
+     11,
+     2,
+     6,
+     4,
+     9,
+     0,
+     7,
+     3,
+     1
+    ],
+    "S": 64
+   }
+  },
+  {
+   "m": 13,
+   "seed": 113,
+   "random_hard_profiles": 100,
+   "random_trials": 246495,
+   "profiles_without_2cover": [],
+   "climb_restarts": 49,
+   "climb_best": {
+    "disjoint_pairs": 41,
+    "two_cover": true,
+    "s1": [
+     3,
+     4,
+     8,
+     2,
+     11,
+     0,
+     5,
+     9,
+     10,
+     1,
+     7,
+     12,
+     6
+    ],
+    "s2": [
+     4,
+     8,
+     11,
+     3,
+     2,
+     9,
+     10,
+     0,
+     7,
+     5,
+     12,
+     6,
+     1
+    ],
+    "S": 144
+   }
+  }
+ ],
+ "E2_monotone_exact_min_cover": [
+  {
+   "m": 7,
+   "seed": 1,
+   "ceil_m_over_2": 4,
+   "profiles": [
+    {
+     "s1": [
+      0,
+      2,
+      1,
+      4,
+      3,
+      6,
+      5
+     ],
+     "s2": [
+      0,
+      4,
+      1,
+      2,
+      6,
+      5,
+      3
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 17
+    },
+    {
+     "s1": [
+      4,
+      0,
+      1,
+      3,
+      5,
+      6,
+      2
+     ],
+     "s2": [
+      3,
+      0,
+      1,
+      4,
+      6,
+      2,
+      5
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 43
+    },
+    {
+     "s1": [
+      4,
+      0,
+      2,
+      5,
+      1,
+      6,
+      3
+     ],
+     "s2": [
+      4,
+      2,
+      5,
+      0,
+      6,
+      3,
+      1
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 17
+    },
+    {
+     "s1": [
+      4,
+      2,
+      1,
+      5,
+      6,
+      3,
+      0
+     ],
+     "s2": [
+      4,
+      1,
+      5,
+      2,
+      0,
+      6,
+      3
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 11
+    },
+    {
+     "s1": [
+      5,
+      3,
+      2,
+      6,
+      4,
+      1,
+      0
+     ],
+     "s2": [
+      5,
+      1,
+      0,
+      6,
+      3,
+      4,
+      2
+     ],
+     "S": 22,
+     "min_cover": 4,
+     "cegar_iterations": 87
+    },
+    {
+     "s1": [
+      2,
+      1,
+      4,
+      3,
+      6,
+      0,
+      5
+     ],
+     "s2": [
+      2,
+      4,
+      3,
+      1,
+      5,
+      6,
+      0
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 23
+    },
+    {
+     "s1": [
+      4,
+      0,
+      5,
+      6,
+      3,
+      1,
+      2
+     ],
+     "s2": [
+      0,
+      3,
+      2,
+      6,
+      4,
+      1,
+      5
+     ],
+     "S": 22,
+     "min_cover": 4,
+     "cegar_iterations": 75
+    },
+    {
+     "s1": [
+      3,
+      0,
+      1,
+      4,
+      2,
+      6,
+      5
+     ],
+     "s2": [
+      0,
+      4,
+      1,
+      3,
+      6,
+      5,
+      2
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 21
+    }
+   ]
+  },
+  {
+   "m": 8,
+   "seed": 15,
+   "ceil_m_over_2": 4,
+   "profiles": [
+    {
+     "s1": [
+      3,
+      1,
+      5,
+      2,
+      7,
+      0,
+      6,
+      4
+     ],
+     "s2": [
+      7,
+      1,
+      6,
+      5,
+      0,
+      3,
+      4,
+      2
+     ],
+     "S": 22,
+     "min_cover": 4,
+     "cegar_iterations": 193
+    },
+    {
+     "s1": [
+      1,
+      3,
+      4,
+      2,
+      7,
+      0,
+      6,
+      5
+     ],
+     "s2": [
+      3,
+      4,
+      2,
+      1,
+      7,
+      5,
+      0,
+      6
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 37
+    },
+    {
+     "s1": [
+      5,
+      7,
+      3,
+      4,
+      1,
+      6,
+      2,
+      0
+     ],
+     "s2": [
+      3,
+      5,
+      7,
+      4,
+      2,
+      1,
+      0,
+      6
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 47
+    },
+    {
+     "s1": [
+      2,
+      6,
+      7,
+      0,
+      3,
+      4,
+      5,
+      1
+     ],
+     "s2": [
+      4,
+      2,
+      5,
+      0,
+      6,
+      3,
+      7,
+      1
+     ],
+     "S": 22,
+     "min_cover": 4,
+     "cegar_iterations": 39
+    },
+    {
+     "s1": [
+      3,
+      6,
+      1,
+      7,
+      5,
+      2,
+      0,
+      4
+     ],
+     "s2": [
+      5,
+      3,
+      4,
+      1,
+      6,
+      2,
+      7,
+      0
+     ],
+     "S": 22,
+     "min_cover": 4,
+     "cegar_iterations": 111
+    },
+    {
+     "s1": [
+      0,
+      6,
+      2,
+      7,
+      4,
+      1,
+      5,
+      3
+     ],
+     "s2": [
+      2,
+      6,
+      7,
+      0,
+      4,
+      3,
+      1,
+      5
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 26
+    },
+    {
+     "s1": [
+      5,
+      3,
+      2,
+      7,
+      4,
+      0,
+      1,
+      6
+     ],
+     "s2": [
+      7,
+      3,
+      5,
+      2,
+      6,
+      0,
+      4,
+      1
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 51
+    },
+    {
+     "s1": [
+      3,
+      5,
+      4,
+      6,
+      2,
+      1,
+      0,
+      7
+     ],
+     "s2": [
+      5,
+      6,
+      4,
+      3,
+      7,
+      1,
+      0,
+      2
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 82
+    },
+    {
+     "s1": [
+      5,
+      2,
+      3,
+      0,
+      7,
+      4,
+      1,
+      6
+     ],
+     "s2": [
+      5,
+      7,
+      6,
+      0,
+      4,
+      2,
+      1,
+      3
+     ],
+     "S": 22,
+     "min_cover": 4,
+     "cegar_iterations": 103
+    },
+    {
+     "s1": [
+      6,
+      4,
+      5,
+      3,
+      7,
+      1,
+      0,
+      2
+     ],
+     "s2": [
+      4,
+      3,
+      6,
+      5,
+      1,
+      2,
+      0,
+      7
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 63
+    },
+    {
+     "s1": [
+      0,
+      2,
+      5,
+      1,
+      3,
+      6,
+      7,
+      4
+     ],
+     "s2": [
+      0,
+      5,
+      2,
+      1,
+      4,
+      6,
+      7,
+      3
+     ],
+     "S": 16,
+     "min_cover": 4,
+     "cegar_iterations": 62
+    },
+    {
+     "s1": [
+      7,
+      5,
+      0,
+      4,
+      6,
+      2,
+      1,
+      3
+     ],
+     "s2": [
+      7,
+      2,
+      0,
+      3,
+      6,
+      5,
+      1,
+      4
+     ],
+     "S": 22,
+     "min_cover": 4,
+     "cegar_iterations": 123
+    }
+   ]
+  }
+ ],
+ "E3_reversal_path_is_exact_cover": [
+  {
+   "m": 9,
+   "seed": 9,
+   "profiles": [
+    {
+     "s1": [
+      2,
+      5,
+      1,
+      3,
+      6,
+      8,
+      7,
+      4,
+      0
+     ],
+     "s2": [
+      2,
+      1,
+      5,
+      3,
+      7,
+      0,
+      8,
+      6,
+      4
+     ],
+     "S": 40,
+     "path_members": 6,
+     "market_classes": 5,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      5,
+      7,
+      2,
+      6,
+      1,
+      4,
+      3,
+      0,
+      8
+     ],
+     "s2": [
+      7,
+      2,
+      6,
+      5,
+      1,
+      3,
+      0,
+      4,
+      8
+     ],
+     "S": 32,
+     "path_members": 6,
+     "market_classes": 5,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      1,
+      4,
+      2,
+      5,
+      7,
+      0,
+      8,
+      3,
+      6
+     ],
+     "s2": [
+      7,
+      4,
+      5,
+      1,
+      6,
+      8,
+      2,
+      0,
+      3
+     ],
+     "S": 44,
+     "path_members": 6,
+     "market_classes": 5,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      2,
+      5,
+      3,
+      8,
+      0,
+      6,
+      4,
+      1,
+      7
+     ],
+     "s2": [
+      1,
+      5,
+      6,
+      0,
+      8,
+      7,
+      2,
+      4,
+      3
+     ],
+     "S": 62,
+     "path_members": 6,
+     "market_classes": 5,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    }
+   ]
+  },
+  {
+   "m": 10,
+   "seed": 10,
+   "profiles": [
+    {
+     "s1": [
+      5,
+      0,
+      4,
+      9,
+      1,
+      2,
+      7,
+      8,
+      3,
+      6
+     ],
+     "s2": [
+      7,
+      5,
+      9,
+      0,
+      6,
+      2,
+      8,
+      4,
+      3,
+      1
+     ],
+     "S": 50,
+     "path_members": 6,
+     "market_classes": 5,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      1,
+      9,
+      0,
+      5,
+      8,
+      3,
+      4,
+      7,
+      6,
+      2
+     ],
+     "s2": [
+      1,
+      5,
+      0,
+      9,
+      4,
+      3,
+      7,
+      8,
+      2,
+      6
+     ],
+     "S": 32,
+     "path_members": 6,
+     "market_classes": 5,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      8,
+      7,
+      9,
+      3,
+      4,
+      2,
+      6,
+      0,
+      5,
+      1
+     ],
+     "s2": [
+      0,
+      7,
+      4,
+      1,
+      8,
+      6,
+      9,
+      2,
+      5,
+      3
+     ],
+     "S": 62,
+     "path_members": 6,
+     "market_classes": 5,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      3,
+      7,
+      2,
+      8,
+      5,
+      9,
+      6,
+      1,
+      0,
+      4
+     ],
+     "s2": [
+      1,
+      7,
+      5,
+      0,
+      3,
+      2,
+      8,
+      6,
+      9,
+      4
+     ],
+     "S": 58,
+     "path_members": 6,
+     "market_classes": 5,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    }
+   ]
+  },
+  {
+   "m": 11,
+   "seed": 11,
+   "profiles": [
+    {
+     "s1": [
+      5,
+      1,
+      0,
+      10,
+      9,
+      7,
+      8,
+      4,
+      6,
+      3,
+      2
+     ],
+     "s2": [
+      9,
+      8,
+      5,
+      3,
+      10,
+      2,
+      7,
+      1,
+      6,
+      4,
+      0
+     ],
+     "S": 178,
+     "path_members": 7,
+     "market_classes": 6,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      6,
+      4,
+      3,
+      10,
+      7,
+      8,
+      2,
+      1,
+      5,
+      9,
+      0
+     ],
+     "s2": [
+      10,
+      4,
+      1,
+      3,
+      5,
+      8,
+      2,
+      6,
+      7,
+      0,
+      9
+     ],
+     "S": 100,
+     "path_members": 7,
+     "market_classes": 6,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      2,
+      1,
+      3,
+      10,
+      9,
+      5,
+      4,
+      8,
+      7,
+      0,
+      6
+     ],
+     "s2": [
+      1,
+      7,
+      6,
+      10,
+      0,
+      5,
+      4,
+      2,
+      9,
+      8,
+      3
+     ],
+     "S": 183,
+     "path_members": 7,
+     "market_classes": 6,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    },
+    {
+     "s1": [
+      3,
+      2,
+      4,
+      7,
+      10,
+      6,
+      5,
+      8,
+      9,
+      0,
+      1
+     ],
+     "s2": [
+      1,
+      2,
+      8,
+      3,
+      4,
+      0,
+      10,
+      9,
+      5,
+      7,
+      6
+     ],
+     "S": 173,
+     "path_members": 7,
+     "market_classes": 6,
+     "path_in_S": true,
+     "path_is_cover": true,
+     "every_member_necessary": true
+    }
+   ]
+  }
+ ],
+ "E4_disjoint_defect_route_fails_for_two_agents": {
+  "m": 11,
+  "s1": [
+   0,
+   3,
+   4,
+   7,
+   2,
+   6,
+   1,
+   9,
+   8,
+   10,
+   5
+  ],
+  "s2": [
+   7,
+   3,
+   4,
+   6,
+   0,
+   2,
+   8,
+   9,
+   10,
+   5,
+   1
+  ],
+  "subjectively_fair": 81,
+  "near_block_fair": 24,
+  "block_balanced_fair": 0,
+  "near_block_pairs_with_disjoint_defects": 0,
+  "two_cover_exists": true,
+  "two_cover_owner_vectors": [
+   [
+    -1,
+    1,
+    1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    1,
+    -1,
+    -1
+   ],
+   [
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    -1,
+    1,
+    -1
+   ]
+  ]
+ },
+ "seconds": 445,
+ "E5_covering_pair_on_reversal_path": [
+  {
+   "m": 8,
+   "seed": 508,
+   "profiles": 60,
+   "with_covering_pair_on_path": 57
+  },
+  {
+   "m": 9,
+   "seed": 509,
+   "profiles": 60,
+   "with_covering_pair_on_path": 47
+  },
+  {
+   "m": 10,
+   "seed": 510,
+   "profiles": 60,
+   "with_covering_pair_on_path": 49
+  },
+  {
+   "m": 11,
+   "seed": 511,
+   "profiles": 60,
+   "with_covering_pair_on_path": 30
+  }
+ ],
+ "E0_lp_validation": {
+  "m": 10,
+  "seed": 1000,
+  "sampled_valuations": 40000,
+  "single_allocations": 3000,
+  "lp_fails": 2900,
+  "lp_covers": 100,
+  "lp_cover_but_broken_by_sample": 0,
+  "hard_profiles": 120,
+  "lp_covering_pairs_tested": 25292,
+  "lp_covering_pairs_broken_by_sample": 0,
+  "sampled_noncovering_pairs": 3000,
+  "sampled_noncovering_pairs_broken_by_sample": 3000
+ }
+}

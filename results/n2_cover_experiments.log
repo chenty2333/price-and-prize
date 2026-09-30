@@ -1,0 +1,15 @@
+E1 (additive, two allocations always cover?)
+  m=8: random hard profiles 100, without 2-cover: 0; climb restarts 581, best #disjoint pairs 24 (2-cover: True)
+  m=9: random hard profiles 100, without 2-cover: 0; climb restarts 738, best #disjoint pairs 33 (2-cover: True)
+  m=10: random hard profiles 100, without 2-cover: 0; climb restarts 256, best #disjoint pairs 25 (2-cover: True)
+  m=11: random hard profiles 100, without 2-cover: 0; climb restarts 237, best #disjoint pairs 23 (2-cover: True)
+  m=12: random hard profiles 100, without 2-cover: 0; climb restarts 56, best #disjoint pairs 39 (2-cover: True)
+  m=13: random hard profiles 100, without 2-cover: 0; climb restarts 49, best #disjoint pairs 41 (2-cover: True)
+E2 (monotone, exact minimum cover)
+  m=7: ceil(m/2)=4; min covers [4, 4, 4, 4, 4, 4, 4, 4]
+  m=8: ceil(m/2)=4; min covers [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+E3 (reversal path = exact cover, every member necessary)
+  m=9: cls=5 cover=True nec=True inS=True; cls=5 cover=True nec=True inS=True; cls=5 cover=True nec=True inS=True; cls=5 cover=True nec=True inS=True
+  m=10: cls=5 cover=True nec=True inS=True; cls=5 cover=True nec=True inS=True; cls=5 cover=True nec=True inS=True; cls=5 cover=True nec=True inS=True
+  m=11: cls=6 cover=True nec=True inS=True; cls=6 cover=True nec=True inS=True; cls=6 cover=True nec=True inS=True; cls=6 cover=True nec=True inS=True
+E4 {'m': 11, 'subjectively_fair': 81, 'near_block_fair': 24, 'block_balanced_fair': 0, 'near_block_pairs_with_disjoint_defects': 0, 'two_cover_exists': True}
