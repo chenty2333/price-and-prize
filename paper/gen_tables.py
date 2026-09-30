@@ -32,10 +32,10 @@ for r in d["E2_monotone_exact_min_cover"]:
     rows.append(f"{r['m']} & {len(r['profiles'])} & {r['ceil_m_over_2']} & " + ", ".join(f"{k}: {v}" for k, v in sorted(c.items(), key=lambda kv: str(kv[0]))) +
                 f" & {min(p['S'] for p in r['profiles'])}--{max(p['S'] for p in r['profiles'])}\\\\")
 t2 = ("\\begin{table}[h]\n\\centering\\small\n\\begin{tabular}{@{}rrrll@{}}\n\\toprule\n"
-      "$m$ & profiles & $\\lceil m/2\\rceil$ & minimum cover size (count) & $|S|$\\\\\n\\midrule\n"
+      "$m$ & profiles & $\\lceil m/2\\rceil$ & minimum cover size (count) & $|\\mathcal S|$\\\\\n\\midrule\n"
       + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n"
       "\\caption{Exact minimum cover of all inclusion-monotone valuations by subjectively SD-EF1 allocations (E2), on sampled hard profiles; "
-      "$|S|$ is the number of subjectively SD-EF1 allocations of the profile.}\n\\label{tab:e2}\n\\end{table}\n")
+      "$|\\mathcal S|$ is the number of subjectively SD-EF1 allocations of the profile.}\n\\label{tab:e2}\n\\end{table}\n")
 
 rows = []
 for r in d["E3_reversal_path_is_exact_cover"]:
@@ -44,7 +44,7 @@ for r in d["E3_reversal_path_is_exact_cover"]:
                 f"{sum(p['path_in_S'] for p in ps)}/{len(ps)} & {sum(p['path_is_cover'] for p in ps)}/{len(ps)} & "
                 f"{sum(p['every_member_necessary'] for p in ps)}/{len(ps)}\\\\")
 t3 = ("\\begin{table}[h]\n\\centering\\small\n\\begin{tabular}{@{}rrrrrr@{}}\n\\toprule\n"
-      "$m$ & profiles & market classes on the path & path $\\subseteq S$ & path is a cover & every member necessary\\\\\n\\midrule\n"
+      "$m$ & profiles & market classes on the path & path $\\subseteq\\mathcal S$ & path is a cover & every member necessary\\\\\n\\midrule\n"
       + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n"
       "\\caption{The reversal path of Theorem 3.1 on sampled hard profiles (E3), verified by exact linear programs over all monotone valuations. "
       "``Market classes'' counts the path's allocations up to exchanging the two bundles.}\n\\label{tab:e3}\n\\end{table}\n")

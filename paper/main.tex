@@ -3,6 +3,8 @@
 
 \usepackage{balance}
 \usepackage{xspace}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 
 %%% AAMAS-2027 copyright block (do not change!)
 \makeatletter
@@ -156,7 +158,7 @@ For every inclusion-monotone $v$, a single swap or transfer cannot lead from $U$
 Consider a swap $(X\cup\{g\},Y\cup\{h\})\to(X\cup\{h\},Y\cup\{g\})$. If the first allocation is in $U$ and the second in $L$, then deleting $g$ from agent~1's bundle does not satisfy agent~2 in the first, so $v(X)>v(Y\cup\{h\})$, and deleting the same $g$ from agent~2's bundle does not satisfy agent~1 in the second, so $v(Y)>v(X\cup\{h\})$. Monotonicity gives $v(X)>v(Y\cup\{h\})\ge v(Y)>v(X\cup\{h\})\ge v(X)$, a contradiction. If the first is in $L$ and the second in $U$, deleting $h$ gives $v(Y)>v(X\cup\{g\})\ge v(X)>v(Y\cup\{g\})\ge v(Y)$. For a transfer $(X\cup\{g\},Y)\to(X,Y\cup\{g\})$ from $U$ to $L$, deleting $g$ gives $v(X)>v(Y)$ and then $v(Y)>v(X)$. From $L$ to $U$ the unrepaired envies give $v(X\cup\{g\})<v(Y)$ and $v(Y\cup\{g\})<v(X)$, so $v(Y)\le v(Y\cup\{g\})<v(X)\le v(X\cup\{g\})<v(Y)$. Transfers towards agent~1 are symmetric.
 \end{proof}
 
-\paragraph{The path.} If $m$ is odd, append a bottom-ranked good of market value zero to both rankings. Pair consecutive goods of $\sigma_1$ by \emph{red} edges and of $\sigma_2$ by \emph{blue} edges. The union is a disjoint union of even alternating cycles (a pair that is both red and blue forms a cycle of length two). A proper two-colouring splits every red and blue pair, and both assignments of its colour classes are subjectively SD-EF1~\citep{kyropoulou2020group}. Write $w_i(t)=|A_1\cap P_i(t)|-|A_2\cap P_i(t)|$; by Lemma~\ref{lem:prefix} the \emph{directed} conditions are $w_1(t)\ge-1$ and $w_2(t)\le1$. Flipping the cycles one after another must keep both.
+\paragraph{The path.} If $m$ is odd, append a bottom-ranked good of market value zero to both rankings. Pair consecutive goods of $\sigma_1$ by \emph{red} edges and of $\sigma_2$ by \emph{blue} edges. The union is a disjoint union of even alternating cycles (a pair that is both red and blue forms a cycle of length two). A proper two-colouring splits every red and blue pair, and both assignments of its colour classes are subjectively SD-EF1~\citep{kyropoulou2020group}. Write $w_i(t)=|A_1\cap P_i(t)|-|A_2\cap P_i(t)|$; by Lemma~\ref{lem:prefix} the \emph{directed} conditions are $w_1(t)\ge-1$ and $w_2(t)\le1$. Flipping the cycles one after another must keep both; Algorithm~\ref{alg:path} summarizes the construction.
 
 \begin{lemma}[Ordered cycle flip]\label{lem:flip}
 A properly coloured alternating cycle of $2\ell$ goods can be flipped in $\ell$ red-edge swaps such that both directed prefix conditions hold throughout.
@@ -170,6 +172,22 @@ Fix a proper colouring $(C,C')$ and let $A^0=(C,C')$. Flip the cycles one after 
 
 For the algorithm, query both bundle values at $A^0$; equal values give envy-freeness, and $A^T$ has the reversed values. Otherwise bisect on the sign of $v(A_1)-v(A_2)$, keeping indices with opposite signs (the sign need not be monotone along the path), until two adjacent states remain. Name the bundles so that the first is higher at the earlier state $(X\cup\{g\},Y\cup\{h\})$, where $h$ is absent for a transfer. One more query of $v(X)$ decides: if $v(X)\le v(Y\cup\{h\})$, the earlier state is market EF1 by deleting~$g$; otherwise $v(X\cup\{h\})\ge v(X)>v(Y\cup\{h\})\ge v(Y)$, so the later state is market EF1 by deleting~$g$ from the other bundle. Envy in the other direction is absent at both states. Recording each good's initial owner and flip time expands any $A^t$ in $O(m)$ time; no subjective values are queried.
 \end{proof}
+
+\begin{algorithm}[t]
+\caption{\textsc{ReversalPath}$(\sigma_1,\sigma_2)$ (rankings only)}\label{alg:path}
+\begin{algorithmic}[1]
+\STATE if $m$ is odd, append a dummy good to both rankings
+\STATE red pairs $\gets$ consecutive pairs of $\sigma_1$; blue pairs $\gets$ consecutive pairs of $\sigma_2$
+\STATE split red$\,\cup\,$blue into alternating cycles; give the goods of each cycle to agents $1,2,1,2,\dots$ along it; output $A^0$
+\FOR{each cycle $Z$ (any order)}
+  \STATE $B_0\gets$ blue pair of $Z$ that comes first in $\sigma_2$; $c_1\gets$ its endpoint held by agent~1
+  \STATE walk $c_1\xrightarrow{\text{red}}c_2\xrightarrow{\text{blue}}c_3\xrightarrow{\text{red}}c_4\cdots$ around $Z$
+  \FOR{$j=1,\dots,|Z|/2$}
+     \STATE swap the owners of the red pair $\{c_{2j-1},c_{2j}\}$; output the new allocation
+  \ENDFOR
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
 
 \paragraph{Example.} Let $\sigma_1=(a,b,c,d,e,f)$ and $\sigma_2=(b,c,d,e,f,a)$. The red pairs are $ab,cd,ef$ and the blue pairs $bc,de,fa$; together they form one 6-cycle. The earliest blue pair is $bc$, so the red pairs are flipped in the order $cd$, $ef$, $ab$. The rows below give the owner of each good along the path (columns in the order of $\sigma_1$).
 \begin{center}\small

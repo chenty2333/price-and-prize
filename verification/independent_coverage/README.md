@@ -23,3 +23,5 @@ prefix constraints) decides whether every ranking of agent 2 is accepted by some
   MEMO_CAP=1500000 ./cover15 <worker> <nworkers> 1401400 orbits   # workers in parallel; about 50 CPU-hours, ~1.5 GB each
   ```
   The per-worker JSON lines report `uncovered` and the sum of orbit weights, which must add up to 1,401,400.
+
+`src/summarize_cover15.py` prints the progress and the final verdict of a fifteen-good run from `results/cover15_ours/` (complete, no uncovered partition, orbit weights summing to 1,401,400).
