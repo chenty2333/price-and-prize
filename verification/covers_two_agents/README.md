@@ -13,7 +13,7 @@ A family of allocations *covers* a class of market valuations if every valuation
   * E5: how often a covering pair lies on the reversal path.
 * `src/audit_extra.py` — A: Proposition 3.4 by brute force (EF1 for the majority valuation iff the set is split evenly, m ≤ 8; exact
   set-cover minima for m = 4, 5, 6); B: the thirteen-good profile (block-compatible matchings, the three forms of the case analysis,
-  3,888 → 206 → 0); C: the twelve-good disjoint-defect profile (1,080 / 58 / defect histogram / no disjoint pair / the stated pair covers).
+  3,888 → 206 → 0); C: the twelve-good disjoint-defect profile (1,080 / 58 / defect histogram / no disjoint pair / the stated pair covers); D: the ten-good profile of Appendix H (483 / 34 / defect histogram / the only disjoint type).
 
 ```sh
 cd src

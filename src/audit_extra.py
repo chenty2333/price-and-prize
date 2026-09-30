@@ -9,7 +9,9 @@
   C. Twelve-good disjoint-defect profile: enumerate all 3^12 allocations, count the subjectively fair and
      near-block-balanced ones and their defect sets, check that no two near-block ones have disjoint defects,
      and check by linear programming that the stated pair (A, B) covers all additive market valuations.
-Run:  python audit_extra.py [A|B|C|all]     (writes ../results/audit_extra.json)
+  D. Ten-good profile of Appendix H: 483 subjectively fair, 34 near-block-balanced, defect histogram, the only disjoint type,
+     and the lexicographically earliest defect set has no disjoint partner.
+Run:  python audit_extra.py [A|B|C|D|all]     (writes ../results/audit_extra.json)
 """
 import itertools
 import json
@@ -249,6 +251,49 @@ def audit_C():
     return res
 
 
+# ------------------------------------------------------------------------------------------------
+# D. ten-good profile
+# ------------------------------------------------------------------------------------------------
+def audit_D():
+    m = 10
+    sig = [[7, 4, 2, 5, 0, 8, 9, 6, 3, 1], [4, 2, 0, 3, 7, 5, 9, 1, 8, 6], [4, 0, 3, 2, 7, 5, 9, 1, 8, 6]]
+    N = 3 ** m
+    O = np.zeros((N, m), dtype=np.int8)
+    t = np.arange(N)
+    for g in range(m):
+        O[:, g] = t % 3
+        t //= 3
+    ok = np.ones(N, dtype=bool)
+    for i in range(3):
+        seq = O[:, sig[i]]
+        cnt = np.stack([np.cumsum(seq == j, axis=1) for j in range(3)], axis=2)
+        for j in range(3):
+            if j != i:
+                ok &= (cnt[:, :, j] - cnt[:, :, i]).max(axis=1) <= 1
+    OS = O[ok]
+    cnt = np.stack([np.cumsum(OS == j, axis=1) for j in range(3)], axis=2)      # market order = identity
+    diff = cnt.max(axis=2) - cnt.min(axis=2)
+    near = np.ones(len(OS), dtype=bool)
+    for t_ in range(1, m + 1):
+        if t_ % 3:
+            near &= diff[:, t_ - 1] <= 1
+    market_balanced = int((diff.max(axis=1) <= 1).sum())
+    defects = [frozenset(t_ for t_ in range(3, m, 3) if diff[k, t_ - 1] == 2) for k in np.where(near)[0]]
+    hist = Counter(tuple(sorted(d)) for d in defects)
+    types = set()
+    npairs = 0
+    for a, b in itertools.combinations(defects, 2):
+        if not (a & b):
+            types.add(tuple(sorted((tuple(sorted(a)), tuple(sorted(b))))))
+            npairs += 1
+    earliest = min(defects, key=lambda d: (sorted(d)))
+    partners = sum(1 for d in defects if not (d & earliest))
+    return {"subjectively_SD-EF1": int(len(OS)), "market_block_balanced_among_them": market_balanced,
+            "near_block_balanced": int(near.sum()), "defect_set_histogram": {str(k): v for k, v in sorted(hist.items())},
+            "disjoint_pairs": npairs, "disjoint_pair_types": [str(x) for x in sorted(types)],
+            "lexicographically_earliest_defect_set": sorted(earliest), "its_partners": int(partners)}
+
+
 if __name__ == "__main__":
     which = sys.argv[1] if len(sys.argv) > 1 else "all"
     out = {}
@@ -258,5 +303,7 @@ if __name__ == "__main__":
         out["B_thirteen_goods"] = audit_B()
     if which in ("C", "all"):
         out["C_twelve_good_defects"] = audit_C()
+    if which in ("D", "all"):
+        out["D_ten_good_profile"] = audit_D()
     print(json.dumps(out, indent=1, default=str))
     json.dump(out, open("../results/audit_extra.json", "w"), indent=1, default=str)

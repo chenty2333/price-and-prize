@@ -1,4 +1,96 @@
 {
+ "A_proposition_3_4": {
+  "m=2": {
+   "instances": 4,
+   "violations_of_'EF1 iff split evenly'": 0,
+   "bound": 1.0
+  },
+  "m=3": {
+   "instances": 24,
+   "violations_of_'EF1 iff split evenly'": 0,
+   "bound": 1.5
+  },
+  "m=4": {
+   "instances": 112,
+   "violations_of_'EF1 iff split evenly'": 0,
+   "bound": 1.4,
+   "exact_min_family_that_splits_every_even_set": 2
+  },
+  "m=5": {
+   "instances": 480,
+   "violations_of_'EF1 iff split evenly'": 0,
+   "bound": 1.6666666666666667,
+   "exact_min_family_that_splits_every_even_set": 3
+  },
+  "m=6": {
+   "instances": 1984,
+   "violations_of_'EF1 iff split evenly'": 0,
+   "bound": 1.631578947368421,
+   "exact_min_family_that_splits_every_even_set": 3
+  },
+  "m=7": {
+   "instances": 8064,
+   "violations_of_'EF1 iff split evenly'": 0,
+   "bound": 1.8529411764705883
+  },
+  "m=8": {
+   "instances": 32512,
+   "violations_of_'EF1 iff split evenly'": 0,
+   "bound": 1.8405797101449275
+  }
+ },
+ "B_thirteen_goods": {
+  "market_blocks_relabelled": [
+   [
+    0,
+    1,
+    4
+   ],
+   [
+    2,
+    8,
+    10
+   ],
+   [
+    5,
+    9,
+    11
+   ],
+   [
+    6,
+    7,
+    12
+   ],
+   [
+    3
+   ]
+  ],
+  "sigma2_relabelled": [
+   2,
+   4,
+   0,
+   1,
+   5,
+   10,
+   3,
+   8,
+   11,
+   12,
+   9,
+   6,
+   7
+  ],
+  "number_of_block_compatible_S": 12,
+  "forms": {
+   "I": 4,
+   "III": 4,
+   "II": 4
+  },
+  "claims_I_and_II_hold_for_all_S": true,
+  "market_block_balanced": 3888,
+  "balanced_and_subjectively_SD-EF1": 206,
+  "and_own_bundle_balanced": 0
+ },
  "C_twelve_good_defects": {
   "allocations": 531441,
   "subjectively_SD-EF1": 1080,
@@ -14,5 +106,26 @@
   "B_in_S": true,
   "B_near_block_balanced": false,
   "stated_pair_covers_all_additive_valuations": true
+ },
+ "D_ten_good_profile": {
+  "subjectively_SD-EF1": 483,
+  "market_block_balanced_among_them": 0,
+  "near_block_balanced": 34,
+  "defect_set_histogram": {
+   "(3, 6)": 3,
+   "(3, 6, 9)": 8,
+   "(3, 9)": 2,
+   "(6,)": 9,
+   "(6, 9)": 12
+  },
+  "disjoint_pairs": 18,
+  "disjoint_pair_types": [
+   "((3, 9), (6,))"
+  ],
+  "lexicographically_earliest_defect_set": [
+   3,
+   6
+  ],
+  "its_partners": 0
  }
 }
