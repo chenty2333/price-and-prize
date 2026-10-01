@@ -15,13 +15,4 @@ prefix constraints) decides whether every ranking of agent 2 is accepted by some
   Recorded outputs: `results/cover12_ours/`. The run with `OWN=1` reproduces the number of memoized covered states (43,515,662) and
   the candidate range (64 to 1,296) of `verification/coverage12`.
 
-* `src/cover15_ours.cpp` — fifteen goods over all market-balanced candidates, only the order-12 symmetry group (swap goods 0, 1;
-  permute goods 12, 13, 14; proof in the file header), 194,250 orbit representatives. Options `MEMO_CAP`, `RESUME_FROM`, `NEGCTRL`.
-
-  ```sh
-  g++ -O2 -std=c++17 -march=native -o cover15 src/cover15_ours.cpp
-  MEMO_CAP=1500000 ./cover15 <worker> <nworkers> 1401400 orbits   # workers in parallel; about 50 CPU-hours, ~1.5 GB each
-  ```
-  The per-worker JSON lines report `uncovered` and the sum of orbit weights, which must add up to 1,401,400.
-
-`src/summarize_cover15.py` prints the progress and the final verdict of a fifteen-good run from `results/cover15_ours/` (complete, no uncovered partition, orbit weights summing to 1,401,400).
+* `src/cover15_ours.cpp` — an analogous checker for fifteen goods over all market-balanced candidates (order-12 symmetry group, proof in the file header). It needs about 50 CPU-hours and was not run to completion; the paper does not use it.

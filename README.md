@@ -18,7 +18,7 @@ Numbers refer to the main paper.
 | Any cover of the monotone valuations has Ω(√m) members (Prop 3.4) | proof; counting checked by machine | `src/audit_extra.py A` |
 | Minimum cover size ⌈m/2⌉ (m = 7, 8); path is an exact cover with all members necessary (m = 9–11); two allocations for additive markets on 600 hard profiles | computation | `verification/covers_two_agents`, `src/n2_cover.py` |
 | Three agents, market-aligned, m ≤ 12 with own-bundle balance (Thm 4.1) | computer-assisted, two implementations | `verification/coverage12`, `verification/independent_coverage` (`src/cover_ours_general.cpp`) |
-| Three agents, market-aligned, m ≤ 15 (Thm 4.1) | computer-assisted | `verification/coverage15`, `src/cover15_ours.cpp` |
+| Three agents, market-aligned, m ≤ 15 (Thm 4.1) | computer-assisted | `verification/coverage15` |
 | Own-bundle balance fails at 13 goods | proof + enumeration | `verification/coverage15`, `src/verify_thirteen.py`, `src/audit_extra.py B` |
 | One-singleton rule, all m (Thm 4.2) | proof | `verification/repair`, `src/verify_repair_onesingleton.py` |
 | One arbitrary ranking, block-contiguous others, any n (Appendix E) | proof | `src/verify_block_contiguous.py` |
@@ -85,10 +85,6 @@ Where two implementations exist, they were written separately and agree.
   memoized states (43,515,662) and the candidate-family range (64 to 1,296)
   equal those of the shipped verifier (`results/cover12_ours`). The negative
   control leaves 12,150 partitions uncovered.
-* `src/cover15_ours.cpp` checks the fifteen-good theorem over all
-  market-balanced candidates, without learned cores and with a smaller,
-  separately proved symmetry group. A complete run takes about 50 CPU-hours;
-  the paper does not rely on it.
 * The `src/verify_*.py` scripts re-derive the counts of the thirteen-good,
   repair-distance, one-singleton and twelve-good results with a separate
   checker (`src/fd.py`); `src/audit_extra.py` and `src/n2_cover.py` do so with

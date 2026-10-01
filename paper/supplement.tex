@@ -167,12 +167,7 @@ At the first $3k$ goods of $\sigma_1$ let agent~1 hold $s$ goods; each opponent 
 \paragraph{The thirteen-good profile.}
 Take $\sigma_0=(0,\dots,12)$, $\sigma_1=(0,1,3,12,2,6,9,10,4,7,5,8,11)$ and $\sigma_2=(3,2,0,1,6,5,12,4,8,11,7,9,10)$. Relabel the goods by their position in $\sigma_1$; the market blocks become $Q_A=\{0,1,4\}$, $Q_B=\{2,8,10\}$, $Q_C=\{5,9,11\}$, $Q_D=\{6,7,12\}$, $Q_E=\{3\}$, and $\sigma_2$ becomes $(2,4,0,1,5,10,3,8,11,12,9,6,7)$.
 
-\begin{proposition}
-No market-block-balanced subjectively SD-EF1 allocation of this profile is own-bundle balanced.
-\end{proposition}
-\begin{proof}
-Own-bundle balance gives $|S|=4+\ind[12\in S]$ and market balance gives $|S|=4+\ind[3\in S]$, so $3\in S\iff12\in S$. The two block systems then leave three forms: (I) $S=\{a,3,8,v,12\}$ with $a\in\{0,1\}$, $v\in\{9,11\}$; (II) $S=\{2,4,u,v\}$ with $u\in\{6,7\}$, $v\in\{9,11\}$; (III) $S=\{a,5,u,10\}$ with $a\in\{0,1\}$, $u\in\{6,7\}$. (If $3,12\in S$ then $Q_D$ excludes $6,7$ and forces $8\in S$; otherwise $S$ takes $6$ or $7$, excluding $8$, and its $Q_B$-good is $2$ or $10$.) In case I, the first eleven goods of $\sigma_2$ contain all five goods of $S$ but at most three of $X$, because agent~2's $Q_D$-good is $6$ or $7$. In case II, the first two goods of $\sigma_2$ both belong to $S$. In case III, the first six goods of $\sigma_2$ contain three $S$-goods and agent~2's $Q_A$-good, so $2\in X$. The first five goods of $\sigma_1$ contain one $S$-good and two $X$-goods, so $3\notin X$, hence $3\in D$ and $|X|=4$. The first eleven goods of $\sigma_2$ contain three $S$-goods, so all four $X$-goods lie there and $12\in X$. The first nine goods of $\sigma_1$ contain four $D$-goods and three $S$-goods, so $9\notin D$, i.e.\ $9\in X$. The first eight goods of $\sigma_2$ have counts $(|D\cap P|,|S\cap P|,|X\cap P|)=(3,3,2)$, so the next good $11$ must also belong to $X$; then $X$ contains both $9$ and $11$ from $Q_C$, contradicting market balance.
-\end{proof}
+Proposition~\ref{prop:thirteen} of the main paper proves that no market-block-balanced subjectively SD-EF1 allocation of this profile is own-bundle balanced. A script checks its case analysis mechanically (\path{src/audit_extra.py}, part B): the block-compatible matchings $S$ are exactly the twelve matchings of forms I--III, and the counting claims for forms I and II hold for each of them.
 \begin{center}\small
 \begin{tabular}{@{}rrrr@{}}
 \toprule
@@ -248,7 +243,7 @@ Compute all $\sigma_2$ prefix counts, the slack $h(t)=x(t)-s(t)$, and the first 
 The contradictory formula with clauses $(x,x,x)$ and $(\neg x,\neg x,\neg x)$ produces a $30$-good profile with no fixed-matching completion, and the formula with all eight sign patterns on three variables a $102$-good profile with the same property; cycle enumeration rejects every fixed-matching choice, while both profiles admit the proved repair.
 
 \paragraph{Exhaustive audit of the reduction.}
-An exhaustive C++ audit enumerates every ordered three-literal formula with at most three clauses up to variable renaming ($10{,}840{,}297$ formulas: $1$, $40$, $12{,}992$ and $10{,}827{,}264$ with $0,1,2,3$ clauses; all signs, repeated occurrences, tautologies, literal orders and clause orders included), checks every raw residual-pair orientation ($346{,}680{,}644$ tests) against the original prefix conditions of agent~1, tests every survivor on $\sigma_2$ and compares each outcome with the truth table; there are no disagreements. An independent Python reference audit checks all $13{,}033$ formulas with at most two clauses and $1{,}000$ further three-clause formulas with the same result. (Directory \path{verification/repair}; we re-ran the C++ audit and it reproduces the shipped counts.)
+An exhaustive C++ audit enumerates every ordered three-literal formula with at most three clauses up to variable renaming ($10{,}840{,}297$ formulas: $1$, $40$, $12{,}992$ and $10{,}827{,}264$ with $0,1,2,3$ clauses; all signs, repeated occurrences, tautologies, literal orders and clause orders included), checks every raw residual-pair orientation ($346{,}680{,}644$ tests) against the original prefix conditions of agent~1, tests every survivor on $\sigma_2$ and compares each outcome with the truth table; there are no disagreements. An independent Python reference audit checks all $13{,}033$ formulas with at most two clauses and $1{,}000$ further three-clause formulas with the same result. (Directory \path{verification/repair}; a rerun reproduces the recorded counts.)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Repair-Distance Family}\label{app:distance}
@@ -277,7 +272,7 @@ $r$ & Balanced & Fair & Own-balanced & Min.\ replacements (own-bal.\ / any)\\ \m
 \bottomrule
 \end{tabular}
 \end{center}
-Exhaustive checks: market-block-balanced allocations, fair ones, fair ones with own-bundle balance, and minimum replacements; the $r=4$ row was computed independently of the supplied package (\path{src/verify_repair_onesingleton.py}), and the explicit repaired allocation is fair for $r=2,\dots,10$.
+Exhaustive checks: market-block-balanced allocations, fair ones, fair ones with own-bundle balance, and minimum replacements; the $r=4$ row was computed by a second, independently written program (\path{src/verify_repair_onesingleton.py}), and the explicit repaired allocation is fair for $r=2,\dots,10$.
 
 \paragraph{Modules.}
 If modules consist of full market blocks and are contiguous in every real ranking, a market-block-balanced allocation is globally SD-EF1 iff it is SD-EF1 within every module: completed modules contribute equally, and every local prefix embeds into a global one. Replacement distance therefore adds over copies of the $r=2$ instance.
